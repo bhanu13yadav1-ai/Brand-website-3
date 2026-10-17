@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f6f0eb">
-  <meta name="description" content="Explore BLACKED INNERWEAR, a private manual style studio, fit guidance and a new 18+ intimate-wellness concept section.">
-  <title>BLACKED INNERWEAR — Fit Studio v1.0.0</title>
+  <meta name="description" content="Explore BLACKED INNERWEAR with product-specific preview controls, fit guidance, a private 18+ wellness finder and consent-first connection tools.">
+  <title>BLACKED INNERWEAR — Fit Studio v1.1.0</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c1819'/%3E%3Ctext x='50%25' y='55%25' font-size='37' text-anchor='middle' fill='%23f5b2c4' font-family='Georgia'%3EB%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
@@ -124,6 +124,16 @@
             <button class="wellness-category-tile tile-couples" type="button" data-wellness-filter="couples" aria-pressed="false"><span class="wellness-tile-art" aria-hidden="true"><span>♡</span><i></i></span><strong>For Couples</strong><small>Explore together, comfortably</small><span class="wellness-tile-arrow" aria-hidden="true">↗</span></button>
             <button class="wellness-category-tile tile-new" type="button" data-wellness-filter="new" aria-pressed="false"><span class="wellness-tile-art" aria-hidden="true"><span>✧</span><i></i></span><strong>New Ideas</strong><small>Fresh wellness discoveries</small><span class="wellness-tile-arrow" aria-hidden="true">↗</span></button>
           </div>
+          <div class="wellness-finder" id="wellness-finder">
+            <div class="wellness-finder-copy"><p class="wellness-eyebrow">QUICK FINDER · NO ACCOUNT</p><h3>Start with <em>what matters to you.</em></h3><p>3 quick choices narrow the category ideas. This finder suggests learning/category paths, not a medical result or actual product stock.</p></div>
+            <form id="wellnessFinderForm" class="wellness-finder-form">
+              <label for="wellnessFinderAudience"><span>For whom?</span><select id="wellnessFinderAudience" name="audience"><option value="all">Show every category</option><option value="her">For Her</option><option value="him">For Him</option><option value="couples">For Couples</option></select></label>
+              <label for="wellnessFinderGoal"><span>What are you exploring?</span><select id="wellnessFinderGoal" name="goal"><option value="discover">Not sure yet / explore</option><option value="personal">Personal comfort</option><option value="grooming">Grooming &amp; care</option><option value="couples">Shared wellness</option><option value="learn">Learn safe use &amp; care</option><option value="gift">Gifting &amp; discovery</option></select></label>
+              <label for="wellnessFinderPriority"><span>Main priority?</span><select id="wellnessFinderPriority" name="priority"><option value="privacy">Privacy &amp; comfort</option><option value="care">Clear care information</option><option value="learning">Learn first</option><option value="gifting">Gifting ideas</option></select></label>
+              <button type="submit" class="wellness-button wellness-button-pink">Find my starting point <span aria-hidden="true">→</span></button>
+            </form>
+            <p class="wellness-finder-result" id="wellnessFinderResult" role="status" aria-live="polite" hidden></p>
+          </div>
         </div>
 
         <div class="wellness-catalog-area" id="wellness-catalogue">
@@ -137,35 +147,35 @@
             <button type="button" class="wellness-filter-chip" data-wellness-filter="new" aria-pressed="false">New Ideas</button>
           </div>
           <div class="wellness-category-grid" id="wellnessCategoryGrid" aria-live="polite">
-            <article class="wellness-item-card" data-wellness-item data-wellness-audience="her" data-wellness-title="Personal wellness" data-wellness-copy="A private starting point for exploring personal wellness products and comfort-led choices.">
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="her" data-wellness-title="Personal wellness" data-wellness-tags="personal her comfort privacy new" data-wellness-copy="A private starting point for exploring personal wellness products and comfort-led choices.">
               <div class="wellness-item-art art-rose" aria-hidden="true"><span class="item-halo"></span><span class="item-box"></span><span class="item-bottle"></span><span class="item-sparkle">✧</span></div>
               <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · FOR HER</p><h4>Personal Wellness</h4><p>A private starting point for exploring personal wellness and comfort-led choices.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Products will appear only after you confirm the exact item, supplier, usage instructions and listing rights.</p></details></div>
             </article>
-            <article class="wellness-item-card" data-wellness-item data-wellness-audience="him" data-wellness-title="Grooming and care" data-wellness-copy="Personal grooming and body-care ideas, with no unverified performance claims.">
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="him" data-wellness-title="Grooming and care" data-wellness-tags="grooming him care personal" data-wellness-copy="Personal grooming and body-care ideas, with no unverified performance claims.">
               <div class="wellness-item-art art-violet" aria-hidden="true"><span class="item-halo"></span><span class="item-tube"></span><span class="item-cap"></span><span class="item-sparkle">✦</span></div>
               <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · FOR HIM</p><h4>Grooming &amp; Care</h4><p>Personal grooming and body-care ideas, clearly labelled.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Only items you confirm as available, with genuine ingredients and care details, will become product listings.</p></details></div>
             </article>
-            <article class="wellness-item-card" data-wellness-item data-wellness-audience="couples" data-wellness-title="couples wellness" data-wellness-copy="Shared self-care ideas built around conversation, mutual comfort and consent.">
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="couples" data-wellness-title="couples wellness" data-wellness-tags="couples comfort communication shared" data-wellness-copy="Shared self-care ideas built around conversation, mutual comfort and consent.">
               <div class="wellness-item-art art-coral" aria-hidden="true"><span class="item-halo"></span><span class="item-box item-box-small"></span><span class="item-box item-box-tall"></span><span class="item-heart">♡</span></div>
               <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · FOR COUPLES</p><h4>Couples Wellness</h4><p>Shared self-care ideas built around conversation and mutual comfort.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Products and activities should be suitable for adults and never presented as a substitute for consent or health advice.</p></details></div>
             </article>
-            <article class="wellness-item-card" data-wellness-item data-wellness-audience="all" data-wellness-title="intimate care and essentials" data-wellness-copy="Personal-care categories with clear ingredient and use information.">
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="all" data-wellness-title="intimate care and essentials" data-wellness-tags="care ingredients hygiene her him privacy" data-wellness-copy="Personal-care categories with clear ingredient and use information.">
               <div class="wellness-item-art art-mint" aria-hidden="true"><span class="item-halo"></span><span class="item-bottle item-bottle-wide"></span><span class="item-drop">◇</span><span class="item-sparkle">✧</span></div>
               <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · CARE</p><h4>Intimate Care &amp; Essentials</h4><p>Personal-care categories with clear ingredients and instructions.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Any future care listing should include accurate ingredients, usage directions, warnings and manufacturer details.</p></details></div>
             </article>
-            <article class="wellness-item-card" data-wellness-item data-wellness-audience="all" data-wellness-title="massage and relaxation" data-wellness-copy="Relaxation and self-care ideas, described without medical promises.">
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="all" data-wellness-title="massage and relaxation" data-wellness-tags="relaxation comfort couples personal" data-wellness-copy="Relaxation and self-care ideas, described without medical promises.">
               <div class="wellness-item-art art-gold" aria-hidden="true"><span class="item-halo"></span><span class="item-jar"></span><span class="item-jar-lid"></span><span class="item-leaf">❧</span></div>
               <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · COMFORT</p><h4>Massage &amp; Relaxation</h4><p>Relaxation and self-care ideas, without medical promises.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Use verified product guidance and avoid medical or therapeutic claims unless appropriately substantiated.</p></details></div>
             </article>
-            <article class="wellness-item-card" data-wellness-item data-wellness-audience="couples" data-wellness-title="gift and discovery sets" data-wellness-copy="Thoughtful adult-wellness gift concepts with discreet presentation options where available.">
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="couples" data-wellness-title="gift and discovery sets" data-wellness-tags="gifting couples new discovery" data-wellness-copy="Thoughtful adult-wellness gift concepts with discreet presentation options where available.">
               <div class="wellness-item-art art-plum" aria-hidden="true"><span class="item-halo"></span><span class="item-box item-box-gift"></span><span class="item-ribbon"></span><span class="item-sparkle">♡</span></div>
               <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · GIFTING</p><h4>Gift &amp; Discovery Sets</h4><p>Thoughtful gift ideas and discreet packaging options, if available.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Packaging, delivery privacy and gift options will be described only if the actual service supports them.</p></details></div>
             </article>
-            <article class="wellness-item-card" data-wellness-item data-wellness-audience="guides" data-wellness-title="wellness guides" data-wellness-copy="Plain-language guides on choosing, cleaning and storing products safely.">
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="guides" data-wellness-title="wellness guides" data-wellness-tags="guides learning care privacy" data-wellness-copy="Plain-language guides on choosing, cleaning and storing products safely.">
               <div class="wellness-item-art art-sky" aria-hidden="true"><span class="item-halo"></span><span class="item-book"></span><span class="item-book-line"></span><span class="item-sparkle">✧</span></div>
               <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · LEARN</p><h4>Wellness Guides</h4><p>Easy Hinglish explainers for choosing, care and storage.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Editorial guides will provide general educational information, not diagnosis or individual medical advice.</p></details></div>
             </article>
-            <article class="wellness-item-card" data-wellness-item data-wellness-audience="new" data-wellness-title="new discoveries" data-wellness-copy="A future collection for new, owner-approved products after stock and details are confirmed.">
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="new" data-wellness-title="new discoveries" data-wellness-tags="new discovery her him couples" data-wellness-copy="A future collection for new, owner-approved products after stock and details are confirmed.">
               <div class="wellness-item-art art-new" aria-hidden="true"><span class="item-halo"></span><span class="item-box item-box-new"></span><span class="item-sparkle">✦</span><span class="item-sparkle item-sparkle-two">♡</span></div>
               <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · COMING LATER</p><h4>New Discoveries</h4><p>A future collection for products you approve and confirm.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>This is a placeholder only; no launch date, inventory or discount is being claimed.</p></details></div>
             </article>
@@ -198,6 +208,14 @@
         <button class="filter-chip" data-filter="detail" aria-pressed="false">Product details <span data-filter-count>0</span></button>
         <button class="filter-chip" data-filter="concept" aria-pressed="false">Design concepts <span data-filter-count>0</span></button><button class="filter-chip" data-filter="external" aria-pressed="false">External references <span data-filter-count>0</span></button>
       </div>
+      <div class="catalog-tools" aria-label="Search and sort references">
+        <label class="catalog-search" for="catalogSearch"><span aria-hidden="true">⌕</span><input type="search" id="catalogSearch" placeholder="Search designs, colours and details" autocomplete="off"><button type="button" id="catalogClear" aria-label="Clear catalog search">×</button></label>
+        <label class="catalog-sort-label" for="catalogSort">Sort
+          <select id="catalogSort"><option value="featured">Featured order</option><option value="name-asc">Name A–Z</option><option value="name-desc">Name Z–A</option></select>
+        </label>
+      </div>
+      <p class="catalog-status" id="catalogStatus" aria-live="polite">Loading catalogue references…</p>
+      <div class="catalog-empty" id="catalogEmpty" hidden>No references match those filters. Try another search or clear filters.</div>
       <div class="product-grid" id="productGrid" aria-live="polite">
         <article class="product-card" data-category="campaign" data-product="move">
           <button class="product-image-button" data-open-product="move" aria-label="Open Move Together reference details">
@@ -453,6 +471,12 @@
                   <option value="quiet">Quiet, low-pressure company</option>
                 </select>
               </label>
+              <div class="companion-preference-grid">
+                <label class="companion-field" for="companionDuration"><span>Planned duration</span><select id="companionDuration" name="duration"><option value="60">Around 1 hour</option><option value="90" selected>Around 90 minutes</option><option value="120">Around 2 hours</option></select></label>
+                <label class="companion-field" for="companionTouch"><span>Physical-contact boundary</span><select id="companionTouch" name="touch"><option value="none" selected>No physical contact</option><option value="greeting">Greeting/handshake only</option><option value="ask">Ask every time; no assumption</option></select></label>
+              </div>
+              <label class="companion-field" for="companionMeetup"><span>Meetup plan</span><select id="companionMeetup" name="meetup"><option value="venue" selected>Meet at the public venue</option><option value="separate">Travel separately and meet there</option><option value="trusted">I will share the plan with a trusted person</option></select></label>
+              <label class="companion-check"><input type="checkbox" id="companionTrustedCheck"><span>Main outing details kisi trusted person ke saath share karne ka plan banaungi. <small>Optional safety reminder; no contact details are collected.</small></span></label>
               <label class="companion-check"><input type="checkbox" id="companionAdultCheck" required><span>I confirm I am 18 or older. <small>This prototype checkbox is not formal age verification.</small></span></label>
               <label class="companion-check"><input type="checkbox" id="companionBoundaryCheck" required><span>I understand this concept is strictly platonic and non-sexual, with public meetups only.</span></label>
               <label class="companion-check"><input type="checkbox" id="companionDemoCheck" required><span>I understand this is a demo: there are no actual providers and no request will be sent or saved.</span></label>
@@ -562,6 +586,7 @@
           <div class="adult-preview-head"><div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR LOCAL PREVIEW</p><h3>Your answers, your control.</h3></div><span class="adult-private-badge">⌑ Not shared</span></div>
           <p class="adult-preview-explainer" id="adultPreviewPrivacyText">These answers are shown only in this browser session. Nothing is saved or sent.</p>
           <div class="adult-preview-summary" id="adultPreviewSummary"></div>
+          <div class="adult-conversation-starters" id="adultConversationStarters" hidden aria-live="polite"></div>
           <button type="button" class="button button-outline" id="editAdultPreferences">Edit preferences</button>
           <p class="adult-prototype-note">This is not a real match or public profile. All preferences will disappear when you clear them or close/reload the page.</p>
         </div>
@@ -629,6 +654,10 @@
             <div class="preview-mode-switch" role="group" aria-label="Preview mode">
               <button type="button" class="preview-mode-button is-selected" data-preview-mode="reference" aria-pressed="true">Selected product photo</button>
               <button type="button" class="preview-mode-button" data-preview-mode="manual" aria-pressed="false">My photo + guide</button>
+            </div>
+            <div class="studio-view-toggle" role="group" aria-label="Choose image view for the selected reference">
+              <button type="button" data-studio-view="reference" aria-pressed="false">Campaign / reference photo</button>
+              <button type="button" data-studio-view="detail" aria-pressed="false">Product detail view</button>
             </div>
             <div class="canvas-shell" id="canvasShell">
               <canvas id="tryCanvas" width="720" height="960" aria-label="The exact selected product/reference image. Choose Illustration guide only after uploading your own photo." tabindex="0"></canvas>
@@ -751,7 +780,7 @@
       <div class="faq-title"><p class="eyebrow"><span class="eyebrow-line"></span> GOOD TO KNOW</p><h2>Clear answers.<br><em>Better choices.</em></h2></div>
       <div class="faq-list">
         <details><summary>Is Plus-One Club live, and is it sexual? <span aria-hidden="true">+</span></summary><p>No. Plus-One Club is only a prototype concept for adult, platonic public outings. There are no real or verified providers, availability, payment or bookings, and the form sends or saves nothing. It does not offer sexual services. A real service would need appropriate adult verification, safety operations, privacy controls and legal review.</p></details>
-        <details><summary>Can I select all available options in Try-On Studio? <span aria-hidden="true">+</span></summary><p>Yes. Pick any catalogued reference or concept. Each selection has its own image mapping. Product-only imagery appears only where an associated asset is provided; external-brand references stay labelled as inspiration and are not BLACKED inventory.</p></details>
+        <details><summary>Can I select all available options in Try-On Studio? <span aria-hidden="true">+</span></summary><p>Yes. Pick any catalogued reference or concept. Each selection has its own image mapping. Where a separate garment-detail asset exists, switch between the campaign/reference view and detail view; missing views are not replaced with another product. External-brand references stay labelled as inspiration and are not BLACKED inventory.</p></details>
         <details><summary>Why does Try-On show a product photo now?<span aria-hidden="true">+</span></summary><p>The canvas defaults to the exact selected reference image, so selecting a different reference changes the main preview. The illustration guide is separate and only becomes available after a personal photo is selected; it does not extract the garment from the campaign artwork.</p></details>
         <details><summary>Does the manual overlay show my actual fit?<span aria-hidden="true">+</span></summary><p>No. It lets you manually position a simple illustration over your own photo. It does not use the selected product image as a garment cut-out, change to match body shape, simulate fabric or determine if a product fits.</p></details>
         <details><summary>Is my photo uploaded anywhere?<span aria-hidden="true">+</span></summary><p>This prototype uses your selected photo inside the browser for previewing and does not send it to a server. Only select photos you have permission to use. If the website is later connected to third-party services, the privacy notice must be updated first.</p></details>
@@ -774,7 +803,7 @@
       <div class="footer-links"><a href="#collection">Collection</a><a href="#intimate-wellness">Intimate Wellness 18+</a><a href="#studio">Fit Studio</a><a href="#fit-guide">Size Finder</a><a href="#companion-club">Plus-One 18+</a>
       <a href="#adult-connect">Adult preferences</a><a href="#faq">FAQs</a></div>
     </div>
-    <div class="footer-bottom"><span>© <span id="year">2026</span> BLACKED INNERWEAR · PROTOTYPE v1.0.0</span><span>No AI · No external photo upload · No checkout · Adult answers are session-only</span><a href="#top">Back to top ↑</a></div>
+    <div class="footer-bottom"><span>© <span id="year">2026</span> BLACKED INNERWEAR · PROTOTYPE v1.1.0</span><span>No AI · No external photo upload · No checkout · Adult answers are session-only</span><a href="#top">Back to top ↑</a></div>
   </footer>
 
   <dialog class="product-dialog" id="productDialog" aria-labelledby="dialogTitle">

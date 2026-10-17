@@ -1,11 +1,11 @@
-# BLACKED INNERWEAR Fit Studio — Consolidated Research & Build Specification
+# BLACKED INNERWEAR Fit Studio v1.1.0 — Consolidated Research & Build Specification
 
 **Prepared:** 17 October 2026  
 **Current shipped prototype:** `v0.7.0` (static prototype package prepared in this conversation)  
 **Current inspected release:** `v0.5.1`  
 **Constraints:** ₹0 budget, no AI, no paid APIs, no npm/build step, Android-phone-first, GitHub-friendly static website.
 
-> This file consolidates the research and requirements only. No website code or images were changed in this research pass.
+> This file consolidates the research, implementation order and remaining launch requirements. v1.1.0 implements the static frontend portions; real inventory, backend services and live-service verification remain future work.
 
 ## 1. Product goal
 

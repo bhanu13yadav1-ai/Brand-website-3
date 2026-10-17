@@ -1,153 +1,121 @@
 {
-  "version": "1.0.0",
-  "passed": 29,
-  "total": 29,
+  "version": "1.1.0",
+  "browser_test": "Playwright Chromium on in-memory DOM; local image fixtures used; no repository files modified by test",
   "checks": [
     {
-      "name": "HTML parsed",
+      "name": "Page title is v1.1.0",
       "pass": true,
-      "detail": ""
+      "detail": "BLACKED INNERWEAR \u2014 Fit Studio v1.1.0"
     },
     {
-      "name": "No duplicate IDs",
+      "name": "Catalog renders the full reference inventory",
       "pass": true,
-      "detail": []
+      "detail": "cards=43"
     },
     {
-      "name": "Version title v1.0.0",
+      "name": "Catalog search filters all rendered cards",
       "pass": true,
-      "detail": ""
+      "detail": "visible=16, total=43"
     },
     {
-      "name": "All local HTML assets resolve",
+      "name": "Catalog empty-state appears for no matches",
       "pass": true,
-      "detail": []
+      "detail": "visible=0"
     },
     {
-      "name": "CSS top-level parsing succeeds",
+      "name": "Catalog reset clears search, category and sort",
       "pass": true,
-      "detail": []
+      "detail": "reset executed"
     },
     {
-      "name": "JS syntax check passed",
+      "name": "External filter shows only external references",
       "pass": true,
-      "detail": ""
+      "detail": "visible=15"
     },
     {
-      "name": "New wellness section exists",
+      "name": "Try-on selected item label matches sculpt",
       "pass": true,
-      "detail": ""
+      "detail": "Midnight Sculpt"
     },
     {
-      "name": "Wellness section links from nav and footer",
+      "name": "Product-detail view enabled when asset exists",
       "pass": true,
-      "detail": ""
+      "detail": "sculpt has previewImage"
     },
     {
-      "name": "Wellness 18+ self-attestation gate exists",
+      "name": "Reference view updates active state",
       "pass": true,
-      "detail": ""
+      "detail": "Showing this item\u2019s exact original campaign/reference image."
     },
     {
-      "name": "Wellness content is hidden before age confirmation",
+      "name": "Detail view updates active state",
       "pass": true,
-      "detail": ""
+      "detail": "Showing this item\u2019s associated garment-detail concept image."
     },
     {
-      "name": "Age gate interaction is wired",
+      "name": "Missing product-detail view stays disabled",
       "pass": true,
-      "detail": ""
+      "detail": "Move Together"
     },
     {
-      "name": "Four audience category tiles exist",
+      "name": "Selected product photo view is the default canvas mode",
       "pass": true,
-      "detail": ""
+      "detail": "SELECTED PRODUCT / REFERENCE PHOTO"
     },
     {
-      "name": "Eight concept categories exist",
+      "name": "Wellness opens only after self-attestation",
       "pass": true,
-      "detail": ""
+      "detail": "gate accepted"
     },
     {
-      "name": "Search, reset and no-results controls exist",
+      "name": "Wellness finder returns up to three category ideas",
       "pass": true,
-      "detail": ""
+      "detail": "visible_categories=3; result=Your starting points: Personal Wellness \u00b7 Intimate Care & Essentials \u00b7 Massage & Relaxation. These are category ideas, not product recommendations or medical advice."
     },
     {
-      "name": "All expected filters exist",
+      "name": "Wellness reset restores all categories",
       "pass": true,
-      "detail": ""
+      "detail": "reset executed"
     },
     {
-      "name": "Three expandable educational guides exist",
+      "name": "Companion preview includes comfort preferences and no-booking disclaimer",
       "pass": true,
-      "detail": ""
+      "detail": "Coffee & conversation \u00b7 No date chosen \u00b7 Easygoing conversation \u00b7 around 1 hour \u00b7 boundary: no physical contact \u00b7 meetup: meet at the public venue. Trusted-person check-in: planned. Local preview only: no real provider is available and nothing has been sent or saved."
     },
     {
-      "name": "Custom non-explicit SVG art exists",
+      "name": "Adult preferences display conversation starters",
       "pass": true,
-      "detail": ""
+      "detail": "Helpful conversation starters\n\nThese are private prompts for a future conversation\u2014not compatibility scores or a real match.\n\nWhat helps each of us feel safe, heard and comfortable?\nHow should we check in with each other if someone wants to pause or stop?\nWhat are we each hoping to get from dating right now?\nWhat boundaries and expectations would need to be discussed before any group setting?\nWhat are the hard limits, soft limits and stop signal each person wants respected?"
     },
     {
-      "name": "Wellness section states category-only prototype",
+      "name": "Adult preference answers are not saved to localStorage",
       "pass": true,
-      "detail": ""
+      "detail": "before=['length', 'key', 'getItem', 'setItem', 'removeItem', 'clear']; after=['length', 'key', 'getItem', 'setItem', 'removeItem', 'clear']"
     },
     {
-      "name": "No fake discount/rating numbers in wellness section",
+      "name": "Adult clear removes generated prompts",
       "pass": true,
-      "detail": ""
+      "detail": "cleared"
     },
     {
-      "name": "No competitor screenshot embedded in the new section",
+      "name": "No document-level horizontal overflow at desktop width",
       "pass": true,
-      "detail": ""
+      "detail": "scrollWidth=1280; clientWidth=1280"
     },
     {
-      "name": "Filter/search/reset handlers are wired",
+      "name": "No document-level horizontal overflow at mobile width",
       "pass": true,
-      "detail": ""
+      "detail": "scrollWidth=390; clientWidth=390"
     },
     {
-      "name": "Filter controls use aria-pressed state",
+      "name": "No uncaught browser page errors",
       "pass": true,
-      "detail": ""
-    },
-    {
-      "name": "Original ten reference assets retained",
-      "pass": true,
-      "detail": ""
-    },
-    {
-      "name": "Existing adult questionnaire preserved",
-      "pass": true,
-      "detail": ""
-    },
-    {
-      "name": "Adult preference answers are not saved or transmitted",
-      "pass": true,
-      "detail": ""
-    },
-    {
-      "name": "Existing Try-On selected-image mapping preserved",
-      "pass": true,
-      "detail": ""
-    },
-    {
-      "name": "No remote JavaScript dependency",
-      "pass": true,
-      "detail": ""
-    },
-    {
-      "name": "No fake purchase or rating UI in wellness section",
-      "pass": true,
-      "detail": ""
-    },
-    {
-      "name": "Existing lingerie reference cards retained",
-      "pass": true,
-      "detail": ""
+      "detail": "[]"
     }
   ],
-  "browser_interactions": "Not completed: previous Playwright/Chromium attempts were blocked by ERR_BLOCKED_BY_ADMINISTRATOR; manual Android test is required after extraction/deployment."
+  "page_errors": [],
+  "console_errors": [],
+  "failed_requests": [],
+  "passed": 22,
+  "total": 22
 }

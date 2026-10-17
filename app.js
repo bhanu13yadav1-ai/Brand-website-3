@@ -38,22 +38,9 @@
     });
   }
 
-  // Collection filtering
-  const filterButtons = $$('.filter-chip');
-  const productCards = $$('.product-card'); // used only for initial structure; filtering queries the live catalog
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
-      filterButtons.forEach(item => {
-        const active = item === button;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-pressed', String(active));
-      });
-      $$('.product-card').forEach(card => {
-        card.hidden = filter !== 'all' && card.dataset.category !== filter;
-      });
-    });
-  });
+  // Catalog controls are wired after the dynamic reference cards have been rendered.
+  let activeCatalogFilter = 'all';
+  let catalogSortMode = 'featured';
 
   const products = {
     move: { name: 'Move Together', category: '01 · BLACKED CAMPAIGN', image: 'ref-01-blacked-move-together.png', description: 'Black-and-grey movement-inspired styling from your original campaign artwork.', note: 'Campaign visual only. Confirm the exact garment SKU, materials, sizes and stock before selling.' },
@@ -177,6 +164,64 @@
   }
   renderAddedCatalogCards();
   updateCatalogFilterCounts();
+
+  // v1.1 catalog search and sorting work on the fully rendered catalog, not only the original ten cards.
+  const catalogSearch = $('#catalogSearch');
+  const catalogSort = $('#catalogSort');
+  const catalogClear = $('#catalogClear');
+  const catalogStatus = $('#catalogStatus');
+  const catalogEmpty = $('#catalogEmpty');
+  const catalogGrid = $('#productGrid');
+  const catalogInitialOrder = new Map($$('.product-card', catalogGrid).map((card, index) => [card.dataset.product, index]));
+  const catalogFilterButtons = $$('.filter-chip[data-filter]');
+  function applyCatalogView() {
+    if (!catalogGrid) return;
+    const query = String(catalogSearch?.value || '').trim().toLowerCase();
+    const allCards = $$('.product-card', catalogGrid);
+    const sortMode = String(catalogSort?.value || catalogSortMode);
+    catalogSortMode = sortMode;
+    const ordered = [...allCards].sort((a, b) => {
+      if (sortMode === 'name-asc' || sortMode === 'name-desc') {
+        const an = String(products[a.dataset.product]?.name || a.querySelector('h3')?.textContent || '').toLocaleLowerCase();
+        const bn = String(products[b.dataset.product]?.name || b.querySelector('h3')?.textContent || '').toLocaleLowerCase();
+        const result = an.localeCompare(bn);
+        return sortMode === 'name-desc' ? -result : result;
+      }
+      return (catalogInitialOrder.get(a.dataset.product) ?? 9999) - (catalogInitialOrder.get(b.dataset.product) ?? 9999);
+    });
+    ordered.forEach(card => catalogGrid.appendChild(card));
+    let shown = 0;
+    ordered.forEach(card => {
+      const categoryMatch = activeCatalogFilter === 'all' || card.dataset.category === activeCatalogFilter;
+      const haystack = `${products[card.dataset.product]?.name || ''} ${products[card.dataset.product]?.description || ''} ${card.textContent || ''}`.toLowerCase();
+      const queryMatch = !query || haystack.includes(query);
+      const visible = categoryMatch && queryMatch;
+      card.hidden = !visible;
+      if (visible) shown += 1;
+    });
+    catalogFilterButtons.forEach(button => {
+      const active = button.dataset.filter === activeCatalogFilter;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    if (catalogStatus) catalogStatus.textContent = `${shown} of ${allCards.length} references shown${query ? ` · search: “${query}”` : ''}${activeCatalogFilter !== 'all' ? ` · filter: ${activeCatalogFilter}` : ''}. Reference images and concepts are not confirmed stock SKUs.`;
+    if (catalogEmpty) catalogEmpty.hidden = shown > 0;
+    if (catalogClear) catalogClear.disabled = !query && activeCatalogFilter === 'all' && catalogSortMode === 'featured';
+  }
+  catalogFilterButtons.forEach(button => button.addEventListener('click', () => {
+    activeCatalogFilter = button.dataset.filter || 'all';
+    applyCatalogView();
+  }));
+  catalogSearch?.addEventListener('input', applyCatalogView);
+  catalogSort?.addEventListener('change', applyCatalogView);
+  catalogClear?.addEventListener('click', () => {
+    activeCatalogFilter = 'all'; catalogSortMode = 'featured';
+    if (catalogSearch) catalogSearch.value = '';
+    if (catalogSort) catalogSort.value = 'featured';
+    applyCatalogView();
+    catalogSearch?.focus();
+  });
+  applyCatalogView();
 
   // Device-local wishlist: stores only selected reference IDs, never personal photos.
   const wishlistKey = 'blacked-fit-studio-wishlist-v03';
@@ -361,6 +406,7 @@
   const previewModeButtons = $$('[data-preview-mode]');
   const manualModeControls = $('#manualModeControls');
   const referenceImageCache = new Map();
+  const referenceImageErrors = new Set();
 
   const studioState = {
     photo: null,
@@ -375,7 +421,8 @@
     dragging: false,
     dragStart: null,
     selectedProduct: 'signature',
-    previewMode: 'reference'
+    previewMode: 'reference',
+    referenceView: 'detail'
   };
   const canvasW = canvas?.width || 720;
   const canvasH = canvas?.height || 960;
@@ -396,7 +443,7 @@
 
   function drawSelectedReference() {
     const product = products[studioState.selectedProduct] || products.signature;
-    const displayImage = product.previewImage || product.image;
+    const displayImage = studioState.referenceView === 'detail' && product.previewImage ? product.previewImage : product.image;
     ctx.fillStyle = '#eee1da';
     ctx.fillRect(0, 0, canvasW, canvasH);
     let image = referenceImageCache.get(displayImage);
@@ -405,17 +452,28 @@
       referenceImageCache.set(displayImage, image);
       image.onload = () => {
         const current = products[studioState.selectedProduct] || products.signature;
-        if (studioState.previewMode === 'reference' && (current.previewImage || current.image) === displayImage) drawScene();
+        const selectedDisplay = studioState.referenceView === 'detail' && current.previewImage ? current.previewImage : current.image;
+        if (studioState.previewMode === 'reference' && selectedDisplay === displayImage) drawScene();
       };
       image.onerror = () => {
-        ctx.fillStyle = '#49363b';
-        ctx.font = '600 20px Arial, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('Reference image could not load', canvasW / 2, canvasH / 2);
+        referenceImageErrors.add(displayImage);
+        const current = products[studioState.selectedProduct] || products.signature;
+        const currentDisplay = studioState.referenceView === 'detail' && current.previewImage ? current.previewImage : current.image;
+        if (studioState.previewMode === 'reference' && currentDisplay === displayImage) {
+          drawScene();
+          setStudioStatus(`The selected image for “${current.name}” could not load. No other product image was substituted.`);
+        }
       };
       image.src = displayImage;
     }
-    if (image.complete && image.naturalWidth) {
+    if (referenceImageErrors.has(displayImage)) {
+      ctx.fillStyle = '#49363b';
+      ctx.font = '600 20px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Selected image unavailable', canvasW / 2, canvasH / 2 - 12);
+      ctx.font = '13px Arial, sans-serif';
+      ctx.fillText('Check that this product image file exists in the repository.', canvasW / 2, canvasH / 2 + 18);
+    } else if (image.complete && image.naturalWidth) {
       const padX = 22, padTop = 18, padBottom = 92;
       const scale = Math.min((canvasW - padX * 2) / image.naturalWidth, (canvasH - padTop - padBottom) / image.naturalHeight);
       const width = image.naturalWidth * scale;
@@ -846,6 +904,19 @@
     if (studioSelectedCategory) studioSelectedCategory.textContent = product.category;
     if (studioSelectedName) studioSelectedName.textContent = product.name;
     if (studioSelectedDescription) studioSelectedDescription.textContent = product.description;
+    const referenceViewButton = $('[data-studio-view="reference"]');
+    const detailViewButton = $('[data-studio-view="detail"]');
+    if (referenceViewButton) {
+      referenceViewButton.disabled = false;
+      referenceViewButton.setAttribute('aria-pressed', String(studioState.referenceView !== 'detail' || !product.previewImage));
+      referenceViewButton.classList.toggle('is-selected', studioState.referenceView !== 'detail' || !product.previewImage);
+    }
+    if (detailViewButton) {
+      detailViewButton.disabled = !product.previewImage;
+      detailViewButton.setAttribute('aria-pressed', String(studioState.referenceView === 'detail' && Boolean(product.previewImage)));
+      detailViewButton.classList.toggle('is-selected', studioState.referenceView === 'detail' && Boolean(product.previewImage));
+      detailViewButton.title = product.previewImage ? 'Show the separate supplied garment-detail view' : 'This reference has no separate product-detail image';
+    }
     if (studioProductCount) studioProductCount.textContent = `${Object.keys(products).length} options`;
     const pickerHeading = $('.studio-picker-heading h4'); if (pickerHeading) pickerHeading.textContent = `${Object.keys(products).length} image options`;
     $$('[data-studio-product]', studioProductGrid || document).forEach(button => {
@@ -881,6 +952,7 @@
     studioState.selectedProduct = activeProduct;
     studioState.previewMode = 'reference';
     const product = products[activeProduct];
+    studioState.referenceView = product?.previewImage ? 'detail' : 'reference';
     const suggestedColors = {
       redlace: '#b84f70', blacklace: '#252123', velvet: '#6e4259', rose: '#b84f70', sculpt: '#252123', midnight: '#252123', scarlet: '#70253a', ivory: '#d8c5ad', 'syrn-demi': '#c7978d', 'syrn-balconette': '#242026', 'syrn-bodysuit': '#7d384f',
       butterfly: '#b84f70', move: '#252123', yoga: '#252123', stretch: '#252123',
@@ -900,6 +972,17 @@
     toast('Selected reference photo updated in the Try-On Studio.');
   }
   renderStudioProductPicker();
+  $$('[data-studio-view]').forEach(button => button.addEventListener('click', () => {
+    const product = products[studioState.selectedProduct || activeProduct || 'signature'];
+    if (button.dataset.studioView === 'detail' && !product?.previewImage) {
+      setStudioStatus('No separate product-detail image exists for this reference. The original reference image remains selected.');
+      return;
+    }
+    studioState.referenceView = button.dataset.studioView === 'detail' ? 'detail' : 'reference';
+    syncStudioProductPicker();
+    drawScene();
+    setStudioStatus(studioState.referenceView === 'detail' ? 'Showing this item’s associated garment-detail concept image.' : 'Showing this item’s exact original campaign/reference image.');
+  }));
   $$('[data-preview-product]').forEach(button => button.addEventListener('click', () => goToStudio(button.dataset.previewProduct, 'set')));
   dialogPreview?.addEventListener('click', () => {
     closeProduct();
@@ -1218,7 +1301,14 @@
     const outing = companionActivityLabels[companionExperience?.value] || 'Public outing';
     const preferredDate = companionDate?.value ? new Date(`${companionDate.value}T12:00:00`).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'No date chosen';
     const style = companionStyleLabels[$('#companionStyle')?.value] || 'No preference';
-    if (companionMessage) companionMessage.textContent = `${outing} · ${preferredDate} · ${style}. This is a local preview only. No real provider is available and nothing has been sent or saved.`;
+    const durationLabels = { '60': 'around 1 hour', '90': 'around 90 minutes', '120': 'around 2 hours' };
+    const touchLabels = { none: 'no physical contact', greeting: 'greeting/handshake only', ask: 'ask every time; no assumption' };
+    const meetupLabels = { venue: 'meet at the public venue', separate: 'travel separately and meet there', trusted: 'share plan with a trusted person' };
+    const duration = durationLabels[$('#companionDuration')?.value] || 'duration not selected';
+    const touch = touchLabels[$('#companionTouch')?.value] || 'no physical contact';
+    const meetup = meetupLabels[$('#companionMeetup')?.value] || 'meet at public venue';
+    const trusted = $('#companionTrustedCheck')?.checked ? 'Trusted-person check-in: planned.' : 'Trusted-person check-in: not selected.';
+    if (companionMessage) companionMessage.textContent = `${outing} · ${preferredDate} · ${style} · ${duration} · boundary: ${touch} · meetup: ${meetup}. ${trusted} Local preview only: no real provider is available and nothing has been sent or saved.`;
     if (companionResult) {
       companionResult.hidden = false;
       companionResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1236,6 +1326,7 @@
   const adultPreferencesResult = $('#adultPreferencesResult');
   const adultPreviewSummary = $('#adultPreviewSummary');
   const adultPreviewPrivacyText = $('#adultPreviewPrivacyText');
+  const adultConversationStarters = $('#adultConversationStarters');
   const adultIntentLabels = {
     serious: 'Serious relationship / long-term connection',
     casual: 'Casual dating / no-pressure dates',
@@ -1309,6 +1400,26 @@
     cards.push(`<article class="adult-summary-item adult-summary-wide"><span>Boundaries selected</span><div class="adult-summary-tags">${boundaries.length ? boundaries.map(v => `<span>${escapeHtml(v)}</span>`).join('') : '<span>No boundaries selected</span>'}</div></article>`);
     cards.push(`<article class="adult-summary-item adult-summary-wide"><span>Future sharing preference</span><strong>${escapeHtml(visibilityLabels[visibility] || visibilityLabels.private)}</strong></article>`);
     adultPreviewSummary.innerHTML = cards.join('');
+    if (adultConversationStarters) {
+      const starters = [
+        'What helps each of us feel safe, heard and comfortable?',
+        'How should we check in with each other if someone wants to pause or stop?'
+      ];
+      if (intent.startsWith('Serious relationship')) starters.push('What are we each hoping to get from dating right now?');
+      if (intent.startsWith('Couple')) starters.push('What boundaries would every person need to agree on before considering a group setting?');
+      if (String(data.get('interestGroup') || '') === 'interested' || String(data.get('interestGroup') || '') === 'curious') starters.push('What boundaries and expectations would need to be discussed before any group setting?');
+      if (String(data.get('interestBDSM') || '') === 'interested' || String(data.get('interestBDSM') || '') === 'curious') starters.push('What are the hard limits, soft limits and stop signal each person wants respected?');
+      if (String(data.get('interestOpen') || '') === 'interested' || String(data.get('interestOpen') || '') === 'curious') starters.push('Which relationship agreements would need to be clear and mutual?');
+      if (sizeComfort === 'Only after trust' || sizeComfort === 'Not comfortable right now' || sizeComfort === 'Prefer not to answer') starters.push('Can we agree not to discuss intimate measurements unless both of us are comfortable?');
+      const uniqueStarters = [...new Set(starters)].slice(0, 5);
+      adultConversationStarters.replaceChildren();
+      const heading = document.createElement('h4'); heading.textContent = 'Helpful conversation starters';
+      const intro = document.createElement('p'); intro.textContent = 'These are private prompts for a future conversation—not compatibility scores or a real match.';
+      const list = document.createElement('ul');
+      uniqueStarters.forEach(prompt => { const item = document.createElement('li'); item.textContent = prompt; list.appendChild(item); });
+      adultConversationStarters.append(heading, intro, list);
+      adultConversationStarters.hidden = false;
+    }
     if (adultPreviewPrivacyText) {
       const extra = visibility === 'private'
         ? 'All preferences are private in this preview. Nothing will be shown to another person.'
@@ -1335,6 +1446,7 @@
     adultPreferencesForm?.reset();
     if (adultPreferencesResult) adultPreferencesResult.hidden = true;
     if (adultPreviewSummary) adultPreviewSummary.replaceChildren();
+    if (adultConversationStarters) { adultConversationStarters.replaceChildren(); adultConversationStarters.hidden = true; }
     toast('Adult preference answers cleared from this page.');
   });
   $('#editAdultPreferences')?.addEventListener('click', () => {
@@ -1366,7 +1478,11 @@
   const wellnessCards = $$('.wellness-item-card[data-wellness-item]');
   const wellnessFilterButtons = $$('[data-wellness-filter]');
   const wellnessNoResults = $('#wellnessNoResults');
+  const wellnessFinderForm = $('#wellnessFinderForm');
+  const wellnessFinderResult = $('#wellnessFinderResult');
   let activeWellnessFilter = 'all';
+  let wellnessFinderActive = false;
+  let wellnessFinderIds = new Set();
 
   function renderWellnessCategories() {
     const query = String(wellnessSearch?.value || '').trim().toLowerCase();
@@ -1378,7 +1494,8 @@
         || (['her', 'him', 'couples'].includes(activeWellnessFilter) && audience === 'all');
       const haystack = `${card.dataset.wellnessTitle || ''} ${card.dataset.wellnessCopy || ''} ${card.textContent || ''}`.toLowerCase();
       const queryMatch = !query || haystack.includes(query);
-      const visible = filterMatch && queryMatch;
+      const finderMatch = !wellnessFinderActive || wellnessFinderIds.has(card);
+      const visible = filterMatch && queryMatch && finderMatch;
       card.hidden = !visible;
       if (visible) shown += 1;
     });
@@ -1392,16 +1509,62 @@
   }
 
   wellnessFilterButtons.forEach(button => button.addEventListener('click', () => {
+    wellnessFinderActive = false;
+    wellnessFinderIds = new Set();
+    if (wellnessFinderResult) wellnessFinderResult.hidden = true;
     activeWellnessFilter = button.dataset.wellnessFilter || 'all';
     renderWellnessCategories();
     if (button.classList.contains('wellness-category-tile')) {
       $('#wellness-catalogue')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }));
-  wellnessSearch?.addEventListener('input', renderWellnessCategories);
-  $('#wellnessResetFilter')?.addEventListener('click', () => {
+  wellnessSearch?.addEventListener('input', () => {
+    wellnessFinderActive = false;
+    wellnessFinderIds = new Set();
+    if (wellnessFinderResult) wellnessFinderResult.hidden = true;
+    renderWellnessCategories();
+  });
+  wellnessFinderForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    const audience = String($('#wellnessFinderAudience')?.value || 'all');
+    const goal = String($('#wellnessFinderGoal')?.value || 'discover');
+    const priority = String($('#wellnessFinderPriority')?.value || 'privacy');
+    const goalTags = {
+      discover: ['new', 'discovery', 'personal', 'guides'],
+      personal: ['personal', 'comfort', 'her', 'care'],
+      grooming: ['grooming', 'him', 'care'],
+      couples: ['couples', 'shared', 'comfort'],
+      learn: ['guides', 'learning', 'care', 'privacy'],
+      gift: ['gifting', 'couples', 'new']
+    }[goal] || ['new', 'discovery'];
+    const priorityTags = { privacy: ['privacy', 'comfort'], care: ['care', 'ingredients', 'hygiene'], learning: ['guides', 'learning'], gifting: ['gifting', 'gift', 'couples'] }[priority] || [];
+    const ranked = wellnessCards.map((card, index) => {
+      const tags = String(card.dataset.wellnessTags || '').toLowerCase().split(/\s+/).filter(Boolean);
+      const cardAudience = card.dataset.wellnessAudience || 'all';
+      let score = 0;
+      if (audience === 'all' || cardAudience === audience || cardAudience === 'all') score += cardAudience === audience && audience !== 'all' ? 4 : 1;
+      goalTags.forEach(tag => { if (tags.includes(tag)) score += 3; });
+      priorityTags.forEach(tag => { if (tags.includes(tag)) score += 2; });
+      return { card, score, index };
+    }).sort((a,b) => b.score - a.score || a.index - b.index).slice(0, 3);
+    wellnessFinderIds = new Set(ranked.map(item => item.card));
+    wellnessFinderActive = true;
     activeWellnessFilter = 'all';
     if (wellnessSearch) wellnessSearch.value = '';
+    const names = ranked.map(item => item.card.querySelector('h4')?.textContent || 'Wellness category');
+    if (wellnessFinderResult) {
+      wellnessFinderResult.textContent = `Your starting points: ${names.join(' · ')}. These are category ideas, not product recommendations or medical advice.`;
+      wellnessFinderResult.hidden = false;
+    }
+    renderWellnessCategories();
+    $('#wellness-catalogue')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  $('#wellnessResetFilter')?.addEventListener('click', () => {
+    wellnessFinderActive = false; wellnessFinderIds = new Set();
+    if (wellnessFinderResult) wellnessFinderResult.hidden = true;
+    activeWellnessFilter = 'all';
+    if (wellnessSearch) wellnessSearch.value = '';
+    wellnessFinderForm?.reset();
     renderWellnessCategories();
     $('#wellness-categories')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });

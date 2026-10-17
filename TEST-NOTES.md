@@ -1,21 +1,24 @@
-# BLACKED INNERWEAR Fit Studio v1.0.0 — Test notes
+# BLACKED Fit Studio v1.1.0 — Test notes
 
-## Static validation
+## Automated validation completed
+- `node --check app.js` — passed.
+- In-memory HTML/browser test with Playwright Chromium — **22/22 checks passed**. The test uses local fixture images to test state and event wiring without making network calls.
+- HTML parser — passed; 152 ID attributes and no duplicate IDs.
+- Local HTML image/CSS/JS references — 29 checked, none missing.
+- CSS parsed with no syntax errors.
+- App source references were checked; the two apparent missing `.png` tokens (`blacked-manual-preview.png`, `blacked-style-moodboard.png`) are filenames written by download actions, not input assets.
+- Catalog tests cover 43 cards, search, no-results, sort, filter reset and external-only filter.
+- Try-On tests cover selected product label, reference/detail view states, disabled missing-detail state and default canvas mode.
+- Wellness gate/finder/reset, Plus-One outing preferences, adult conversation prompts, no localStorage persistence for intimate answers, and mobile/desktop horizontal overflow are covered.
 
-- `node --check app.js`: passed.
-- Static validation: **29/29 checks passed**; details in `TEST-RESULTS.json`.
-- Checked HTML parsing, duplicate IDs, local asset paths, CSS parsing, new wellness section and 18+ self-attestation gate, category tiles, concept cards, search/filter/reset, educational accordions, original ten references, Try-On and the existing adult preferences form.
-- New visual is `wellness-hero-art.svg`, a custom non-explicit illustration. The supplied third-party store screenshots are not embedded into the new section and their logos, ratings or discount claims are not copied.
-- The wellness catalogue is explicitly concept-only: no actual product stock, prices, ratings, discounts, checkout or shipping claims.
-- Adult preference answers are not stored in browser storage or sent to a server by this static prototype.
+## Browser test limits
+The automated check runs on an in-memory DOM with image fixtures. It is not a live GitHub Pages or real-image visual test. Manual Android testing after applying the patch is still required, including testing the actual hosted site and clearing browser cache if old assets remain.
 
-## Browser test limitation
-
-Playwright/Chromium navigation to local URLs was blocked by the environment in earlier build attempts (`ERR_BLOCKED_BY_ADMINISTRATOR`), so a full click-through test is not claimed. Wellness search/filter and gate handlers are wired and statically checked, but need manual Android browser validation after extraction or deployment.
-
-## Safety and business limits
-
-- The wellness 18+ prompt is self-attestation, not formal age verification.
-- No actual wellness products, prices, ratings, inventory, discounts, shipping, payment or checkout are configured.
-- The 18+ adult preference questionnaire and Plus-One feature are frontend prototypes, not real matching/bookings.
-- Try-On is reference preview/manual overlay, not realistic automatic fitting.
+## Manual acceptance checklist
+1. Select the 10 original BLACKED references and at least four design concepts, one by one, and verify the matching image each time.
+2. For items with a mapped `previewImage`, toggle between Campaign/reference and Product detail. For an item without one, Product detail must stay disabled.
+3. Search for `lace`, `ivory`, and a term with no match; counts and empty state should update. Toggle category filters, sort A–Z/Z–A, then clear.
+4. Test Wellness Finder for different audiences/goals; results must remain category ideas, not invented product SKUs.
+5. Test Plus-One duration, public meetup and physical-contact boundary; preview must say nothing has been sent or booked.
+6. Test adult preference options; conversation starters must appear, and answers must not persist to localStorage or be sent to a server.
+7. Check menu, popups, photo clear/reset, focus states and layout on Android/desktop after deployment.

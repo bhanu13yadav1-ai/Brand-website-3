@@ -1,11 +1,15 @@
 BLACKED INNERWEAR Fit Studio
-Version: 1.0.0
-Build type: Static HTML/CSS/JavaScript
-Budget: designed for ₹0; no AI API, paid API, npm install or build step
-Catalog: 43 existing reference/concept options, not all verified stock
-Retained: P0–P4 lingerie fit tools, product gallery, Try-On reference mapping, After Dark and 18+ preference prototype
-New: BLACKED Intimate Wellness 18+ branded non-explicit section with self-attestation gate, category filters, local search, expandable guides and custom abstract SVG art
-Wellness catalog: concept categories only; no products, prices, ratings, discounts, stock or checkout are invented
-Adult preferences: local in-page preview only; no real matching, profiles, messages, bookings or payments
-External-brand references: user-supplied screenshots remain separately labelled reference material; none are used as the new wellness hero art and no external store is embedded or linked
-Deployment: not uploaded to the user's GitHub and not live-deployed
+Version: 1.1.0
+Build type: Static HTML + CSS + JavaScript
+Budget: Designed for ₹0; no AI API, paid API, npm install or build step
+Update mode: Changed-files-only patch provided for the v1.0.0 file set
+Catalog: 43 reference/concept entries; not all are verified sellable stock
+P0: product-specific reference and optional mapped detail view, no unrelated-image fallback
+P1: catalog-wide search/filter/sort/reset and item-specific detail view
+P2: Fit Detective and optional device-local Fit Passport; no unverified size guesses
+P3: Style Finder, comparison, wishlist, style board and set concept retained
+P4: privacy controls and honest policy/review placeholders retained
+New: improved Intimate Wellness category finder; Plus-One comfort preferences; adult conversation starters
+Images: no image assets changed; reuse existing v1.0.0 images unchanged
+Validation: node syntax passed; Playwright in-memory checks 22/22 passed; see TEST-RESULTS.json
+Deployment: not pushed to GitHub or live-deployed
