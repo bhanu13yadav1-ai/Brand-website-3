@@ -1,0 +1,97 @@
+{
+  "checks": [
+    {
+      "name": "HTML parser can parse document",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "No duplicate IDs",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "Version title is v0.9.0",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Adult section and form exist",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Age gate requires explicit user action",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Adult interests include all requested topics",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Consent and privacy acknowledgement are required",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Clear answers control exists",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "No adult form action attribute submits to a server",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "No adult phone/email/name/payment fields",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "No remote JavaScript dependencies",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "All referenced local HTML assets exist",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "All referenced local JS image paths exist",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "CSS top-level token parse has no errors",
+      "pass": true,
+      "details": "[]"
+    },
+    {
+      "name": "Adult answers are not written to browser storage in adult handler",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Consent policy copy included",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "No backend booking/matching claims",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "All original ten reference assets retained",
+      "pass": true,
+      "details": "[]"
+    }
+  ],
+  "passed": 18,
+  "total": 18,
+  "browser_interactions": "Not completed: browser automation environment blocked both localhost and file:// navigation with ERR_BLOCKED_BY_ADMINISTRATOR."
+}

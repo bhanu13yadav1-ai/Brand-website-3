@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f0eb">
+  <meta name="description" content="Discover BLACKED INNERWEAR — collection references, a private manual style studio, fit guidance, and an adult companion concept and private 18+ connection-preference prototype.">
+  <title>BLACKED INNERWEAR — Fit Studio v0.9.0</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c1819'/%3E%3Ctext x='50%25' y='55%25' font-size='37' text-anchor='middle' fill='%23f5b2c4' font-family='Georgia'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="announcement"><span class="announcement-dot"></span> Designed for comfort. Made for confidence. <span class="announcement-separator">—</span> Welcome to BLACKED</div>
+
+  <header class="site-header" id="top">
+    <a class="brand-lockup" href="#home" aria-label="BLACKED INNERWEAR home">
+      <span class="brand-symbol" aria-hidden="true">B<span>♥</span></span>
+      <span class="brand-wordmark"><strong>BLACKED</strong><small>INNERWEAR</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
+      <a href="#collection">Collection</a>
+      <a href="#after-dark">After Dark</a>
+      <a href="#companion-club">Plus-One 18+</a>
+      <a href="#adult-connect">Adult preferences</a>
+      <a href="#studio">Try-on studio</a>
+      <a href="#fit-guide">Find your size</a>
+      <a href="#style-quiz">Style quiz</a>
+      <a href="#fit-detective">Fit Detective</a>
+      <a href="#saved-styles">Saved styles</a>
+      <a href="#our-note">Our note</a>
+    </nav>
+    <a class="header-cta" href="#collection">Explore styles <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE BLACKED EXPERIENCE</p>
+        <h1>Find your fit.<br><em>Find your feel.</em></h1>
+        <p class="hero-intro">Intimate essentials designed around your comfort, your style, and the confidence that comes from feeling like yourself.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#collection">Explore the collection <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#fit-guide">Find my size <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-proof">
+          <span class="proof-icon" aria-hidden="true">✳</span>
+          <span><strong>Your comfort comes first</strong><small>Thoughtful design, clearer choices.</small></span>
+        </div>
+      </div>
+      <div class="hero-art-wrap">
+        <div class="hero-art">
+          <img src="ref-09-blacked-comfort-set.png" alt="BLACKED INNERWEAR black-set campaign photograph" fetchpriority="high">
+          <div class="image-stamp"><span>BLACKED</span><small>INNERWEAR · COLLECTION PREVIEW</small></div>
+        </div>
+        <div class="hero-caption"><span>01 / CONFIDENCE, YOUR WAY</span><span class="caption-rule"></span><span>EST. FOR EVERYDAY</span></div>
+        <div class="hero-orbit" aria-hidden="true">B</div>
+      </div>
+    </section>
+
+    <section class="value-strip" aria-label="Brand values">
+      <div class="value-item"><span class="value-icon" aria-hidden="true">✧</span><span><strong>Soft by design</strong><small>Comfort-led details</small></span></div>
+      <div class="value-item"><span class="value-icon" aria-hidden="true">⌁</span><span><strong>Find your fit</strong><small>Helpful size guidance</small></span></div>
+      <div class="value-item"><span class="value-icon" aria-hidden="true">♡</span><span><strong>Feel confident</strong><small>Your body, your choice</small></span></div>
+      <div class="value-item"><span class="value-icon" aria-hidden="true">◌</span><span><strong>Private preview</strong><small>Your photo stays local</small></span></div>
+    </section>
+
+    <section class="collection section-wrap section-space" id="collection">
+      <div class="section-heading">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR ORIGINAL REFERENCES</p><h2>Explore the collection.<br><em>Find your direction.</em></h2></div>
+        <p class="section-heading-note">Explore your 10 original references, added BLACKED campaign and concept artwork, and a separate group of external-brand reference images you supplied. Every item is individually labelled; references and concepts are not confirmed stock SKUs.</p>
+      </div>
+      <div class="filter-row" role="group" aria-label="Filter campaign and design references">
+        <button class="filter-chip is-active" data-filter="all" aria-pressed="true">All references <span data-filter-count>43</span></button>
+        <button class="filter-chip" data-filter="campaign" aria-pressed="false">Campaign &amp; movement <span data-filter-count>0</span></button>
+        <button class="filter-chip" data-filter="lace" aria-pressed="false">Lace &amp; statement <span data-filter-count>0</span></button>
+        <button class="filter-chip" data-filter="detail" aria-pressed="false">Product details <span data-filter-count>0</span></button>
+        <button class="filter-chip" data-filter="concept" aria-pressed="false">Design concepts <span data-filter-count>0</span></button><button class="filter-chip" data-filter="external" aria-pressed="false">External references <span data-filter-count>0</span></button>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite">
+        <article class="product-card" data-category="campaign" data-product="move">
+          <button class="product-image-button" data-open-product="move" aria-label="Open Move Together reference details">
+            <img src="ref-01-blacked-move-together.png" alt="Original BLACKED INNERWEAR Move Together campaign image, uploaded by the owner" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">01 / BLACKED CAMPAIGN</p><h3>Move Together</h3></div><span class="product-mark" aria-hidden="true">✧</span></div>
+          <p class="product-desc">Black-and-grey movement-inspired styling from your original campaign artwork.</p>
+          <button class="product-link" data-preview-product="move">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="campaign" data-product="yoga">
+          <button class="product-image-button" data-open-product="yoga" aria-label="Open Yoga Together reference details">
+            <img src="ref-02-blacked-yoga-together.png" alt="Original BLACKED INNERWEAR Yoga Together campaign image, uploaded by the owner" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">02 / BLACKED CAMPAIGN</p><h3>Yoga Together</h3></div><span class="product-mark" aria-hidden="true">✧</span></div>
+          <p class="product-desc">Your original warm-studio campaign visual with the “Yoga Together” message.</p>
+          <button class="product-link" data-preview-product="yoga">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="lace" data-product="redlace">
+          <button class="product-image-button" data-open-product="redlace" aria-label="Open Red Lace Bodysuit reference details">
+            <img src="ref-03-red-lace-bodysuit-reference.png" alt="Original reference photo showing a red lace bodysuit on a mannequin beside a model" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">03 / DESIGN REFERENCE</p><h3>Red Lace Bodysuit</h3></div><span class="product-mark" aria-hidden="true">♡</span></div>
+          <p class="product-desc">Red lace and strappy construction reference from the image you supplied.</p>
+          <button class="product-link" data-preview-product="redlace">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="campaign" data-product="stretch">
+          <button class="product-image-button" data-open-product="stretch" aria-label="Open Movement & Stretch reference details">
+            <img src="ref-04-movement-stretch-reference.png" alt="Original fitness and stretching reference photo uploaded by the owner" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">04 / SHOOT REFERENCE</p><h3>Movement & Stretch</h3></div><span class="product-mark" aria-hidden="true">✧</span></div>
+          <p class="product-desc">A movement-focused studio photo reference for an active, comfortable brand direction.</p>
+          <button class="product-link" data-preview-product="stretch">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="lace" data-product="blacklace">
+          <button class="product-image-button" data-open-product="blacklace" aria-label="Open Black Lace Cut-Out Set reference details">
+            <img src="ref-05-black-lace-cutout-reference.png" alt="Original black lace lingerie set reference photo uploaded by the owner" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">05 / DESIGN REFERENCE</p><h3>Black Lace Cut-Out Set</h3></div><span class="product-mark" aria-hidden="true">♡</span></div>
+          <p class="product-desc">Black lace pattern, cut-out and matching-set styling reference.</p>
+          <button class="product-link" data-preview-product="blacklace">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="lace" data-product="velvet">
+          <button class="product-image-button" data-open-product="velvet" aria-label="Open Velvet Lace Set reference details">
+            <img src="ref-06-velvet-lace-reference.png" alt="Original pink velvet and black lace lingerie reference photo uploaded by the owner" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">06 / DESIGN REFERENCE</p><h3>Velvet Lace Set</h3></div><span class="product-mark" aria-hidden="true">♡</span></div>
+          <p class="product-desc">Pink velvet with black lace detailing from your supplied visual reference.</p>
+          <button class="product-link" data-preview-product="velvet">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="detail" data-product="rose">
+          <button class="product-image-button" data-open-product="rose" aria-label="Open Rose Strap Mannequin Set reference details">
+            <img src="ref-07-rose-strap-mannequin-reference.jpg" alt="Original screenshot of a red rose and pearl strap lingerie mannequin reference" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">07 / PRODUCT DETAIL REFERENCE</p><h3>Rose Strap Mannequin Set</h3></div><span class="product-mark" aria-hidden="true">♡</span></div>
+          <p class="product-desc">A red strappy design with rose and pearl decorative details, as shown in your original screenshot.</p>
+          <button class="product-link" data-preview-product="rose">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="detail" data-product="butterfly">
+          <button class="product-image-button" data-open-product="butterfly" aria-label="Open Pink Butterfly Lace Detail reference details">
+            <img src="ref-08-pink-butterfly-detail-reference.jpg" alt="Original close-up photo of a pink butterfly-shaped lace underwear design reference" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">08 / PRODUCT DETAIL REFERENCE</p><h3>Pink Butterfly Lace Detail</h3></div><span class="product-mark" aria-hidden="true">♡</span></div>
+          <p class="product-desc">Close-up reference of a pink butterfly-inspired lace detail.</p>
+          <button class="product-link" data-preview-product="butterfly">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="campaign" data-product="signature">
+          <button class="product-image-button" data-open-product="signature" aria-label="Open Black Comfort Set reference details">
+            <img src="ref-09-blacked-comfort-set.png" alt="Original BLACKED INNERWEAR Stronger Closer Together black set campaign image" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">09 / BLACKED CAMPAIGN</p><h3>Black Comfort Set</h3></div><span class="product-mark" aria-hidden="true">✧</span></div>
+          <p class="product-desc">Your BLACKED campaign creative featuring a black matching set and comfort-led positioning.</p>
+          <button class="product-link" data-preview-product="signature">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="campaign" data-product="together">
+          <button class="product-image-button" data-open-product="together" aria-label="Open Better Together reference details">
+            <img src="ref-10-blacked-better-together.png" alt="Original BLACKED INNERWEAR Better Together black set campaign image" loading="lazy">
+            <span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">10 / BLACKED CAMPAIGN</p><h3>Better Together</h3></div><span class="product-mark" aria-hidden="true">✧</span></div>
+          <p class="product-desc">Your second original BLACKED campaign visual in a warm, premium lifestyle setting.</p>
+          <button class="product-link" data-preview-product="together">Try manual preview <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="concept" data-product="sculpt">
+          <button class="product-image-button" data-open-product="sculpt" aria-label="Open Midnight Sculpt concept reference">
+            <img src="design-11-midnight-sculpt.png" alt="BLACKED Midnight Sculpt concept campaign with a model view and charcoal black lace set product detail" loading="lazy"><span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">11 / NEW CONCEPT</p><h3>Midnight Sculpt</h3></div><span class="product-mark" aria-hidden="true">✧</span></div>
+          <p class="product-desc">Charcoal and black lace styling with a matching set detail, from your supplied concept artwork.</p>
+          <button class="product-link" data-preview-product="sculpt">View in Try-On <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="concept" data-product="midnight">
+          <button class="product-image-button" data-open-product="midnight" aria-label="Open Midnight Lace concept reference">
+            <img src="design-12-midnight-lace.png" alt="BLACKED Midnight Lace concept campaign showing a black floral lace set" loading="lazy"><span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">12 / NEW CONCEPT</p><h3>Midnight Lace</h3></div><span class="product-mark" aria-hidden="true">♡</span></div>
+          <p class="product-desc">Black floral lace and strappy detailing, with a separate product-detail image in the preview.</p>
+          <button class="product-link" data-preview-product="midnight">View in Try-On <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="concept" data-product="scarlet">
+          <button class="product-image-button" data-open-product="scarlet" aria-label="Open Scarlet Satin concept reference">
+            <img src="design-13-scarlet-satin.png" alt="BLACKED Scarlet Satin concept with burgundy lace lingerie model view and matching set product detail" loading="lazy"><span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">13 / NEW CONCEPT</p><h3>Scarlet Satin</h3></div><span class="product-mark" aria-hidden="true">♡</span></div>
+          <p class="product-desc">A deep berry satin-and-lace direction, shown with model and garment-detail views.</p>
+          <button class="product-link" data-preview-product="scarlet">View in Try-On <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="product-card" data-category="concept" data-product="ivory">
+          <button class="product-image-button" data-open-product="ivory" aria-label="Open Ivory Bloom concept reference">
+            <img src="design-14-ivory-bloom.png" alt="BLACKED Ivory Bloom concept showing an ivory floral lingerie model view and matching set product detail" loading="lazy"><span class="product-open" aria-hidden="true">↗</span>
+          </button>
+          <div class="product-meta"><div><p class="product-kicker">14 / NEW CONCEPT</p><h3>Ivory Bloom</h3></div><span class="product-mark" aria-hidden="true">✧</span></div>
+          <p class="product-desc">Ivory-toned floral embroidery and soft romantic detailing, from your supplied concept artwork.</p>
+          <button class="product-link" data-preview-product="ivory">View in Try-On <span aria-hidden="true">→</span></button>
+        </article>
+      </div>
+      <p class="catalog-note"><span aria-hidden="true">✦</span> All campaign and concept cards are visual references until you confirm physical inventory, exact product construction, prices, size charts and rights. External-brand images supplied by you are inspiration only; this prototype does not use or link to that brand’s website.</p>
+      <section class="compare-panel" id="comparePanel" aria-labelledby="compareHeading" hidden>
+        <div class="utility-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> SIDE-BY-SIDE</p><h3 id="compareHeading">Compare your shortlist</h3><p>Choose up to three images from the collection. Prices, stock and product sizes remain unconfirmed.</p></div><button type="button" class="subtle-button" id="clearCompare">Clear comparison</button></div>
+        <div class="compare-results" id="compareResults"></div>
+      </section>
+      <section class="saved-panel" id="saved-styles" aria-labelledby="savedHeading">
+        <div class="utility-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR SHORTLIST</p><h3 id="savedHeading">Saved styles <span id="savedCount">0</span></h3><p>Saved on this device only. Nothing is synced to an account.</p></div><button type="button" class="subtle-button" id="clearWishlist">Clear saved styles</button></div>
+        <div class="saved-results" id="wishlistGrid"><div class="saved-empty"><span>♡</span><p>Your wishlist is empty. Tap “Save style” on any reference to keep it here.</p></div></div>
+      </section>
+    </section>
+    <section class="external-reference-note section-wrap" id="style-inspiration" aria-label="External reference notice">
+      <div class="external-reference-note-inner"><span class="reference-note-icon" aria-hidden="true">✧</span><div><p class="eyebrow"><span class="eyebrow-line"></span> STYLE REFERENCES</p><h2>Inspired by ideas.<br><em>Built for BLACKED.</em></h2><p>Some external-brand reference photos were cropped from screenshots you supplied, to remove browser and store navigation. This website does not embed, scrape, or link to the source store. These are visual references only—not BLACKED products, confirmed inventory, or an authorized collaboration. Public commercial reuse requires appropriate image/design rights.</p></div></div>
+    </section>
+
+    <section class="after-dark-section" id="after-dark" aria-labelledby="afterDarkHeading">
+      <div class="section-wrap after-dark-wrap">
+        <div class="after-dark-heading">
+          <div>
+            <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> BLACKED · AFTER DARK EDIT</p>
+            <h2 id="afterDarkHeading">Playful by nature.<br><em>Confident by choice.</em></h2>
+          </div>
+          <div class="after-dark-intro">
+            <span class="after-dark-label">WOMEN'S STYLE EDIT · CONCEPTS</span>
+            <p>For the Playboy-style vibe you asked for—pin-up-inspired glamour, bows, black lace, satin, berry tones and garter-inspired details—reimagined as an independent BLACKED concept edit.</p>
+            <p class="after-dark-legal">This is not official Playboy merchandise and is not affiliated with or endorsed by Playboy. No official Playboy logo, rabbit-head mark, or licensed artwork is used. These are BLACKED style concepts until real products and rights are confirmed.</p>
+          </div>
+        </div>
+        <div class="after-dark-grid">
+          <article class="after-dark-card">
+            <button class="after-dark-image" type="button" data-open-product="bow-lace" aria-label="Open Bow Lace Collection concept"><img src="owner-ref-bow-lace-collection.jpg" alt="BLACKED bow and lace collection concept artwork" loading="lazy"><span>01 · BOW DETAILS</span></button>
+            <div class="after-dark-card-copy"><p class="product-kicker">PLAYFUL LACE</p><h3>Bow Lace</h3><p>Pink tones, ribbon accents and delicate lace styling.</p><div class="after-dark-actions"><button class="button button-cream button-small" type="button" data-preview-product="bow-lace">View style</button><button class="after-dark-save" type="button" data-wishlist-toggle="bow-lace" aria-pressed="false">♡ Save</button></div></div>
+          </article>
+          <article class="after-dark-card">
+            <button class="after-dark-image" type="button" data-open-product="noir-rose" aria-label="Open Noir Halter concept"><img src="owner-ref-noir-halter-rose-demi.jpg" alt="BLACKED Noir Halter and Rose Demi concept board" loading="lazy"><span>02 · STATEMENT</span></button>
+            <div class="after-dark-card-copy"><p class="product-kicker">HALTER & LACE</p><h3>Noir Halter</h3><p>A dramatic black lace direction with statement straps.</p><div class="after-dark-actions"><button class="button button-cream button-small" type="button" data-preview-product="noir-rose">View style</button><button class="after-dark-save" type="button" data-wishlist-toggle="noir-rose" aria-pressed="false">♡ Save</button></div></div>
+          </article>
+          <article class="after-dark-card">
+            <button class="after-dark-image" type="button" data-open-product="midnight" aria-label="Open Midnight Lace concept"><img src="design-12-midnight-lace.png" alt="BLACKED Midnight Lace concept artwork" loading="lazy"><span>03 · CLASSIC BLACK</span></button>
+            <div class="after-dark-card-copy"><p class="product-kicker">MIDNIGHT EDIT</p><h3>Midnight Lace</h3><p>Floral lace and strappy detailing for a bold evening look.</p><div class="after-dark-actions"><button class="button button-cream button-small" type="button" data-preview-product="midnight">View style</button><button class="after-dark-save" type="button" data-wishlist-toggle="midnight" aria-pressed="false">♡ Save</button></div></div>
+          </article>
+          <article class="after-dark-card">
+            <button class="after-dark-image" type="button" data-open-product="scarlet" aria-label="Open Scarlet Satin concept"><img src="design-13-scarlet-satin.png" alt="BLACKED Scarlet Satin concept artwork" loading="lazy"><span>04 · BERRY SATIN</span></button>
+            <div class="after-dark-card-copy"><p class="product-kicker">SATIN & LACE</p><h3>Scarlet Satin</h3><p>A rich burgundy palette with satin-inspired styling.</p><div class="after-dark-actions"><button class="button button-cream button-small" type="button" data-preview-product="scarlet">View style</button><button class="after-dark-save" type="button" data-wishlist-toggle="scarlet" aria-pressed="false">♡ Save</button></div></div>
+          </article>
+          <article class="after-dark-card">
+            <button class="after-dark-image" type="button" data-open-product="curve-comfort" aria-label="Open Curve Comfort concept"><img src="owner-ref-curve-comfort.jpg" alt="BLACKED Curve Comfort concept artwork" loading="lazy"><span>05 · MORE COVERAGE</span></button>
+            <div class="after-dark-card-copy"><p class="product-kicker">COMFORT FIRST</p><h3>Curve Comfort</h3><p>A fuller-coverage burgundy concept focused on a softer look.</p><div class="after-dark-actions"><button class="button button-cream button-small" type="button" data-preview-product="curve-comfort">View style</button><button class="after-dark-save" type="button" data-wishlist-toggle="curve-comfort" aria-pressed="false">♡ Save</button></div></div>
+          </article>
+          <article class="after-dark-card">
+            <button class="after-dark-image" type="button" data-open-product="ivory" aria-label="Open Ivory Bloom concept"><img src="design-14-ivory-bloom.png" alt="BLACKED Ivory Bloom concept artwork" loading="lazy"><span>06 · SOFT ROMANCE</span></button>
+            <div class="after-dark-card-copy"><p class="product-kicker">IVORY & FLORAL</p><h3>Ivory Bloom</h3><p>Soft ivory, floral embroidery and delicate bow details.</p><div class="after-dark-actions"><button class="button button-cream button-small" type="button" data-preview-product="ivory">View style</button><button class="after-dark-save" type="button" data-wishlist-toggle="ivory" aria-pressed="false">♡ Save</button></div></div>
+          </article>
+        </div>
+        <div class="after-dark-bottom"><span>INDEPENDENT BLACKED CONCEPTS · STOCK NOT CONFIRMED</span><a href="#collection">Explore all references <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="companion-section section-space" id="companion-club" aria-labelledby="companionHeading">
+      <div class="section-wrap companion-wrap">
+        <div class="companion-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> THE PLUS-ONE CLUB · 18+</p>
+            <h2 id="companionHeading">Good company.<br><em>Your plans, your boundaries.</em></h2>
+          </div>
+          <div class="companion-intro">
+            <span class="companion-pill">PLATONIC · NON-SEXUAL · ADULTS ONLY</span>
+            <p>A concept for women who want a “boyfriend-for-a-day” style male companion for a public social outing—coffee, an event, a museum visit or dinner conversation. It is platonic companionship, not a promise of romance or a sexual service.</p>
+            <p class="companion-disclaimer">Prototype only: there are no real companion profiles, verified providers, prices, availability, payment or live bookings in this version. The form below creates a local preview only; it does not send or save a request.</p>
+          </div>
+        </div>
+
+        <div class="companion-experiences" aria-label="Companion outing concepts">
+          <article class="companion-experience">
+            <span class="companion-icon" aria-hidden="true">☕</span>
+            <p class="product-kicker">01 · LOW-PRESSURE</p>
+            <h3>Coffee &amp; Conversation</h3>
+            <p>A casual public meetup with friendly conversation and clear boundaries.</p>
+            <button type="button" class="button button-outline companion-pick" data-companion-pick="coffee">Choose experience</button>
+          </article>
+          <article class="companion-experience">
+            <span class="companion-icon" aria-hidden="true">✦</span>
+            <p class="product-kicker">02 · SOCIAL PLUS-ONE</p>
+            <h3>Event Companion</h3>
+            <p>A plus-one concept for a public exhibition, cultural event or group occasion.</p>
+            <button type="button" class="button button-outline companion-pick" data-companion-pick="event">Choose experience</button>
+          </article>
+          <article class="companion-experience">
+            <span class="companion-icon" aria-hidden="true">⌖</span>
+            <p class="product-kicker">03 · DAY OUT</p>
+            <h3>Museum or City Walk</h3>
+            <p>Explore a public place together, with your own transport and an easy exit plan.</p>
+            <button type="button" class="button button-outline companion-pick" data-companion-pick="city">Choose experience</button>
+          </article>
+        </div>
+
+        <div class="companion-planner-grid">
+          <div class="companion-safety-card">
+            <p class="eyebrow"><span class="eyebrow-line"></span> SAFETY FIRST</p>
+            <h3>A clear plan is part of the experience.</h3>
+            <ul>
+              <li>First meetings take place in public venues only; no private-home or remote-location bookings.</li>
+              <li>A real launch must verify every adult provider’s identity and age before their profile becomes bookable.</li>
+              <li>Keep communication and payments on a verified platform; never send deposits to an unknown person’s private account.</li>
+              <li>Tell a trusted person where you are going, and leave whenever you feel uncomfortable.</li>
+              <li>Live block/report, cancellation, refund and incident-response processes must exist before bookings are enabled.</li>
+            </ul>
+            <div class="companion-emergency"><strong>India safety resources</strong><span>Emergency: 112 · Women’s Helpline: 181 · Cyber financial fraud: 1930</span><a href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">National Cyber Crime Reporting Portal ↗</a></div>
+          </div>
+
+          <div class="companion-form-card">
+            <p class="eyebrow"><span class="eyebrow-line"></span> PLAN A PUBLIC OUTING</p>
+            <h3>Preview a booking request</h3>
+            <p class="companion-form-intro">No name, phone number, ID, exact address or payment details are collected here.</p>
+            <form id="companionRequestForm">
+              <label class="companion-field" for="companionExperience"><span>What kind of outing?</span>
+                <select id="companionExperience" name="experience" required>
+                  <option value="coffee">Coffee &amp; conversation</option>
+                  <option value="event">Public event / exhibition</option>
+                  <option value="dinner">Dinner at a public venue</option>
+                  <option value="city">Museum / daytime city walk</option>
+                </select>
+              </label>
+              <label class="companion-field" for="companionDate"><span>Preferred date (optional)</span><input type="date" id="companionDate" name="date"></label>
+              <label class="companion-field" for="companionStyle"><span>Preferred company style</span>
+                <select id="companionStyle" name="style" required>
+                  <option value="easygoing">Easygoing conversation</option>
+                  <option value="outgoing">Friendly and outgoing</option>
+                  <option value="formal">Polished event plus-one</option>
+                  <option value="quiet">Quiet, low-pressure company</option>
+                </select>
+              </label>
+              <label class="companion-check"><input type="checkbox" id="companionAdultCheck" required><span>I confirm I am 18 or older. <small>This prototype checkbox is not formal age verification.</small></span></label>
+              <label class="companion-check"><input type="checkbox" id="companionBoundaryCheck" required><span>I understand this concept is strictly platonic and non-sexual, with public meetups only.</span></label>
+              <label class="companion-check"><input type="checkbox" id="companionDemoCheck" required><span>I understand this is a demo: there are no actual providers and no request will be sent or saved.</span></label>
+              <button class="button button-dark button-full" type="submit">Preview outing plan <span aria-hidden="true">→</span></button>
+              <p class="companion-note">Before any real launch, this service needs verified adult profiles, provider screening, consent and conduct rules, privacy safeguards, moderation, cancellation/refund terms, secure booking infrastructure and Indian legal review.</p>
+            </form>
+            <div class="companion-request-result" id="companionRequestResult" hidden aria-live="polite">
+              <span aria-hidden="true">✓</span><div><h4>Your outing preview is ready</h4><p id="companionRequestMessage"></p><small>No request was transmitted, stored or booked.</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="adult-connect-section section-space" id="adult-connect" aria-labelledby="adultConnectHeading">
+      <div class="section-wrap adult-connect-wrap">
+        <div class="adult-connect-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> AFTER DARK · ADULT CONNECTIONS</p>
+            <h2 id="adultConnectHeading">Your preferences.<br><em>Your boundaries.</em></h2>
+          </div>
+          <div class="adult-connect-intro">
+            <span class="adult-connect-pill">18+ · PRIVATE BY DEFAULT · CONSENT FIRST</span>
+            <p>Yahan tum dating intentions, intimate-size preferences aur adult interests ko apni comfort ke hisaab se choose kar sakti ho. Har answer optional hai; skip karna bilkul okay hai.</p>
+            <p class="adult-connect-disclaimer">Prototype only: yeh form browser mein local preview banata hai. Koi actual match, boyfriend/companion, booking, payment, profile publishing ya message sending available nahi hai. Answers kisi server par send ya browser storage mein save nahi hote.</p>
+          </div>
+        </div>
+
+        <div class="adult-privacy-banner">
+          <span aria-hidden="true">⌑</span>
+          <div><strong>Private by design</strong><p>Intimate-size preference aur fantasy tags default se private rahenge. “Match ke saath share” select karne par bhi is prototype mein koi data share nahi hota.</p></div>
+        </div>
+
+        <div class="adult-access-card" id="adultAccessGate">
+          <div class="adult-access-symbol" aria-hidden="true">18+</div>
+          <div class="adult-access-copy"><p class="product-kicker">ADULT ACCESS CHECK</p><h3>Yeh section sirf adults ke liye hai.</h3><p>Continue karne ke liye confirm karo ki tum 18 ya usse zyada age ki ho. Yeh checkbox formal identity/age verification nahi hai.</p></div>
+          <label class="companion-check adult-age-check"><input type="checkbox" id="adultAgeConfirm"><span>Haan, main 18+ hoon aur adult preferences dekhna chahti hoon.</span></label>
+          <button type="button" class="button button-dark" id="adultEnterButton">Continue to private preferences <span aria-hidden="true">→</span></button>
+          <p class="adult-gate-error" id="adultGateError" hidden>Please confirm that you are 18 or older to continue.</p>
+        </div>
+
+        <div class="adult-workspace" id="adultWorkspace" hidden>
+          <div class="adult-workspace-main">
+            <form id="adultPreferencesForm" class="adult-preferences-form">
+              <fieldset class="adult-form-step">
+                <legend><span>01</span> Tum kya dhoondh rahi ho?</legend>
+                <p class="adult-step-note">Apna connection goal choose karo. Yeh selection kisi aur ko automatically visible nahi hota.</p>
+                <div class="adult-choice-grid">
+                  <label class="adult-choice"><input type="radio" name="adultIntent" value="serious" checked><span><strong>Serious relationship</strong><small>Long-term connection</small></span></label>
+                  <label class="adult-choice"><input type="radio" name="adultIntent" value="casual"><span><strong>Casual dating</strong><small>Slow, no-pressure dates</small></span></label>
+                  <label class="adult-choice"><input type="radio" name="adultIntent" value="open"><span><strong>Open relationship</strong><small>Honest, agreed boundaries</small></span></label>
+                  <label class="adult-choice"><input type="radio" name="adultIntent" value="couple"><span><strong>Couple / group dating</strong><small>Only with everyone’s consent</small></span></label>
+                  <label class="adult-choice"><input type="radio" name="adultIntent" value="explore"><span><strong>Explore first</strong><small>Abhi sure nahi hoon</small></span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="adult-form-step">
+                <legend><span>02</span> Partner preference</legend>
+                <p class="adult-step-note">Optional. Yahan sirf broad preference choose karo; exact location ya personal contact details mat do.</p>
+                <div class="adult-form-grid">
+                  <label class="adult-field" for="adultPartnerGender"><span>Kis partner se connect karna chahti ho?</span><select id="adultPartnerGender" name="partnerGender"><option value="men">Men / boyfriend preference</option><option value="women">Women</option><option value="any">No gender preference</option><option value="couples">Couples</option><option value="skip">Prefer not to say</option></select></label>
+                  <label class="adult-field" for="adultAgeRange"><span>Preferred adult age range</span><select id="adultAgeRange" name="ageRange"><option value="18-24">18–24</option><option value="25-34" selected>25–34</option><option value="35-44">35–44</option><option value="45+">45+</option><option value="any">No age preference (18+ only)</option><option value="skip">Prefer not to say</option></select></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="adult-form-step adult-sensitive-step">
+                <legend><span>03</span> Intimate-size preference <em>optional</em></legend>
+                <p class="adult-step-note">Sirf tumhari preference ke liye—yeh kisi ki worth, compatibility ya actual fit ka measure nahi. Skip karna bilkul fine hai.</p>
+                <label class="adult-field" for="adultSizePreference"><span>Male partner ke intimate size ko lekar preference?</span><select id="adultSizePreference" name="sizePreference"><option value="private" selected>Keep private / abhi choose nahi karna</option><option value="none">Koi particular preference nahi</option><option value="under12">12 cm se kam</option><option value="12-15">12–15 cm</option><option value="15-18">15–18 cm</option><option value="over18">18 cm se zyada</option><option value="trust">Pehle trust banne ke baad discuss karungi</option><option value="skip">Prefer not to answer</option></select></label>
+                <div class="adult-subquestion"><span class="adult-subquestion-title">Is topic par baat karna tumhare liye comfortable hai?</span>
+                  <div class="adult-inline-options"><label><input type="radio" name="sizeComfort" value="comfortable"> <span>Haan, respectful conversation mein</span></label><label><input type="radio" name="sizeComfort" value="trust" checked> <span>Sirf trust banne ke baad</span></label><label><input type="radio" name="sizeComfort" value="not-now"> <span>Abhi nahi</span></label><label><input type="radio" name="sizeComfort" value="skip"> <span>Skip</span></label></div>
+                </div>
+              </fieldset>
+
+              <fieldset class="adult-form-step">
+                <legend><span>04</span> Adult interests & fantasy tags <em>optional</em></legend>
+                <p class="adult-step-note">Har topic ka answer alag hai. Interest select karna consent nahi hota, aur kisi bhi activity ke liye dono adults ka freely given, clear aur ongoing consent zaroori hai.</p>
+                <div class="adult-interest-list">
+                  <label class="adult-interest-row" for="interestGroup"><span class="adult-interest-icon" aria-hidden="true">◎</span><span class="adult-interest-copy"><strong>Threesome / consensual group intimacy</strong><small>Sab adults ko independently agree karna hoga.</small></span><select id="interestGroup" name="interestGroup" aria-label="Comfort with threesome or group intimacy"><option value="skip" selected>Prefer not to say</option><option value="interested">Interested</option><option value="curious">Curious — pehle samajhna hai</option><option value="trust">Sirf trust ke baad discuss</option><option value="not">Not interested</option></select></label>
+                  <label class="adult-interest-row" for="interestBDSM"><span class="adult-interest-icon" aria-hidden="true">◇</span><span class="adult-interest-copy"><strong>BDSM-aware interests</strong><small>Boundaries, negotiation and safewords matter.</small></span><select id="interestBDSM" name="interestBDSM" aria-label="Comfort with BDSM-aware interests"><option value="skip" selected>Prefer not to say</option><option value="interested">Interested</option><option value="curious">Curious — pehle samajhna hai</option><option value="trust">Sirf trust ke baad discuss</option><option value="not">Not interested</option></select></label>
+                  <label class="adult-interest-row" for="interestRoleplay"><span class="adult-interest-icon" aria-hidden="true">✧</span><span class="adult-interest-copy"><strong>Consensual role-play</strong><small>Only if everyone agrees to the boundaries.</small></span><select id="interestRoleplay" name="interestRoleplay" aria-label="Comfort with role-play"><option value="skip" selected>Prefer not to say</option><option value="interested">Interested</option><option value="curious">Curious — pehle samajhna hai</option><option value="trust">Sirf trust ke baad discuss</option><option value="not">Not interested</option></select></label>
+                  <label class="adult-interest-row" for="interestOpen"><span class="adult-interest-icon" aria-hidden="true">∞</span><span class="adult-interest-copy"><strong>Consensual non-monogamy</strong><small>Honesty and agreed relationship rules.</small></span><select id="interestOpen" name="interestOpen" aria-label="Comfort with consensual non-monogamy"><option value="skip" selected>Prefer not to say</option><option value="interested">Interested</option><option value="curious">Curious — pehle samajhna hai</option><option value="trust">Sirf trust ke baad discuss</option><option value="not">Not interested</option></select></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="adult-form-step">
+                <legend><span>05</span> Tumhari boundaries</legend>
+                <div class="adult-inline-options adult-boundary-options"><label><input type="checkbox" name="boundary" value="no-pressure" checked><span>No pressure—“no” ya “stop” immediately respect ho.</span></label><label><input type="checkbox" name="boundary" value="public-first"><span>First meeting public place mein ho.</span></label><label><input type="checkbox" name="boundary" value="no-intimate-media" checked><span>Bina clear permission intimate photos/videos share nahi karne.</span></label><label><input type="checkbox" name="boundary" value="health-talk"><span>Intimacy se pehle health, protection aur boundaries discuss karna.</span></label></div>
+                <label class="adult-field" for="adultVisibility"><span>Future mein kaunse answers share karna chahogi?</span><select id="adultVisibility" name="visibility"><option value="private" selected>Sirf mere liye — sab private</option><option value="interests">Sirf broad interests, mutual match ke baad</option><option value="selected">Main individually select karungi, mutual match ke baad</option></select></label>
+                <label class="adult-check"><input type="checkbox" id="adultConsentAck" required><span>Samajh gayi: interest select karna consent nahi hai; consent kabhi bhi withdraw ki ja sakti hai.</span></label>
+                <label class="adult-check"><input type="checkbox" id="adultPrivacyAck" required><span>Samajh gayi: yeh sirf local preview hai; answers share, transmit ya save nahi honge.</span></label>
+              </fieldset>
+
+              <div class="adult-form-actions"><button type="submit" class="button button-dark">Preview my preferences <span aria-hidden="true">→</span></button><button type="button" class="button button-outline" id="clearAdultPreferences">Clear all answers</button></div>
+              <p class="adult-prototype-note">Important: no real profiles, matching, DMs, provider directory, payments or sexual-service bookings. Live launch would need verified adult access, account security, robust moderation, block/report operations, deletion controls, privacy review and legal review.</p>
+            </form>
+          </div>
+
+          <aside class="adult-safety-rail">
+            <div class="adult-safety-card"><p class="product-kicker">CONSENT CHECK</p><h3>Interest is not permission.</h3><ul><li>Consent must be freely given, informed, specific and ongoing.</li><li>Anyone can change their mind or stop at any time.</li><li>Do not pressure, threaten, shame or ask repeatedly after a no.</li><li>Never share private photos, screenshots or intimate information without permission.</li></ul></div>
+            <div class="adult-safety-card adult-safety-card-light"><p class="product-kicker">WHEN LIVE</p><h3>Safety tools required</h3><ul><li>Real adult identity and age verification.</li><li>Block, report, unmatch and abuse-review workflows.</li><li>Privacy-first messaging; no exact location shown by default.</li><li>Public first meetings and trusted-person safety planning.</li></ul><p class="adult-safety-footnote">These are launch requirements, not live functionality in this static prototype.</p></div>
+          </aside>
+        </div>
+
+        <div class="adult-preview-card" id="adultPreferencesResult" hidden aria-live="polite">
+          <div class="adult-preview-head"><div><p class="eyebrow"><span class="eyebrow-line"></span> YOUR LOCAL PREVIEW</p><h3>Your answers, your control.</h3></div><span class="adult-private-badge">⌑ Not shared</span></div>
+          <p class="adult-preview-explainer" id="adultPreviewPrivacyText">These answers are shown only in this browser session. Nothing is saved or sent.</p>
+          <div class="adult-preview-summary" id="adultPreviewSummary"></div>
+          <button type="button" class="button button-outline" id="editAdultPreferences">Edit preferences</button>
+          <p class="adult-prototype-note">This is not a real match or public profile. All preferences will disappear when you clear them or close/reload the page.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="style-quiz-section section-wrap section-space" id="style-quiz">
+      <div class="section-heading">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR STYLE</p><h2>A few choices.<br><em>Your kind of comfort.</em></h2></div>
+        <p class="section-heading-note">A lightweight rule-based quiz—no AI, no account, and no personal photo required. Recommendations use your selected preferences and only catalogued visual attributes; external-brand references are kept out of BLACKED-style recommendations.</p>
+      </div>
+      <div class="style-quiz-card">
+        <form id="styleQuizForm" class="style-quiz-form">
+          <fieldset><legend>01 · What are you looking for?</legend><div class="quiz-options"><label><input type="radio" name="quizStyle" value="everyday" checked><span>Everyday comfort</span></label><label><input type="radio" name="quizStyle" value="lace"><span>Lace &amp; details</span></label><label><input type="radio" name="quizStyle" value="statement"><span>Statement design</span></label><label><input type="radio" name="quizStyle" value="movement"><span>Movement-inspired</span></label></div></fieldset>
+          <fieldset><legend>02 · Preferred coverage</legend><div class="quiz-options"><label><input type="radio" name="quizCoverage" value="balanced" checked><span>Balanced</span></label><label><input type="radio" name="quizCoverage" value="more"><span>More coverage</span></label><label><input type="radio" name="quizCoverage" value="minimal"><span>Minimal design</span></label></div></fieldset>
+          <fieldset><legend>03 · Colour mood</legend><div class="quiz-options"><label><input type="radio" name="quizColor" value="any" checked><span>Open to anything</span></label><label><input type="radio" name="quizColor" value="black"><span>Black</span></label><label><input type="radio" name="quizColor" value="pink"><span>Pink / rose</span></label><label><input type="radio" name="quizColor" value="red"><span>Red / berry</span></label></div></fieldset>
+          <button type="submit" class="button button-dark">Find my styles <span aria-hidden="true">→</span></button>
+        </form>
+        <div class="quiz-results" id="styleQuizResults" aria-live="polite"><div class="quiz-empty"><span>♡</span><h3>Your edit starts here.</h3><p>Choose your preferences and get three suggestions from the available BLACKED references and design concepts.</p></div></div>
+      </div>
+    </section>
+
+
+    <section class="style-board-section section-wrap section-space" id="build-set">
+      <div class="section-heading">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> MAKE IT YOURS</p><h2>Build a style<br><em>set concept.</em></h2></div>
+        <p class="section-heading-note">Pair two supplied images into a style-board concept and save it locally. This is a visual styling exercise—not a confirmed matching SKU, bundle, inventory listing or order.</p>
+      </div>
+      <div class="style-board-card">
+        <div class="style-board-controls">
+          <label for="boardPrimary"><span>01 · Main style</span><select id="boardPrimary"><option value="signature">Black Comfort Set</option></select></label>
+          <label for="boardAccent"><span>02 · Pair with</span><select id="boardAccent"><option value="velvet">Velvet Lace Set</option></select></label>
+          <div class="style-board-actions"><button type="button" class="button button-dark" id="buildStyleBoard">Build my set concept ↗</button><button type="button" class="subtle-button" id="downloadStyleBoard" disabled>Save style board PNG ↓</button></div>
+        </div>
+        <div class="style-board-preview" id="styleBoardPreview" hidden aria-live="polite">
+          <article><img id="boardPrimaryImage" src="ref-09-blacked-comfort-set.png" alt="Selected main style reference"><p class="product-kicker" id="boardPrimaryKicker">MAIN LOOK</p><h3 id="boardPrimaryName">Black Comfort Set</h3></article>
+          <span class="board-plus" aria-hidden="true">+</span>
+          <article><img id="boardAccentImage" src="ref-06-velvet-lace-reference.png" alt="Selected companion style reference"><p class="product-kicker" id="boardAccentKicker">PAIRING IDEA</p><h3 id="boardAccentName">Velvet Lace Set</h3></article>
+          <p class="style-board-disclaimer">Style inspiration only · not confirmed BLACKED inventory</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio-section" id="studio">
+      <div class="section-wrap studio-wrap">
+        <div class="studio-heading">
+          <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> YOUR PRIVATE FIT STUDIO</p>
+          <h2>See your idea.<br><em>Style it your way.</em></h2>
+          <p>Choose a product photo first. A user photo can be previewed privately with a generic, adjustable illustration guide; it is not automatic garment transfer or real fit simulation. Personal photos stay in this browser.</p>
+          <div class="privacy-pill"><span class="privacy-dot"></span> Local preview · No account · No server upload</div>
+          <div class="studio-steps"><span><b>01</b> Choose from all product and reference images</span><span><b>02</b> View its actual photo</span><span><b>03</b> Optional manual overlay</span></div>
+        </div>
+        <div class="studio-card">
+          <div class="studio-card-top"><div><p class="studio-overline">SELECTED PHOTO PREVIEW</p><h3>Your selected style</h3></div><span class="live-badge"><i></i> PRIVATE</span></div>
+          <div class="studio-product-picker">
+            <div class="studio-picker-heading"><div><p class="studio-overline">CHOOSE A REFERENCE</p><h4>Choose a reference</h4></div><span id="studioProductCount">Loading options…</span></div>
+            <p class="studio-picker-note">Choose from your original references, additional owner-supplied BLACKED concepts, and a separate external-reference group. The main canvas always displays the selected item’s own image. A clean garment overlay is shown only when a verified garment asset exists; no generic demo is substituted.</p>
+            <div class="studio-product-grid" id="studioProductGrid" role="group" aria-label="Choose one of the available style references"></div>
+            <div class="studio-selected-look" id="studioSelectedLook" aria-live="polite">
+              <div class="studio-selected-media"><img id="studioSelectedImage" src="ref-09-blacked-comfort-set.png" alt="Selected BLACKED reference image"><img id="studioSelectedDetailImage" src="" alt="Selected garment detail reference" hidden></div>
+              <div><span class="selected-look-kicker" id="studioSelectedCategory">09 · BLACKED CAMPAIGN</span><h4 id="studioSelectedName">Black Comfort Set</h4><p id="studioSelectedDescription">Your selected original campaign visual.</p><span class="selected-look-note">Reference photo only · actual product specs not confirmed</span></div>
+            </div>
+          </div>
+          <div class="studio-workspace">
+            <div class="preview-mode-switch" role="group" aria-label="Preview mode">
+              <button type="button" class="preview-mode-button is-selected" data-preview-mode="reference" aria-pressed="true">Selected product photo</button>
+              <button type="button" class="preview-mode-button" data-preview-mode="manual" aria-pressed="false">My photo + guide</button>
+            </div>
+            <div class="canvas-shell" id="canvasShell">
+              <canvas id="tryCanvas" width="720" height="960" aria-label="The exact selected product/reference image. Choose Illustration guide only after uploading your own photo." tabindex="0"></canvas>
+              <div class="canvas-badge" id="canvasBadge">SELECTED REFERENCE PHOTO</div>
+            </div>
+            <p class="canvas-hint" id="canvasHint">The exact selected reference or its associated clean product view appears here. Generic illustrations are never shown as if they were your selected product.</p>
+          </div>
+          <div class="studio-controls">
+            <div class="control-block upload-control">
+              <label class="control-label" for="photoUpload">1. Add your photo <span>JPG / PNG · max 12 MB</span></label>
+              <div class="upload-actions"><label for="photoUpload" class="button button-light button-small">Choose photo <span aria-hidden="true">↑</span></label><input type="file" id="photoUpload" accept="image/jpeg,image/png,image/webp" hidden><button type="button" class="subtle-button" id="clearPhoto">Clear my photo</button></div>
+              <p class="microcopy">Your photo is loaded in this browser only. The selected product/reference image remains the default canvas. After uploading a photo, choose “My photo + guide” only to see a generic illustration overlay on your own photo.</p>
+            </div>
+            <div class="manual-mode-controls" id="manualModeControls" hidden>
+              <div class="control-block">
+                <span class="control-label">2. Illustration layer</span>
+                <div class="segmented-control" role="group" aria-label="Choose illustration layer">
+                  <button type="button" class="segment is-selected" data-layer="top" aria-pressed="true">Top</button>
+                  <button type="button" class="segment" data-layer="bottom" aria-pressed="false">Bottom</button>
+                  <button type="button" class="segment" data-layer="set" aria-pressed="false">Set</button>
+                </div>
+              </div>
+              <div class="control-block">
+                <span class="control-label">3. Illustration colour</span>
+                <div class="swatch-row" role="group" aria-label="Illustration colour">
+                  <button type="button" class="swatch is-selected" data-colour="#252123" aria-label="Black colour" aria-pressed="true"><span style="--swatch:#252123"></span><small>Black</small></button>
+                  <button type="button" class="swatch" data-colour="#b84f70" aria-label="Rose colour" aria-pressed="false"><span style="--swatch:#b84f70"></span><small>Rose</small></button>
+                  <button type="button" class="swatch" data-colour="#6e4259" aria-label="Berry colour" aria-pressed="false"><span style="--swatch:#6e4259"></span><small>Berry</small></button>
+                  <button type="button" class="swatch" data-colour="#bfa8a0" aria-label="Sand colour" aria-pressed="false"><span style="--swatch:#bfa8a0"></span><small>Sand</small></button>
+                </div>
+              </div>
+              <div class="control-block range-control">
+                <label class="control-label" for="layerScale">Illustration size <output id="scaleOutput">100%</output></label>
+                <input type="range" id="layerScale" min="55" max="150" value="100" step="1">
+                <div class="range-ends"><span>Smaller</span><span>Larger</span></div>
+              </div>
+              <div class="control-block range-control">
+                <label class="control-label" for="layerRotate">Rotate illustration <output id="rotateOutput">0°</output></label>
+                <input type="range" id="layerRotate" min="-25" max="25" value="0" step="1">
+                <div class="range-ends"><span>−25°</span><span>+25°</span></div>
+              </div>
+              <div class="control-block"><button type="button" class="subtle-button" id="resetLayer">Reset illustration placement ↺</button></div>
+            </div>
+            <div class="studio-bottom-actions"><button type="button" class="button button-dark button-full" id="downloadPreview">Save current preview image <span aria-hidden="true">↓</span></button></div>
+            <p class="studio-disclaimer">Manual Overlay uses a generic illustration only. It does not extract the chosen garment from the reference photo or simulate actual fit.</p>
+            <p class="studio-status" id="studioStatus" role="status" aria-live="polite">Ready. The selected reference photo is shown by default.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-section section-wrap section-space" id="fit-guide">
+      <div class="fit-intro">
+        <p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR SIZE</p>
+        <h2>A little measuring.<br><em>A more informed choice.</em></h2>
+        <p>Enter measurements to validate your entries and optionally save a Fit Passport on this device. Actual size recommendations stay disabled until verified BLACKED bra, brief and bodysuit charts are configured.</p>
+        <div class="fit-callout"><span class="callout-icon" aria-hidden="true">✧</span><div><strong>Good fit starts with good information.</strong><p>Measure over light clothing, keep the tape level, and avoid pulling it too tight.</p></div></div>
+        <a class="text-link" href="#size-chart">View the size-chart status <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="fit-form-card">
+        <div class="fit-form-heading"><div><span class="small-number">FIT FINDER / 01</span><h3>Your measurements</h3></div><div class="unit-toggle" role="group" aria-label="Measurement units"><button type="button" class="unit-button is-active" data-unit="in" aria-pressed="true">IN</button><button type="button" class="unit-button" data-unit="cm" aria-pressed="false">CM</button></div></div>
+        <form id="fitForm" novalidate>
+          <div class="measurement-grid">
+            <label class="measurement-field"><span>Bust <i>around fullest part</i></span><span class="measurement-input"><input id="bust" name="bust" type="number" inputmode="decimal" min="20" max="65" step="0.1" placeholder="e.g. 34" required><small class="unit-label">in</small></span></label>
+            <label class="measurement-field"><span>Underbust <i>under the bust</i></span><span class="measurement-input"><input id="underbust" name="underbust" type="number" inputmode="decimal" min="20" max="65" step="0.1" placeholder="e.g. 30" required><small class="unit-label">in</small></span></label>
+            <label class="measurement-field"><span>Waist <i>natural waist</i></span><span class="measurement-input"><input id="waist" name="waist" type="number" inputmode="decimal" min="18" max="65" step="0.1" placeholder="e.g. 28" required><small class="unit-label">in</small></span></label>
+            <label class="measurement-field"><span>Hips <i>fullest part</i></span><span class="measurement-input"><input id="hips" name="hips" type="number" inputmode="decimal" min="20" max="75" step="0.1" placeholder="e.g. 36" required><small class="unit-label">in</small></span></label>
+          </div>
+          <p class="form-error" id="fitError" role="alert" hidden></p>
+          <button class="button button-dark button-full" type="submit">Check my measurements <span aria-hidden="true">→</span></button>
+          <p class="form-privacy"><span aria-hidden="true">◌</span> Measurements are calculated in this browser and are not sent to a server.</p>
+          <div class="fit-passport-controls">
+            <label class="passport-optin"><input type="checkbox" id="saveFitPassport"><span><strong>Save my Fit Passport on this device</strong><small>Optional. Measurements stay in this browser until you clear them.</small></span></label>
+            <button type="button" class="subtle-button" id="clearFitPassport">Clear saved profile</button>
+            <p class="passport-status" id="fitPassportStatus" role="status" aria-live="polite">Your measurements are not saved unless you opt in.</p>
+          </div>
+        </form>
+        <div class="fit-result" id="fitResult" hidden aria-live="polite">
+          <div class="result-top"><span class="result-check" aria-hidden="true">✓</span><div><p class="small-number">YOUR MEASUREMENT CHECK</p><h3>Here’s your guide</h3></div></div>
+          <div class="result-sizes"><div><small>BLACKED TOP SIZE</small><strong id="topSizeResult">M</strong></div><div><small>BLACKED BOTTOM SIZE</small><strong id="bottomSizeResult">M</strong></div></div>
+          <p class="result-note" id="resultNote">No product size is guessed until a verified BLACKED size chart is configured.</p>
+          <button type="button" class="text-link" id="editMeasurements">Edit measurements <span aria-hidden="true">↺</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-detective-section section-wrap section-space" id="fit-detective">
+      <div class="section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> FIT DETECTIVE</p><h2>What feels off?<br><em>Start with a clue.</em></h2></div><p class="section-heading-note">Choose the issue you experience. These are general fitting checks, not a diagnosis or a guaranteed product recommendation.</p></div>
+      <div class="fit-detective-card"><form id="fitDetectiveForm"><fieldset><legend>Which fit issue do you notice most?</legend><div class="fit-issue-grid">
+        <label><input type="radio" name="fitIssue" value="band" required><span><strong>Band rides up</strong><small>Back band moves higher</small></span></label>
+        <label><input type="radio" name="fitIssue" value="straps"><span><strong>Straps slip</strong><small>Shoulder straps fall down</small></span></label>
+        <label><input type="radio" name="fitIssue" value="gap"><span><strong>Cup gaps</strong><small>Extra space in cup</small></span></label>
+        <label><input type="radio" name="fitIssue" value="spill"><span><strong>Spillage / tight cup</strong><small>Coverage feels too small</small></span></label>
+        <label><input type="radio" name="fitIssue" value="wire"><span><strong>Wire feels uncomfortable</strong><small>Pressure or poking</small></span></label>
+        <label><input type="radio" name="fitIssue" value="brief"><span><strong>Brief waistband digs in</strong><small>Waist or leg opening feels tight</small></span></label>
+      </div></fieldset><button class="button button-dark" type="submit">Show fitting checks <span aria-hidden="true">→</span></button></form><div id="fitDetectiveResult" class="fit-detective-result" hidden aria-live="polite"></div></div>
+    </section>
+
+    <section class="size-chart-section" id="size-chart">
+      <div class="section-wrap size-chart-wrap">
+        <div class="chart-heading"><p class="eyebrow"><span class="eyebrow-line"></span> SIZE NOTES</p><h2>Know your <em>numbers.</em></h2><p>Only verified measurements from actual BLACKED garments will appear here. The chart stays unconfigured until product specifications are confirmed.</p></div>
+        <div class="chart-card chart-unconfigured">
+          <div class="chart-card-heading"><span>BLACKED SIZE CHART</span><span>NOT CONFIGURED</span></div>
+          <div class="size-chart-empty"><span aria-hidden="true">⌁</span><h3>Verified measurements will appear here.</h3><p>We have not yet received confirmed BLACKED garment measurements. We will not invent XS–XXL ranges or suggest a product size until actual bra, brief and bodysuit charts are configured.</p><ul><li>Measure bust and underbust for bra guidance.</li><li>Measure waist and hips for briefs.</li><li>Use each garment’s own chart and fit notes.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="brand-note section-wrap section-space" id="our-note">
+      <div class="brand-note-image"><img src="ref-02-blacked-yoga-together.png" alt="BLACKED INNERWEAR movement campaign visual" loading="lazy"><span class="image-side-caption">MOVE TOGETHER · FEEL BETTER</span></div>
+      <div class="brand-note-copy"><p class="eyebrow"><span class="eyebrow-line"></span> A NOTE FROM BLACKED</p><h2>Comfort isn't a trend.<br><em>It's personal.</em></h2><p>Choosing intimate wear should feel simple, comfortable and yours. BLACKED is being shaped around clear product information, thoughtful design and tools that help you make a more informed choice.</p><p class="signature-note">Move together. Feel better. <span aria-hidden="true">♡</span></p><a class="button button-outline" href="#studio">Try the fit studio <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="trust-section section-wrap section-space" id="trust-info">
+      <div class="section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> BEFORE YOU BUY</p><h2>Details worth<br><em>knowing first.</em></h2></div><p class="section-heading-note">No fake reviews, invented shipping promises, or made-up stock. The public shop will need your real policy and product information before checkout is enabled.</p></div>
+      <div class="trust-grid"><article class="trust-card"><span aria-hidden="true">♡</span><p class="product-kicker">FIT FEEDBACK</p><h3>Customer fit reviews</h3><p>No verified customer reviews have been collected in this prototype yet. When real orders exist, reviews can record “too small / as expected / too large” and comfort feedback.</p><span class="trust-status">NOT CONFIGURED · NO FAKE RATINGS</span></article><article class="trust-card"><span aria-hidden="true">↗</span><p class="product-kicker">DELIVERY &amp; RETURNS</p><h3>Clear policy before purchase</h3><p>Delivery timelines, shipping charges, cancellation and hygiene-related returns/exchanges need to be supplied by the owner before a real checkout goes live.</p><span class="trust-status">OWNER POLICY REQUIRED</span></article><article class="trust-card"><span aria-hidden="true">▣</span><p class="product-kicker">PRIVACY</p><h3>Local by default</h3><p>Try-on photos and Fit Passport measurements remain in the current browser. Clear-photo and clear-profile controls are available; nothing syncs to an account.</p><span class="trust-status">NO SERVER UPLOAD IN THIS BUILD</span></article></div>
+    </section>
+
+    <section class="faq-section section-wrap section-space" id="faq">
+      <div class="faq-title"><p class="eyebrow"><span class="eyebrow-line"></span> GOOD TO KNOW</p><h2>Clear answers.<br><em>Better choices.</em></h2></div>
+      <div class="faq-list">
+        <details><summary>Is Plus-One Club live, and is it sexual? <span aria-hidden="true">+</span></summary><p>No. Plus-One Club is only a prototype concept for adult, platonic public outings. There are no real or verified providers, availability, payment or bookings, and the form sends or saves nothing. It does not offer sexual services. A real service would need appropriate adult verification, safety operations, privacy controls and legal review.</p></details>
+        <details><summary>Can I select all available options in Try-On Studio? <span aria-hidden="true">+</span></summary><p>Yes. Pick any catalogued reference or concept. Each selection has its own image mapping. Product-only imagery appears only where an associated asset is provided; external-brand references stay labelled as inspiration and are not BLACKED inventory.</p></details>
+        <details><summary>Why does Try-On show a product photo now?<span aria-hidden="true">+</span></summary><p>The canvas defaults to the exact selected reference image, so selecting a different reference changes the main preview. The illustration guide is separate and only becomes available after a personal photo is selected; it does not extract the garment from the campaign artwork.</p></details>
+        <details><summary>Does the manual overlay show my actual fit?<span aria-hidden="true">+</span></summary><p>No. It lets you manually position a simple illustration over your own photo. It does not use the selected product image as a garment cut-out, change to match body shape, simulate fabric or determine if a product fits.</p></details>
+        <details><summary>Is my photo uploaded anywhere?<span aria-hidden="true">+</span></summary><p>This prototype uses your selected photo inside the browser for previewing and does not send it to a server. Only select photos you have permission to use. If the website is later connected to third-party services, the privacy notice must be updated first.</p></details>
+        <details><summary>Are these all confirmed products for sale?<span aria-hidden="true">+</span></summary><p>No. The ten items are your original uploaded images. Some are BLACKED campaign visuals; others are design references, and a few visibly contain other-brand labels or social-media UI. Do not present those as BLACKED stock unless you own/are permitted to use the creative and have confirmed the actual product, construction, sizes and inventory.</p></details>
+        <details><summary>Can the size finder guarantee the right size?<span aria-hidden="true">+</span></summary><p>No. BLACKED-specific size recommendations stay unavailable until verified product size charts are configured. The Fit Passport stores measurements locally, and Fit Detective gives general troubleshooting guidance only.</p></details>
+      </div>
+    </section>
+
+    <section class="closing-cta section-wrap">
+      <div><p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> START WITH WHAT FEELS RIGHT</p><h2>Your comfort.<br><em>Your confidence.</em></h2></div>
+      <a href="#collection" class="button button-cream">Explore the collection <span aria-hidden="true">↗</span></a>
+      <span class="closing-watermark" aria-hidden="true">B</span>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="brand-lockup footer-brand" href="#home" aria-label="BLACKED INNERWEAR home"><span class="brand-symbol" aria-hidden="true">B<span>♥</span></span><span class="brand-wordmark"><strong>BLACKED</strong><small>INNERWEAR</small></span></a>
+      <p>Move together. Feel better.<br><span>A considered starting point for a more confident fit.</span></p>
+      <div class="footer-links"><a href="#collection">Collection</a><a href="#studio">Fit Studio</a><a href="#fit-guide">Size Finder</a><a href="#companion-club">Plus-One 18+</a>
+      <a href="#adult-connect">Adult preferences</a><a href="#faq">FAQs</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year">2026</span> BLACKED INNERWEAR · PROTOTYPE v0.9.0</span><span>No AI · No external photo upload · No checkout · Adult answers are session-only</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <dialog class="product-dialog" id="productDialog" aria-labelledby="dialogTitle">
+    <button type="button" class="dialog-close" id="dialogClose" aria-label="Close product details">×</button>
+    <div class="dialog-grid"><div class="dialog-image-column"><div class="dialog-image-wrap"><img id="dialogImage" src="ref-09-blacked-comfort-set.png" alt=""></div><div class="dialog-gallery" id="dialogGallery" aria-label="Product image gallery"></div></div><div class="dialog-copy"><p class="eyebrow"><span class="eyebrow-line"></span> COLLECTION PREVIEW</p><h2 id="dialogTitle">Signature Black</h2><p id="dialogDescription">A timeless black style direction.</p><div class="dialog-divider"></div><p class="dialog-small-label">Product views</p><p class="dialog-note">Swipe the thumbnails to view the supplied campaign, reference or product-detail images. These images do not confirm stock, price, sizing or exact garment construction.</p><button type="button" class="button button-dark button-full" id="dialogPreview">Open selected photo in Try-On <span aria-hidden="true">↗</span></button></div></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
