@@ -1342,6 +1342,71 @@
     adultPreferencesForm?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
+  // Wellness hub self-attestation gate; UI reminder only, not identity/age verification.
+  const wellnessAgeConfirm = $('#wellnessAgeConfirm');
+  const wellnessAgeError = $('#wellnessAgeError');
+  const wellnessAgeGate = $('#wellnessAgeGate');
+  const wellnessHubContent = $('#wellnessHubContent');
+  $('#wellnessEnterButton')?.addEventListener('click', () => {
+    if (!wellnessAgeConfirm?.checked) {
+      if (wellnessAgeError) wellnessAgeError.hidden = false;
+      wellnessAgeConfirm?.focus();
+      return;
+    }
+    if (wellnessAgeError) wellnessAgeError.hidden = true;
+    if (wellnessAgeGate) wellnessAgeGate.hidden = true;
+    if (wellnessHubContent) wellnessHubContent.hidden = false;
+    wellnessHubContent?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    toast('Intimate Wellness section opened. This is a category demo, not a live shop.');
+  });
+  wellnessAgeConfirm?.addEventListener('change', () => { if (wellnessAgeError) wellnessAgeError.hidden = true; });
+
+  // v1.0.0 Intimate Wellness category discovery. All cards are concept categories, not live stock.
+  const wellnessSearch = $('#wellnessSearch');
+  const wellnessCards = $$('.wellness-item-card[data-wellness-item]');
+  const wellnessFilterButtons = $$('[data-wellness-filter]');
+  const wellnessNoResults = $('#wellnessNoResults');
+  let activeWellnessFilter = 'all';
+
+  function renderWellnessCategories() {
+    const query = String(wellnessSearch?.value || '').trim().toLowerCase();
+    let shown = 0;
+    wellnessCards.forEach(card => {
+      const audience = card.dataset.wellnessAudience || 'all';
+      const filterMatch = activeWellnessFilter === 'all'
+        || audience === activeWellnessFilter
+        || (['her', 'him', 'couples'].includes(activeWellnessFilter) && audience === 'all');
+      const haystack = `${card.dataset.wellnessTitle || ''} ${card.dataset.wellnessCopy || ''} ${card.textContent || ''}`.toLowerCase();
+      const queryMatch = !query || haystack.includes(query);
+      const visible = filterMatch && queryMatch;
+      card.hidden = !visible;
+      if (visible) shown += 1;
+    });
+    wellnessFilterButtons.forEach(button => {
+      const active = button.dataset.wellnessFilter === activeWellnessFilter;
+      button.setAttribute('aria-pressed', String(active));
+      if (button.classList.contains('wellness-filter-chip')) button.classList.toggle('is-active', active);
+      if (button.classList.contains('wellness-category-tile')) button.classList.toggle('is-selected', active);
+    });
+    if (wellnessNoResults) wellnessNoResults.hidden = shown > 0;
+  }
+
+  wellnessFilterButtons.forEach(button => button.addEventListener('click', () => {
+    activeWellnessFilter = button.dataset.wellnessFilter || 'all';
+    renderWellnessCategories();
+    if (button.classList.contains('wellness-category-tile')) {
+      $('#wellness-catalogue')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }));
+  wellnessSearch?.addEventListener('input', renderWellnessCategories);
+  $('#wellnessResetFilter')?.addEventListener('click', () => {
+    activeWellnessFilter = 'all';
+    if (wellnessSearch) wellnessSearch.value = '';
+    renderWellnessCategories();
+    $('#wellness-categories')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  renderWellnessCategories();
+
   // A consistent year display; no analytics, external scripts or tracking are used.
   $('#year').textContent = String(new Date().getFullYear());
   updateLayerControls();

@@ -1,97 +1,153 @@
 {
+  "version": "1.0.0",
+  "passed": 29,
+  "total": 29,
   "checks": [
     {
-      "name": "HTML parser can parse document",
+      "name": "HTML parsed",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
       "name": "No duplicate IDs",
       "pass": true,
-      "details": "[]"
+      "detail": []
     },
     {
-      "name": "Version title is v0.9.0",
+      "name": "Version title v1.0.0",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
-      "name": "Adult section and form exist",
+      "name": "All local HTML assets resolve",
       "pass": true,
-      "details": ""
+      "detail": []
     },
     {
-      "name": "Age gate requires explicit user action",
+      "name": "CSS top-level parsing succeeds",
       "pass": true,
-      "details": ""
+      "detail": []
     },
     {
-      "name": "Adult interests include all requested topics",
+      "name": "JS syntax check passed",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
-      "name": "Consent and privacy acknowledgement are required",
+      "name": "New wellness section exists",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
-      "name": "Clear answers control exists",
+      "name": "Wellness section links from nav and footer",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
-      "name": "No adult form action attribute submits to a server",
+      "name": "Wellness 18+ self-attestation gate exists",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
-      "name": "No adult phone/email/name/payment fields",
+      "name": "Wellness content is hidden before age confirmation",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
-      "name": "No remote JavaScript dependencies",
+      "name": "Age gate interaction is wired",
       "pass": true,
-      "details": "[]"
+      "detail": ""
     },
     {
-      "name": "All referenced local HTML assets exist",
+      "name": "Four audience category tiles exist",
       "pass": true,
-      "details": "[]"
+      "detail": ""
     },
     {
-      "name": "All referenced local JS image paths exist",
+      "name": "Eight concept categories exist",
       "pass": true,
-      "details": "[]"
+      "detail": ""
     },
     {
-      "name": "CSS top-level token parse has no errors",
+      "name": "Search, reset and no-results controls exist",
       "pass": true,
-      "details": "[]"
+      "detail": ""
     },
     {
-      "name": "Adult answers are not written to browser storage in adult handler",
+      "name": "All expected filters exist",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
-      "name": "Consent policy copy included",
+      "name": "Three expandable educational guides exist",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
-      "name": "No backend booking/matching claims",
+      "name": "Custom non-explicit SVG art exists",
       "pass": true,
-      "details": ""
+      "detail": ""
     },
     {
-      "name": "All original ten reference assets retained",
+      "name": "Wellness section states category-only prototype",
       "pass": true,
-      "details": "[]"
+      "detail": ""
+    },
+    {
+      "name": "No fake discount/rating numbers in wellness section",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "No competitor screenshot embedded in the new section",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Filter/search/reset handlers are wired",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Filter controls use aria-pressed state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Original ten reference assets retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Existing adult questionnaire preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Adult preference answers are not saved or transmitted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Existing Try-On selected-image mapping preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "No remote JavaScript dependency",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "No fake purchase or rating UI in wellness section",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Existing lingerie reference cards retained",
+      "pass": true,
+      "detail": ""
     }
   ],
-  "passed": 18,
-  "total": 18,
-  "browser_interactions": "Not completed: browser automation environment blocked both localhost and file:// navigation with ERR_BLOCKED_BY_ADMINISTRATOR."
+  "browser_interactions": "Not completed: previous Playwright/Chromium attempts were blocked by ERR_BLOCKED_BY_ADMINISTRATOR; manual Android test is required after extraction/deployment."
 }

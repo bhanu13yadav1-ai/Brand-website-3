@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f6f0eb">
-  <meta name="description" content="Discover BLACKED INNERWEAR — collection references, a private manual style studio, fit guidance, and an adult companion concept and private 18+ connection-preference prototype.">
-  <title>BLACKED INNERWEAR — Fit Studio v0.9.0</title>
+  <meta name="description" content="Explore BLACKED INNERWEAR, a private manual style studio, fit guidance and a new 18+ intimate-wellness concept section.">
+  <title>BLACKED INNERWEAR — Fit Studio v1.0.0</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c1819'/%3E%3Ctext x='50%25' y='55%25' font-size='37' text-anchor='middle' fill='%23f5b2c4' font-family='Georgia'%3EB%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
@@ -22,6 +22,7 @@
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation"><span></span><span></span></button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
       <a href="#collection">Collection</a>
+      <a href="#intimate-wellness">Intimate Wellness 18+</a>
       <a href="#after-dark">After Dark</a>
       <a href="#companion-club">Plus-One 18+</a>
       <a href="#adult-connect">Adult preferences</a>
@@ -65,6 +66,124 @@
       <div class="value-item"><span class="value-icon" aria-hidden="true">⌁</span><span><strong>Find your fit</strong><small>Helpful size guidance</small></span></div>
       <div class="value-item"><span class="value-icon" aria-hidden="true">♡</span><span><strong>Feel confident</strong><small>Your body, your choice</small></span></div>
       <div class="value-item"><span class="value-icon" aria-hidden="true">◌</span><span><strong>Private preview</strong><small>Your photo stays local</small></span></div>
+    </section>
+
+    <section class="wellness-hub" id="intimate-wellness" aria-labelledby="wellnessHeading">
+      <div class="wellness-age-gate" id="wellnessAgeGate">
+        <div class="wellness-age-gate-card">
+          <span class="wellness-age-gate-symbol" aria-hidden="true">18+</span>
+          <p class="wellness-eyebrow">BLACKED · INTIMATE WELLNESS</p>
+          <h2>Curious hona <em>normal hai.</em></h2>
+          <p>This section is intended for adults aged 18 and over. It contains general intimate-wellness category ideas and educational information, not a live shop.</p>
+          <label class="wellness-age-confirm"><input type="checkbox" id="wellnessAgeConfirm"><span>Haan, meri age 18+ hai.</span></label>
+          <p class="wellness-age-error" id="wellnessAgeError" hidden>Please confirm you are 18 or older to enter this section.</p>
+          <button class="wellness-button wellness-button-pink" id="wellnessEnterButton" type="button">Enter wellness section <span aria-hidden="true">→</span></button>
+          <small>Self-attestation only; this prototype does not verify identity or age.</small>
+        </div>
+      </div>
+      <div class="wellness-hub-shell" id="wellnessHubContent" hidden>
+        <div class="wellness-hub-topbar">
+          <a class="wellness-wordmark" href="#intimate-wellness" aria-label="BLACKED Intimate Wellness"><span class="wellness-flame" aria-hidden="true">B</span><span><strong>BLACKED</strong><small>INTIMATE WELLNESS</small></span></a>
+          <div class="wellness-top-badges"><span class="wellness-age-pill">18+ ONLY</span><span class="wellness-top-note">SANSKARI OUTSIDE · SAVAGE INSIDE</span></div>
+        </div>
+
+        <div class="wellness-search-row">
+          <label class="wellness-search" for="wellnessSearch"><span aria-hidden="true">⌕</span><input id="wellnessSearch" type="search" placeholder="Search wellness categories & guides" autocomplete="off"><span class="wellness-search-hint">Search</span></label>
+          <a class="wellness-help-link" href="#wellness-guides">Wellness guide <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div class="wellness-hero-panel">
+          <div class="wellness-hero-copy">
+            <p class="wellness-eyebrow"><span class="wellness-eyebrow-dot"></span> BLACKED · INTIMATE WELLNESS · 18+</p>
+            <h2 id="wellnessHeading">Sanskari outside.<br><em>Savage inside.</em></h2>
+            <p class="wellness-hero-intro">Curious hona normal hai. No shame, no judgement—bas better information, personal comfort aur tumhari choice.</p>
+            <div class="wellness-hero-actions">
+              <a class="wellness-button wellness-button-pink" href="#wellness-categories">Explore categories <span aria-hidden="true">→</span></a>
+              <a class="wellness-button wellness-button-outline" href="#wellness-guides">Learn the basics</a>
+            </div>
+            <p class="wellness-hero-note">Adults only. This is a category preview—not a live product catalogue or checkout.</p>
+          </div>
+          <div class="wellness-hero-art-wrap">
+            <img class="wellness-hero-art" src="wellness-hero-art.svg" alt="Abstract pink and plum gift boxes, personal-care bottles, leaves and hearts on a dark background" loading="lazy">
+            <span class="wellness-art-stamp"><span aria-hidden="true">♡</span> COMFORT · CURIOSITY · CARE</span>
+          </div>
+        </div>
+
+        <div class="wellness-trust-strip" aria-label="Wellness principles">
+          <div><span class="wellness-trust-icon" aria-hidden="true">18+</span><span><strong>Adults only</strong><small>Age-appropriate section</small></span></div>
+          <div><span class="wellness-trust-icon" aria-hidden="true">⌑</span><span><strong>Privacy-aware</strong><small>No wellness account required in this demo</small></span></div>
+          <div><span class="wellness-trust-icon" aria-hidden="true">♡</span><span><strong>No shame, no pressure</strong><small>Your comfort comes first</small></span></div>
+          <div><span class="wellness-trust-icon" aria-hidden="true">✧</span><span><strong>Learn before choosing</strong><small>Clear guides, no medical claims</small></span></div>
+        </div>
+
+        <div class="wellness-category-area" id="wellness-categories">
+          <div class="wellness-section-head"><div><p class="wellness-eyebrow">EXPLORE YOUR WAY</p><h3>Choose your <em>wellness space.</em></h3></div><p>Choose a category to explore ideas. Categories and visuals are placeholders until your real products, prices and stock are confirmed.</p></div>
+          <div class="wellness-category-tiles" role="group" aria-label="Filter wellness categories">
+            <button class="wellness-category-tile tile-her" type="button" data-wellness-filter="her" aria-pressed="false"><span class="wellness-tile-art" aria-hidden="true"><span>♡</span><i></i></span><strong>For Her</strong><small>Her comfort, her choice</small><span class="wellness-tile-arrow" aria-hidden="true">↗</span></button>
+            <button class="wellness-category-tile tile-him" type="button" data-wellness-filter="him" aria-pressed="false"><span class="wellness-tile-art" aria-hidden="true"><span>✦</span><i></i></span><strong>For Him</strong><small>Confidence, your way</small><span class="wellness-tile-arrow" aria-hidden="true">↗</span></button>
+            <button class="wellness-category-tile tile-couples" type="button" data-wellness-filter="couples" aria-pressed="false"><span class="wellness-tile-art" aria-hidden="true"><span>♡</span><i></i></span><strong>For Couples</strong><small>Explore together, comfortably</small><span class="wellness-tile-arrow" aria-hidden="true">↗</span></button>
+            <button class="wellness-category-tile tile-new" type="button" data-wellness-filter="new" aria-pressed="false"><span class="wellness-tile-art" aria-hidden="true"><span>✧</span><i></i></span><strong>New Ideas</strong><small>Fresh wellness discoveries</small><span class="wellness-tile-arrow" aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+
+        <div class="wellness-catalog-area" id="wellness-catalogue">
+          <div class="wellness-section-head wellness-catalog-head"><div><p class="wellness-eyebrow">THE BLACKED WELLNESS EDIT</p><h3>Explore the <em>categories.</em></h3></div><button class="wellness-reset-filter" id="wellnessResetFilter" type="button">View all categories ↺</button></div>
+          <div class="wellness-filter-row" role="group" aria-label="Wellness category filters">
+            <button type="button" class="wellness-filter-chip is-active" data-wellness-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="wellness-filter-chip" data-wellness-filter="her" aria-pressed="false">For Her</button>
+            <button type="button" class="wellness-filter-chip" data-wellness-filter="him" aria-pressed="false">For Him</button>
+            <button type="button" class="wellness-filter-chip" data-wellness-filter="couples" aria-pressed="false">For Couples</button>
+            <button type="button" class="wellness-filter-chip" data-wellness-filter="guides" aria-pressed="false">Guides</button>
+            <button type="button" class="wellness-filter-chip" data-wellness-filter="new" aria-pressed="false">New Ideas</button>
+          </div>
+          <div class="wellness-category-grid" id="wellnessCategoryGrid" aria-live="polite">
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="her" data-wellness-title="Personal wellness" data-wellness-copy="A private starting point for exploring personal wellness products and comfort-led choices.">
+              <div class="wellness-item-art art-rose" aria-hidden="true"><span class="item-halo"></span><span class="item-box"></span><span class="item-bottle"></span><span class="item-sparkle">✧</span></div>
+              <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · FOR HER</p><h4>Personal Wellness</h4><p>A private starting point for exploring personal wellness and comfort-led choices.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Products will appear only after you confirm the exact item, supplier, usage instructions and listing rights.</p></details></div>
+            </article>
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="him" data-wellness-title="Grooming and care" data-wellness-copy="Personal grooming and body-care ideas, with no unverified performance claims.">
+              <div class="wellness-item-art art-violet" aria-hidden="true"><span class="item-halo"></span><span class="item-tube"></span><span class="item-cap"></span><span class="item-sparkle">✦</span></div>
+              <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · FOR HIM</p><h4>Grooming &amp; Care</h4><p>Personal grooming and body-care ideas, clearly labelled.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Only items you confirm as available, with genuine ingredients and care details, will become product listings.</p></details></div>
+            </article>
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="couples" data-wellness-title="couples wellness" data-wellness-copy="Shared self-care ideas built around conversation, mutual comfort and consent.">
+              <div class="wellness-item-art art-coral" aria-hidden="true"><span class="item-halo"></span><span class="item-box item-box-small"></span><span class="item-box item-box-tall"></span><span class="item-heart">♡</span></div>
+              <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · FOR COUPLES</p><h4>Couples Wellness</h4><p>Shared self-care ideas built around conversation and mutual comfort.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Products and activities should be suitable for adults and never presented as a substitute for consent or health advice.</p></details></div>
+            </article>
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="all" data-wellness-title="intimate care and essentials" data-wellness-copy="Personal-care categories with clear ingredient and use information.">
+              <div class="wellness-item-art art-mint" aria-hidden="true"><span class="item-halo"></span><span class="item-bottle item-bottle-wide"></span><span class="item-drop">◇</span><span class="item-sparkle">✧</span></div>
+              <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · CARE</p><h4>Intimate Care &amp; Essentials</h4><p>Personal-care categories with clear ingredients and instructions.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Any future care listing should include accurate ingredients, usage directions, warnings and manufacturer details.</p></details></div>
+            </article>
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="all" data-wellness-title="massage and relaxation" data-wellness-copy="Relaxation and self-care ideas, described without medical promises.">
+              <div class="wellness-item-art art-gold" aria-hidden="true"><span class="item-halo"></span><span class="item-jar"></span><span class="item-jar-lid"></span><span class="item-leaf">❧</span></div>
+              <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · COMFORT</p><h4>Massage &amp; Relaxation</h4><p>Relaxation and self-care ideas, without medical promises.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Use verified product guidance and avoid medical or therapeutic claims unless appropriately substantiated.</p></details></div>
+            </article>
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="couples" data-wellness-title="gift and discovery sets" data-wellness-copy="Thoughtful adult-wellness gift concepts with discreet presentation options where available.">
+              <div class="wellness-item-art art-plum" aria-hidden="true"><span class="item-halo"></span><span class="item-box item-box-gift"></span><span class="item-ribbon"></span><span class="item-sparkle">♡</span></div>
+              <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · GIFTING</p><h4>Gift &amp; Discovery Sets</h4><p>Thoughtful gift ideas and discreet packaging options, if available.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Packaging, delivery privacy and gift options will be described only if the actual service supports them.</p></details></div>
+            </article>
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="guides" data-wellness-title="wellness guides" data-wellness-copy="Plain-language guides on choosing, cleaning and storing products safely.">
+              <div class="wellness-item-art art-sky" aria-hidden="true"><span class="item-halo"></span><span class="item-book"></span><span class="item-book-line"></span><span class="item-sparkle">✧</span></div>
+              <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · LEARN</p><h4>Wellness Guides</h4><p>Easy Hinglish explainers for choosing, care and storage.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>Editorial guides will provide general educational information, not diagnosis or individual medical advice.</p></details></div>
+            </article>
+            <article class="wellness-item-card" data-wellness-item data-wellness-audience="new" data-wellness-title="new discoveries" data-wellness-copy="A future collection for new, owner-approved products after stock and details are confirmed.">
+              <div class="wellness-item-art art-new" aria-hidden="true"><span class="item-halo"></span><span class="item-box item-box-new"></span><span class="item-sparkle">✦</span><span class="item-sparkle item-sparkle-two">♡</span></div>
+              <div class="wellness-item-copy"><p class="wellness-item-kicker">CATEGORY IDEA · COMING LATER</p><h4>New Discoveries</h4><p>A future collection for products you approve and confirm.</p><details class="wellness-item-details"><summary>What belongs here?</summary><p>This is a placeholder only; no launch date, inventory or discount is being claimed.</p></details></div>
+            </article>
+          </div>
+          <p class="wellness-no-results" id="wellnessNoResults" hidden>No categories match this search. Try another word or choose “All”.</p>
+          <p class="wellness-catalog-disclaimer">Catalogue status: concept categories only. There are no live prices, ratings, offers, inventory, purchases or product recommendations in this section yet.</p>
+        </div>
+
+        <div class="wellness-guide-band" id="wellness-guides">
+          <div class="wellness-guide-intro"><p class="wellness-eyebrow">NO-SHAME KNOWLEDGE</p><h3>Curious hona <em>normal hai.</em></h3><p>Understand the basics before choosing anything. Keep your personal comfort and privacy in control.</p><a href="#adult-connect" class="wellness-guide-link">Explore private preferences <span aria-hidden="true">↗</span></a></div>
+          <div class="wellness-guide-list">
+            <details><summary>Product safety &amp; materials <span aria-hidden="true">+</span></summary><p>Read manufacturer instructions, material details, warnings and cleaning guidance. Avoid unverified health or performance claims.</p></details>
+            <details><summary>Cleaning &amp; storage <span aria-hidden="true">+</span></summary><p>Follow the specific manufacturer's care instructions. Different materials and devices can need different cleaning methods.</p></details>
+            <details><summary>Comfort, boundaries &amp; consent <span aria-hidden="true">+</span></summary><p>Personal preferences are optional and private. A saved or selected interest never means consent; everyone can say no or change their mind.</p></details>
+          </div>
+        </div>
+        <div class="wellness-footer-note"><span>BLACKED · INTIMATE WELLNESS · 18+</span><span>Illustrative concept section · no product stock or checkout configured</span></div>
+      </div>
     </section>
 
     <section class="collection section-wrap section-space" id="collection">
@@ -652,10 +771,10 @@
     <div class="footer-main">
       <a class="brand-lockup footer-brand" href="#home" aria-label="BLACKED INNERWEAR home"><span class="brand-symbol" aria-hidden="true">B<span>♥</span></span><span class="brand-wordmark"><strong>BLACKED</strong><small>INNERWEAR</small></span></a>
       <p>Move together. Feel better.<br><span>A considered starting point for a more confident fit.</span></p>
-      <div class="footer-links"><a href="#collection">Collection</a><a href="#studio">Fit Studio</a><a href="#fit-guide">Size Finder</a><a href="#companion-club">Plus-One 18+</a>
+      <div class="footer-links"><a href="#collection">Collection</a><a href="#intimate-wellness">Intimate Wellness 18+</a><a href="#studio">Fit Studio</a><a href="#fit-guide">Size Finder</a><a href="#companion-club">Plus-One 18+</a>
       <a href="#adult-connect">Adult preferences</a><a href="#faq">FAQs</a></div>
     </div>
-    <div class="footer-bottom"><span>© <span id="year">2026</span> BLACKED INNERWEAR · PROTOTYPE v0.9.0</span><span>No AI · No external photo upload · No checkout · Adult answers are session-only</span><a href="#top">Back to top ↑</a></div>
+    <div class="footer-bottom"><span>© <span id="year">2026</span> BLACKED INNERWEAR · PROTOTYPE v1.0.0</span><span>No AI · No external photo upload · No checkout · Adult answers are session-only</span><a href="#top">Back to top ↑</a></div>
   </footer>
 
   <dialog class="product-dialog" id="productDialog" aria-labelledby="dialogTitle">

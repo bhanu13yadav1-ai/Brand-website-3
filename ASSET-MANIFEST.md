@@ -1,4 +1,4 @@
-# BLACKED INNERWEAR v0.9.0 — Asset manifest
+# BLACKED INNERWEAR v1.0.0 — Asset manifest
 
 This file documents the local image assets included in the prototype. Campaigns, concepts and external-brand inspiration images are **not confirmed sellable inventory**. No external store URL or embed is used in the website.
 
@@ -89,3 +89,7 @@ Every one of these assets is labelled external-brand/design inspiration only. Th
 ## v0.9.0 adult preference section
 
 No new personal-photo assets are required for the adult questionnaire. Adult preference answers are not saved to browser storage and are not sent to a server. This is a local preference preview only, not a live member/match directory.
+
+
+## v1.0.0 new asset
+- `wellness-hero-art.svg` — original abstract, non-explicit BLACKED Intimate Wellness illustration (care packaging, gift box, foliage and decorative symbols); no third-party logo or product claim.

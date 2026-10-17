@@ -1,11 +1,11 @@
 BLACKED INNERWEAR Fit Studio
-Version: 0.9.0
+Version: 1.0.0
 Build type: Static HTML/CSS/JavaScript
-Budget: designed for ₹0; no AI API, no paid API, no npm install
-Catalog: 43 reference/concept options; not all are verified products/SKUs
-P0–P4: selected-image mapping, product gallery, fit guidance, style tools, privacy/trust placeholders
-New adult feature: 18+ private connection preference questionnaire; in-memory local preview only, no real matching/booking/payment
-Adult fields: optional intimate-size preference, relationship intent, adult-interest tags including consensual group dating/BDSM-aware interests, per-topic comfort, boundaries and sharing controls
-Safety: adult area uses a self-attestation gate only (not formal age verification); real age/identity verification and moderation required before live launch
-External references: user-supplied SYRN-branded images are labelled as inspiration only; no store website link/embed
+Budget: designed for ₹0; no AI API, paid API, npm install or build step
+Catalog: 43 existing reference/concept options, not all verified stock
+Retained: P0–P4 lingerie fit tools, product gallery, Try-On reference mapping, After Dark and 18+ preference prototype
+New: BLACKED Intimate Wellness 18+ branded non-explicit section with self-attestation gate, category filters, local search, expandable guides and custom abstract SVG art
+Wellness catalog: concept categories only; no products, prices, ratings, discounts, stock or checkout are invented
+Adult preferences: local in-page preview only; no real matching, profiles, messages, bookings or payments
+External-brand references: user-supplied screenshots remain separately labelled reference material; none are used as the new wellness hero art and no external store is embedded or linked
 Deployment: not uploaded to the user's GitHub and not live-deployed
