@@ -1,4 +1,4 @@
-# BLACKED INNERWEAR Fit Studio v1.1.0 — Consolidated Research & Build Specification
+# BLACKED INNERWEAR Fit Studio v1.2.0 — Consolidated Research & Build Specification
 
 **Prepared:** 17 October 2026  
 **Current shipped prototype:** `v0.7.0` (static prototype package prepared in this conversation)  
@@ -46,7 +46,7 @@ HTML Canvas can composite images and export a preview. The File API supports sel
 
 ## 3. Current release facts and constraints
 
-The inspected `v0.5.1` ZIP contains plain `index.html`, `styles.css`, and `app.js`, plus 10 original user-supplied reference images, four newer BLACKED design-concept posters with separate product-only images, and three illustrative SYRN-inspired references. Existing test notes report syntax/HTML/asset checks, but no complete browser click-through regression test was completed.
+The v1.2.0 package contains plain `index.html`, `styles.css`, and `app.js`, 43 reference/concept cards, eight generated 360° demo frames, four concept-specific garment cutout sets, three illustrative companion scenes, and an Intimate Wellness visual. In-memory Playwright checks passed 30/30; live GitHub Pages and real Android visual regression are pending.
 
 Critical catalog truth rules:
 
@@ -310,3 +310,12 @@ Safety patterns researched: Bumble's public guidance recommends verification, bl
 - A self-attestation control is not age verification. Any real public launch requires real age/identity verification, secured profile and message infrastructure, privacy and deletion controls, adult safety moderation, block/report, abuse response, and legal review.
 - Product policy draws on Feeld's active-consent, privacy and report/block guidance, Bumble's photo/ID verification and block/report guidance, and India's DPDP Rules 2025.
 - The prototype offers no real people, matching, sexual-service listings, provider payments or booking. It does not present interest tags as consent.
+
+
+## v1.2.0 specific updates
+
+- Three clear experience pillars now link to Innerwear Collection, Intimate Wellness 18+, and Plus-One Club 18+.
+- Eight-frame concept spin viewer added with swipe/drag, arrows and a slider. It is labelled as generated demo art; real 360° capture should be made later from a physical sample.
+- Product-only generated cutouts and separate bra/bottom layers are mapped only to four concept styles. References without matching assets do not get a generic overlay.
+- Companion outing cards have clearly labelled illustrative imagery; no real provider identities or bookings are implied.
+- Test report records 30/30 in-memory DOM checks; this is not a substitute for live mobile testing.

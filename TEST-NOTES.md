@@ -1,24 +1,30 @@
-# BLACKED Fit Studio v1.1.0 — Test notes
+# BLACKED Fit Studio v1.2.0 — Test notes
 
-## Automated validation completed
-- `node --check app.js` — passed.
-- In-memory HTML/browser test with Playwright Chromium — **22/22 checks passed**. The test uses local fixture images to test state and event wiring without making network calls.
-- HTML parser — passed; 152 ID attributes and no duplicate IDs.
-- Local HTML image/CSS/JS references — 29 checked, none missing.
-- CSS parsed with no syntax errors.
-- App source references were checked; the two apparent missing `.png` tokens (`blacked-manual-preview.png`, `blacked-style-moodboard.png`) are filenames written by download actions, not input assets.
-- Catalog tests cover 43 cards, search, no-results, sort, filter reset and external-only filter.
-- Try-On tests cover selected product label, reference/detail view states, disabled missing-detail state and default canvas mode.
-- Wellness gate/finder/reset, Plus-One outing preferences, adult conversation prompts, no localStorage persistence for intimate answers, and mobile/desktop horizontal overflow are covered.
+## Automated validation
+- `node --check app.js` — expected/pass.
+- Playwright Chromium in-memory DOM tests: **30/30 passed**; results are in `TEST-RESULTS.json`.
+- The test replaces local media with in-memory fixtures; it tests page interactions/state, not the pixel appearance of the actual images.
+- Sections tested: 3 experience hub cards, unique navigation anchors, 43 catalog/reference cards, search/empty state/reset, 360 next/previous/slider, selected product mapping, mapped detail cutout, manual cutout gating, no generic overlay fallback, Wellness self-attestation/finder/reset, Plus-One preview disclaimer, illustrative-card labels, adult conversation prompts, no localStorage persistence for intimate answers, clear/reset, no horizontal overflow at 390px and 1280px, and no uncaught browser errors.
 
-## Browser test limits
-The automated check runs on an in-memory DOM with image fixtures. It is not a live GitHub Pages or real-image visual test. Manual Android testing after applying the patch is still required, including testing the actual hosted site and clearing browser cache if old assets remain.
+## Package-time static tests
+- `node --check app.js` passed.
+- HTML parser and duplicate IDs checked.
+- Relative image/script/style references checked against the build root.
+- ZIP integrity checks run for both full and changed-files ZIPs.
 
-## Manual acceptance checklist
-1. Select the 10 original BLACKED references and at least four design concepts, one by one, and verify the matching image each time.
-2. For items with a mapped `previewImage`, toggle between Campaign/reference and Product detail. For an item without one, Product detail must stay disabled.
-3. Search for `lace`, `ivory`, and a term with no match; counts and empty state should update. Toggle category filters, sort A–Z/Z–A, then clear.
-4. Test Wellness Finder for different audiences/goals; results must remain category ideas, not invented product SKUs.
-5. Test Plus-One duration, public meetup and physical-contact boundary; preview must say nothing has been sent or booked.
-6. Test adult preference options; conversation starters must appear, and answers must not persist to localStorage or be sent to a server.
-7. Check menu, popups, photo clear/reset, focus states and layout on Android/desktop after deployment.
+## Manual acceptance after GitHub Pages upload
+1. On Android, open each of the three experience hub cards and verify they navigate to the correct section.
+2. In the collection, search, sort and reset the 43 references.
+3. Select Midnight Lace, Bow Lace, Scarlet Satin and Ivory Bloom in Try-On. Verify product detail switches to that concept's product-only cutout.
+4. Select a reference without matching cutouts (for example Move Together). The manual cutout mode must remain disabled and the selected reference photo must remain visible.
+5. Upload a personal image and verify manual cutout mode is available only for the four mapped concepts. Clear the photo afterwards.
+6. Operate the 360° demo by swiping/dragging, the arrows and the slider. Remember the frames are illustrative concepts, not actual physical-product 360° scans.
+7. Check the Plus-One images and planner preview; nothing should be sent or booked.
+8. Open Wellness after checking 18+ self-attestation; search/filter/finder/reset should work. It is a category prototype, not a live store.
+9. Clear adult preference answers and verify intimate answers are not persisted. Test mobile menu, popups, scroll width and stale browser cache.
+
+## Remaining before public commercial launch
+Actual product photos and confirmed SKUs/sizes/prices, rights for all public-use images, real inventory/checkout, formal adult verification, security/moderation, privacy/legal review, and a live device/browser regression are still needed.
+
+## Environment limitation
+A direct browser navigation to localhost/file URLs was blocked by the execution environment (`ERR_BLOCKED_BY_ADMINISTRATOR`), so a visual screenshot-based live-page check could not be completed here. The 30/30 automated checks above used an in-memory DOM with fixture images; the real image rendering and interactions should be checked after uploading to GitHub Pages/on an Android phone.

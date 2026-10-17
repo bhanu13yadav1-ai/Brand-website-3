@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f6f0eb">
   <meta name="description" content="Explore BLACKED INNERWEAR with product-specific preview controls, fit guidance, a private 18+ wellness finder and consent-first connection tools.">
-  <title>BLACKED INNERWEAR — Fit Studio v1.1.0</title>
+  <title>BLACKED INNERWEAR — Fit Studio v1.2.0</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c1819'/%3E%3Ctext x='50%25' y='55%25' font-size='37' text-anchor='middle' fill='%23f5b2c4' font-family='Georgia'%3EB%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
@@ -22,6 +22,7 @@
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation"><span></span><span></span></button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
       <a href="#collection">Collection</a>
+      <a href="#spin-studio">360° Product Studio</a>
       <a href="#intimate-wellness">Intimate Wellness 18+</a>
       <a href="#after-dark">After Dark</a>
       <a href="#companion-club">Plus-One 18+</a>
@@ -68,6 +69,28 @@
       <div class="value-item"><span class="value-icon" aria-hidden="true">◌</span><span><strong>Private preview</strong><small>Your photo stays local</small></span></div>
     </section>
 
+    <section class="experience-hub section-wrap" aria-labelledby="experienceHubHeading">
+      <div class="experience-hub-heading">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THREE WAYS TO EXPLORE BLACKED</p>
+        <h2 id="experienceHubHeading">One brand world.<br><em>Three clear spaces.</em></h2>
+        <p>Innerwear references, adult intimate wellness and the separate Plus-One concept each have their own section, purpose and clear limitations.</p>
+      </div>
+      <div class="experience-hub-grid">
+        <article class="experience-hub-card experience-hub-innerwear">
+          <img src="assets/cutout-black-lace-set.webp" alt="Generated black lace bra and matching brief product-only concept cutout; not confirmed stock" loading="lazy">
+          <div class="experience-hub-copy"><span>01 · INNERWEAR</span><h3>Explore the <em>Collection</em></h3><p>Browse all 43 supplied references and concepts, inspect product-specific details where available, and try the local preview.</p><div class="experience-hub-links"><a class="experience-hub-link" href="#collection">Explore styles ↗</a><a class="experience-hub-secondary" href="#studio">Open Try-On</a></div></div>
+        </article>
+        <article class="experience-hub-card experience-hub-wellness">
+          <img src="assets/wellness-hero.webp" alt="Original non-explicit BLACKED intimate wellness concept visual" loading="lazy">
+          <div class="experience-hub-copy"><span>02 · WELLNESS · 18+</span><h3>Sanskari outside.<br><em>Savage inside.</em></h3><p>For Her, For Him, For Couples and wellness guides—with no fake stock, ratings or checkout claims.</p><div class="experience-hub-links"><a class="experience-hub-link" href="#intimate-wellness">Open Wellness ↗</a></div></div>
+        </article>
+        <article class="experience-hub-card experience-hub-plusone">
+          <img src="assets/companion-cafe.webp" alt="Illustrative AI-generated companion concept image, not a real person or provider" loading="lazy">
+          <div class="experience-hub-copy"><span>03 · PLUS-ONE · 18+</span><h3>Good company.<br><em>Your boundaries.</em></h3><p>A separate concept for platonic public outings. No real provider profiles, bookings or payments are active.</p><div class="experience-hub-links"><a class="experience-hub-link" href="#companion-club">Explore Plus-One ↗</a><a class="experience-hub-secondary" href="#adult-connect">Private preferences</a></div></div>
+        </article>
+      </div>
+    </section>
+
     <section class="wellness-hub" id="intimate-wellness" aria-labelledby="wellnessHeading">
       <div class="wellness-age-gate" id="wellnessAgeGate">
         <div class="wellness-age-gate-card">
@@ -104,7 +127,7 @@
             <p class="wellness-hero-note">Adults only. This is a category preview—not a live product catalogue or checkout.</p>
           </div>
           <div class="wellness-hero-art-wrap">
-            <img class="wellness-hero-art" src="wellness-hero-art.svg" alt="Abstract pink and plum gift boxes, personal-care bottles, leaves and hearts on a dark background" loading="lazy">
+            <img class="wellness-hero-art" src="assets/wellness-hero.webp" alt="Original BLACKED intimate-wellness category concept artwork in a premium pink and plum palette" loading="lazy">
             <span class="wellness-art-stamp"><span aria-hidden="true">♡</span> COMFORT · CURIOSITY · CARE</span>
           </div>
         </div>
@@ -350,6 +373,36 @@
         <div class="saved-results" id="wishlistGrid"><div class="saved-empty"><span>♡</span><p>Your wishlist is empty. Tap “Save style” on any reference to keep it here.</p></div></div>
       </section>
     </section>
+    <section class="spin-studio-section section-space" id="spin-studio" aria-labelledby="spinStudioHeading">
+      <div class="section-wrap spin-studio-wrap">
+        <div class="spin-studio-heading">
+          <p class="eyebrow"><span class="eyebrow-line"></span> BLACKED · 360° CONCEPT DEMO</p>
+          <h2 id="spinStudioHeading">Turn the detail.<br><em>See every angle.</em></h2>
+          <p>Swipe or drag the viewer, use the arrows, or move the slider. This is an 8-frame generated concept demo—not a verified real-product scan or a true photographed 360° of confirmed stock.</p>
+          <span class="spin-demo-status"><span></span> DEMO FRAMES · PRODUCT CONCEPT ONLY</span>
+        </div>
+        <div class="spin-studio-card">
+          <div class="spin-viewer-stage" id="spinDemoStage" role="group" aria-label="Interactive 8-frame black lace concept spin viewer" tabindex="0">
+            <img id="spinFrameImage" src="assets/360-demo-01-front.webp" alt="Generated BLACKED black lace set concept demo, front angle 1 of 8" draggable="false" fetchpriority="low">
+            <span class="spin-viewer-badge">CONCEPT DEMO · NOT SKU VERIFIED</span>
+            <span class="spin-viewer-count" id="spinViewLabel" aria-live="polite">01 / 08 · Front</span>
+          </div>
+          <div class="spin-viewer-controls">
+            <button class="spin-control" id="spinPrev" type="button" aria-label="Previous product angle">←</button>
+            <label class="spin-slider-label" for="spinSlider"><span>Drag to rotate</span><input id="spinSlider" type="range" min="0" max="7" value="0" step="1"><small>8 demo frames · left to right</small></label>
+            <button class="spin-control" id="spinNext" type="button" aria-label="Next product angle">→</button>
+          </div>
+          <div class="spin-cutout-rail" aria-label="Product-only concept cutouts available in Try-On">
+            <button type="button" data-preview-product="midnight"><img src="assets/cutout-black-lace-set.webp" alt="Generated black lace matching-set concept cutout" loading="lazy"><span>Midnight Lace</span></button>
+            <button type="button" data-preview-product="bow-lace"><img src="assets/cutout-bow-lace-set.webp" alt="Generated pink and black Bow Lace concept cutout" loading="lazy"><span>Bow Lace</span></button>
+            <button type="button" data-preview-product="scarlet"><img src="assets/cutout-scarlet-satin-set.webp" alt="Generated burgundy Scarlet Satin concept cutout" loading="lazy"><span>Scarlet Satin</span></button>
+            <button type="button" data-preview-product="ivory"><img src="assets/cutout-ivory-bloom-set.webp" alt="Generated ivory floral Ivory Bloom concept cutout" loading="lazy"><span>Ivory Bloom</span></button>
+          </div>
+          <p class="spin-viewer-note">The 360° frames and four cutouts are original generated visual concepts. They do not confirm real garment construction, inventory, sizing or fit. For a true product spin, capture 24–36 consistent real product photos once the final physical sample exists.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="external-reference-note section-wrap" id="style-inspiration" aria-label="External reference notice">
       <div class="external-reference-note-inner"><span class="reference-note-icon" aria-hidden="true">✧</span><div><p class="eyebrow"><span class="eyebrow-line"></span> STYLE REFERENCES</p><h2>Inspired by ideas.<br><em>Built for BLACKED.</em></h2><p>Some external-brand reference photos were cropped from screenshots you supplied, to remove browser and store navigation. This website does not embed, scrape, or link to the source store. These are visual references only—not BLACKED products, confirmed inventory, or an authorized collaboration. Public commercial reuse requires appropriate image/design rights.</p></div></div>
     </section>
@@ -413,6 +466,7 @@
 
         <div class="companion-experiences" aria-label="Companion outing concepts">
           <article class="companion-experience">
+            <img class="companion-experience-image" src="assets/companion-cafe.webp" alt="Illustrative AI-generated companion concept image, not a real person or provider" loading="lazy">
             <span class="companion-icon" aria-hidden="true">☕</span>
             <p class="product-kicker">01 · LOW-PRESSURE</p>
             <h3>Coffee &amp; Conversation</h3>
@@ -420,6 +474,7 @@
             <button type="button" class="button button-outline companion-pick" data-companion-pick="coffee">Choose experience</button>
           </article>
           <article class="companion-experience">
+            <img class="companion-experience-image" src="assets/companion-event.webp" alt="Illustrative AI-generated event companion concept image, not a real person or provider" loading="lazy">
             <span class="companion-icon" aria-hidden="true">✦</span>
             <p class="product-kicker">02 · SOCIAL PLUS-ONE</p>
             <h3>Event Companion</h3>
@@ -427,6 +482,7 @@
             <button type="button" class="button button-outline companion-pick" data-companion-pick="event">Choose experience</button>
           </article>
           <article class="companion-experience">
+            <img class="companion-experience-image" src="assets/companion-gallery.webp" alt="Illustrative AI-generated museum outing concept image, not a real person or provider" loading="lazy">
             <span class="companion-icon" aria-hidden="true">⌖</span>
             <p class="product-kicker">03 · DAY OUT</p>
             <h3>Museum or City Walk</h3>
@@ -635,7 +691,7 @@
         <div class="studio-heading">
           <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> YOUR PRIVATE FIT STUDIO</p>
           <h2>See your idea.<br><em>Style it your way.</em></h2>
-          <p>Choose a product photo first. A user photo can be previewed privately with a generic, adjustable illustration guide; it is not automatic garment transfer or real fit simulation. Personal photos stay in this browser.</p>
+          <p>Choose a product photo first. A personal photo stays in this browser. Product-specific garment cutouts are available only for four labelled design concepts; other references stay photo-only. This is not automatic garment transfer or a real fit simulation.</p>
           <div class="privacy-pill"><span class="privacy-dot"></span> Local preview · No account · No server upload</div>
           <div class="studio-steps"><span><b>01</b> Choose from all product and reference images</span><span><b>02</b> View its actual photo</span><span><b>03</b> Optional manual overlay</span></div>
         </div>
@@ -669,7 +725,7 @@
             <div class="control-block upload-control">
               <label class="control-label" for="photoUpload">1. Add your photo <span>JPG / PNG · max 12 MB</span></label>
               <div class="upload-actions"><label for="photoUpload" class="button button-light button-small">Choose photo <span aria-hidden="true">↑</span></label><input type="file" id="photoUpload" accept="image/jpeg,image/png,image/webp" hidden><button type="button" class="subtle-button" id="clearPhoto">Clear my photo</button></div>
-              <p class="microcopy">Your photo is loaded in this browser only. The selected product/reference image remains the default canvas. After uploading a photo, choose “My photo + guide” only to see a generic illustration overlay on your own photo.</p>
+              <p class="microcopy">Your photo is loaded in this browser only. The selected product/reference image remains the default canvas. After uploading a photo, “My photo + cutout” is enabled only for concepts with matching bra and bottom assets. Other references remain photo-only.</p>
             </div>
             <div class="manual-mode-controls" id="manualModeControls" hidden>
               <div class="control-block">
@@ -781,7 +837,7 @@
       <div class="faq-list">
         <details><summary>Is Plus-One Club live, and is it sexual? <span aria-hidden="true">+</span></summary><p>No. Plus-One Club is only a prototype concept for adult, platonic public outings. There are no real or verified providers, availability, payment or bookings, and the form sends or saves nothing. It does not offer sexual services. A real service would need appropriate adult verification, safety operations, privacy controls and legal review.</p></details>
         <details><summary>Can I select all available options in Try-On Studio? <span aria-hidden="true">+</span></summary><p>Yes. Pick any catalogued reference or concept. Each selection has its own image mapping. Where a separate garment-detail asset exists, switch between the campaign/reference view and detail view; missing views are not replaced with another product. External-brand references stay labelled as inspiration and are not BLACKED inventory.</p></details>
-        <details><summary>Why does Try-On show a product photo now?<span aria-hidden="true">+</span></summary><p>The canvas defaults to the exact selected reference image, so selecting a different reference changes the main preview. The illustration guide is separate and only becomes available after a personal photo is selected; it does not extract the garment from the campaign artwork.</p></details>
+        <details><summary>Why does Try-On show a product photo now?<span aria-hidden="true">+</span></summary><p>The canvas defaults to the exact selected reference image, so selecting a different reference changes the main preview. Manual preview is separate and only becomes available after a personal photo is selected and a matching product-specific garment cutout exists. It does not extract the garment from the campaign artwork or guarantee fit.</p></details>
         <details><summary>Does the manual overlay show my actual fit?<span aria-hidden="true">+</span></summary><p>No. It lets you manually position a simple illustration over your own photo. It does not use the selected product image as a garment cut-out, change to match body shape, simulate fabric or determine if a product fits.</p></details>
         <details><summary>Is my photo uploaded anywhere?<span aria-hidden="true">+</span></summary><p>This prototype uses your selected photo inside the browser for previewing and does not send it to a server. Only select photos you have permission to use. If the website is later connected to third-party services, the privacy notice must be updated first.</p></details>
         <details><summary>Are these all confirmed products for sale?<span aria-hidden="true">+</span></summary><p>No. The ten items are your original uploaded images. Some are BLACKED campaign visuals; others are design references, and a few visibly contain other-brand labels or social-media UI. Do not present those as BLACKED stock unless you own/are permitted to use the creative and have confirmed the actual product, construction, sizes and inventory.</p></details>
@@ -803,7 +859,7 @@
       <div class="footer-links"><a href="#collection">Collection</a><a href="#intimate-wellness">Intimate Wellness 18+</a><a href="#studio">Fit Studio</a><a href="#fit-guide">Size Finder</a><a href="#companion-club">Plus-One 18+</a>
       <a href="#adult-connect">Adult preferences</a><a href="#faq">FAQs</a></div>
     </div>
-    <div class="footer-bottom"><span>© <span id="year">2026</span> BLACKED INNERWEAR · PROTOTYPE v1.1.0</span><span>No AI · No external photo upload · No checkout · Adult answers are session-only</span><a href="#top">Back to top ↑</a></div>
+    <div class="footer-bottom"><span>© <span id="year">2026</span> BLACKED INNERWEAR · PROTOTYPE v1.2.0</span><span>No AI · No external photo upload · No checkout · Adult answers are session-only</span><a href="#top">Back to top ↑</a></div>
   </footer>
 
   <dialog class="product-dialog" id="productDialog" aria-labelledby="dialogTitle">

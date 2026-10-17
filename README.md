@@ -1,49 +1,43 @@
-# BLACKED INNERWEAR — Fit Studio v1.1.0
+# BLACKED INNERWEAR — Fit Studio v1.2.0
 
-**Build:** Static HTML + CSS + JavaScript; phone-first.
-**Budget target:** ₹0; no AI API, paid API, npm install or build step.
-**Deployment:** Not pushed to GitHub or live-deployed from this build.
+**Build date:** 17 October 2026  
+**Stack:** Static HTML + CSS + JavaScript, phone-first.  
+**Cost target:** ₹0; no AI API, paid API, package manager or build step.  
+**Deployment status:** Package prepared locally; not pushed to GitHub and not deployed live.
 
-## Faster update workflow
+## What changed in v1.2.0
 
-Use `BLACKED-INNERWEAR-FIT-STUDIO-v1.1.0-CHANGED-FILES.zip` to update an existing v1.0.0 repository: extract it and upload/overwrite only those files at the repository root. All unchanged image files are intentionally omitted from that patch. The full ZIP is available separately for a fresh install or backup.
+- Added a three-card experience hub linking to the three distinct areas: BLACKED Innerwear Collection, Intimate Wellness 18+, and Plus-One Club 18+.
+- Added a swipe/drag, slider and arrow-controlled 8-frame 360° **concept demo**. It is clearly labelled generated visual demo, not a verified 360° capture of physical stock.
+- Added four separate product-only concept cutout sets (Midnight Lace, Bow Lace, Scarlet Satin and Ivory Bloom), with bra/bottom layers for those concepts only.
+- Try-On defaults to the exact selected product/reference photo. The manual cutout overlay is available only after selecting a personal photo and a concept with its own matching overlay assets; references without cutouts remain photo-only.
+- Added original illustrative images to the three Plus-One outing cards and improved the Intimate Wellness hero image and nav paths.
+- Preserved existing P0–P4 tools: catalog search/sort/filter, product detail dialog, Fit Detective, Fit Passport, Style Finder, product comparison, local wishlist, style board, After Dark collection, wellness finder, and private adult preference prototype.
+- Added a root-level cutout contact sheet and explicit image/patch manifest to speed future repository updates.
 
-## What changed in v1.1.0
+## Three sections
 
-- Added catalog-wide search, filter result counts, alphabetic sorting, a reset control and a no-results state across the full reference inventory.
-- Added per-product reference/detail view toggles in Try-On. Missing garment-detail views remain disabled rather than borrowing a different image.
-- Improved manual preview clarity: the selected product/reference image remains the default, and generic illustration mode is explicitly separate from real garment fitting.
-- Improved Intimate Wellness category finder and reset behaviour.
-- Improved Plus-One comfort preference preview and adult conversation starters; previews make clear that nothing is submitted, saved or booked.
-- Updated title, footer version and documentation to v1.1.0.
+1. **BLACKED INNERWEAR:** original 10 references, campaign images and design concepts. These are not automatically confirmed SKUs.
+2. **Intimate Wellness 18+:** `Sanskari outside. Savage inside.` category finder and educational category placeholders. This is not a live product catalogue or checkout.
+3. **Plus-One Club / adult preferences 18+:** platonic public-outing preview and consent-aware, private preference questionnaire. Images are illustrative AI-generated concepts, not real people/providers. No actual profiles, matching, messaging, booking or payment service is connected.
 
-## Existing capabilities retained
+## Important limitations
 
-- P0: product-specific selected-image mapping; no generic demo garment shown as the selected product.
-- P1: product detail dialog and available local gallery/detail images. Missing product views are not fabricated.
-- P2: Fit Detective and Fit Passport with optional local saving and clear controls. Verified BLACKED size charts are required before product-specific size advice can be enabled.
-- P3: Style Finder, up-to-three-item comparison, device-local wishlist and downloadable style-board concept.
-- P4: privacy controls, mobile layout, and transparent review/shipping/return placeholders.
-- Separate After Dark / Boudoir concepts, Intimate Wellness 18+, Plus-One outing planner and private adult-preference questionnaire prototypes.
+- The eight-frame spin is a generated **concept demo**, not real photographed views of a physical product. A true commercial 360° viewer needs consistent images of the actual physical sample.
+- The four garment cutouts are generated concept visuals and are not confirmed inventory, exact product photography, fit simulation, or a guarantee of garment construction.
+- Try-On can show the selected reference or manually position the matching concept cutouts on a locally selected personal photo. It does not automatically detect body shape or perform photorealistic virtual fitting.
+- Wellness cards are category ideas, not live product SKUs. Real stock, supplier details, prices, shipping terms and care instructions must be supplied before shop claims or checkout are added.
+- Plus-One and adult preference features are local prototypes. The 18+ checkbox is self-attestation, not formal verification. A real launch needs verified adult access, screened profiles/providers, secure accounts, moderation, reporting/blocking, deletion controls, and Indian legal/privacy review.
+- No real prices, inventory, reviews, ratings, discount badges or product-fit claims are invented.
 
-## Catalog and assets
+## Test status
 
-- 43 catalog/reference cards are included; these are **not** 43 confirmed sellable products.
-- No image assets changed in v1.1.0. All image files from v1.0.0 are reused as-is. This is why the changed-files ZIP does not contain images.
-- User-supplied external-brand visuals remain reference-only and are not presented as BLACKED stock. No external store is embedded, scraped or linked.
+`TEST-RESULTS.json` records **30/30 Playwright checks passed** in an in-memory DOM with local assets replaced by fixtures. Checks cover the hub, gallery/catalog filters, 360 controls, product-specific cutout gating, no generic overlay fallback, wellness finder/reset, Plus-One preview, adult preference privacy, and mobile/desktop horizontal overflow. This is not a live GitHub Pages test or a real-phone visual regression; verify after deployment on Android.
 
-## Limits that remain
+## Updating an existing GitHub repo
 
-- Static frontend only. There is no connected inventory, real price, cart/checkout, shipping calculation, verified-purchase review system, account system, live dating match, messaging, provider directory, booking or payment service.
-- The 18+ checkbox is self-attestation, not formal age verification. A public launch needs appropriate age/identity checks, secure accounts, privacy/deletion controls, moderation/block-report, security and Indian legal/privacy review.
-- The Try-On is a selected reference photo or a manual guide overlay; it is not automatic realistic garment fitting.
-- No product size, SKU, stock, price, discount, rating or material claim is invented.
+- If your current repository matches the previous v1.1.0 package, use `BLACKED-INNERWEAR-FIT-STUDIO-v1.2.0-CHANGED-FILES.zip`. It includes only changed code/docs plus newly added image assets. Extract it and upload files to the same relative paths, replacing same-named files. Keep all other existing images.
+- For a clean install/backup, use the full `BLACKED-INNERWEAR-FIT-STUDIO-v1.2.0.zip`.
+- Review `UPDATE-MANIFEST.md` first. Back up/download the repository before replacing files. Commit changes and wait for GitHub Pages to deploy. If cached assets show the old version, refresh or clear site cache.
 
-## Update steps
-
-1. Back up your current repository or download its ZIP first.
-2. Extract the changed-files ZIP. It contains only files updated for v1.1.0 plus release/testing docs.
-3. Upload those files to the same locations in the existing repository and allow GitHub to replace same-named files. Do not delete or re-upload image assets.
-4. Commit changes, then test the site on Android.
-
-If you need a clean install, use the full ZIP instead.
+The GitHub repository has not been modified or deployed by this build step.

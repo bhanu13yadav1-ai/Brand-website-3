@@ -92,6 +92,37 @@
   });
 
   // Product reference metadata for non-commercial prototype decisions. These are visual references, not confirmed SKUs.
+  // v1.2.0: concept-only transparent garment cutouts for four specific BLACKED styles.
+  // These are illustrative concept assets, not verified product/SKU photography.
+  Object.assign(products.midnight, {
+    cutoutImage: 'assets/cutout-black-lace-set.webp',
+    topOverlayImage: 'assets/cutout-black-lace-bra.webp',
+    bottomOverlayImage: 'assets/cutout-black-lace-bottom.webp',
+    previewNote: 'GENERATED PRODUCT-ONLY CONCEPT CUTOUT · NOT CONFIRMED STOCK',
+    note: `${products.midnight.note} Generated cutout only; actual inventory and fit are not confirmed.`
+  });
+  Object.assign(products.scarlet, {
+    cutoutImage: 'assets/cutout-scarlet-satin-set.webp',
+    topOverlayImage: 'assets/cutout-scarlet-satin-bra.webp',
+    bottomOverlayImage: 'assets/cutout-scarlet-satin-bottom.webp',
+    previewNote: 'GENERATED PRODUCT-ONLY CONCEPT CUTOUT · NOT CONFIRMED STOCK',
+    note: `${products.scarlet.note} Generated cutout only; actual inventory and fit are not confirmed.`
+  });
+  Object.assign(products.ivory, {
+    cutoutImage: 'assets/cutout-ivory-bloom-set.webp',
+    topOverlayImage: 'assets/cutout-ivory-bloom-bra.webp',
+    bottomOverlayImage: 'assets/cutout-ivory-bloom-bottom.webp',
+    previewNote: 'GENERATED PRODUCT-ONLY CONCEPT CUTOUT · NOT CONFIRMED STOCK',
+    note: `${products.ivory.note} Generated cutout only; actual inventory and fit are not confirmed.`
+  });
+  Object.assign(products['bow-lace'], {
+    cutoutImage: 'assets/cutout-bow-lace-set.webp',
+    topOverlayImage: 'assets/cutout-bow-lace-bra.webp',
+    bottomOverlayImage: 'assets/cutout-bow-lace-bottom.webp',
+    previewNote: 'GENERATED PRODUCT-ONLY CONCEPT CUTOUT · NOT CONFIRMED STOCK',
+    note: `${products['bow-lace'].note} Generated cutout only; actual inventory and fit are not confirmed.`
+  });
+
   const productMeta = {
     move: { source: 'BLACKED campaign visual', look: 'Charcoal / sporty set', styles: ['movement', 'everyday'], colors: ['black'], coverage: 'Balanced, active-inspired', sku: 'Not confirmed' },
     yoga: { source: 'BLACKED campaign visual', look: 'Movement-inspired set', styles: ['movement'], colors: ['black'], coverage: 'Balanced, active-inspired', sku: 'Not confirmed' },
@@ -360,7 +391,7 @@
     dialogImage.src = product.image;
     dialogImage.alt = `${product.name} — selected reference image`;
     if (dialogGallery) {
-      const galleryImages = [...new Set([product.image, ...(Array.isArray(product.gallery) ? product.gallery : []), ...(product.previewImage && product.previewImage !== product.image ? [product.previewImage] : [])])];
+      const galleryImages = [...new Set([product.image, ...(Array.isArray(product.gallery) ? product.gallery : []), ...((product.cutoutImage || product.previewImage) && (product.cutoutImage || product.previewImage) !== product.image ? [product.cutoutImage || product.previewImage] : []), ...(product.previewImage && product.previewImage !== product.image && product.previewImage !== product.cutoutImage ? [product.previewImage] : [])])];
       dialogGallery.innerHTML = galleryImages.map((src, index) => `<button type="button" class="dialog-thumb${index === 0 ? ' is-active' : ''}" data-dialog-thumb="${src}" aria-label="View image ${index + 1} of ${galleryImages.length}" aria-pressed="${index === 0 ? 'true' : 'false'}"><img src="${src}" alt="" loading="lazy"></button>`).join('');
       $$('[data-dialog-thumb]', dialogGallery).forEach(button => button.addEventListener('click', () => {
         dialogImage.src = button.dataset.dialogThumb; dialogImage.alt = `${product.name} — gallery image`;
@@ -415,14 +446,14 @@
     mode: 'set',
     color: '#252123',
     items: {
-      top: { x: 360, y: 383, baseW: 238, baseH: 148, scale: 100, angle: 0 },
-      bottom: { x: 360, y: 557, baseW: 190, baseH: 135, scale: 100, angle: 0 }
+      top: { x: 360, y: 365, baseW: 340, baseH: 270, scale: 100, angle: 0 },
+      bottom: { x: 360, y: 565, baseW: 270, baseH: 170, scale: 100, angle: 0 }
     },
     dragging: false,
     dragStart: null,
     selectedProduct: 'signature',
     previewMode: 'reference',
-    referenceView: 'detail'
+    referenceView: 'reference'
   };
   const canvasW = canvas?.width || 720;
   const canvasH = canvas?.height || 960;
@@ -443,7 +474,8 @@
 
   function drawSelectedReference() {
     const product = products[studioState.selectedProduct] || products.signature;
-    const displayImage = studioState.referenceView === 'detail' && product.previewImage ? product.previewImage : product.image;
+    const productDetailImage = product.cutoutImage || product.previewImage;
+    const displayImage = studioState.referenceView === 'detail' && productDetailImage ? productDetailImage : product.image;
     ctx.fillStyle = '#eee1da';
     ctx.fillRect(0, 0, canvasW, canvasH);
     let image = referenceImageCache.get(displayImage);
@@ -452,13 +484,15 @@
       referenceImageCache.set(displayImage, image);
       image.onload = () => {
         const current = products[studioState.selectedProduct] || products.signature;
-        const selectedDisplay = studioState.referenceView === 'detail' && current.previewImage ? current.previewImage : current.image;
+        const currentDetailImage = current.cutoutImage || current.previewImage;
+        const selectedDisplay = studioState.referenceView === 'detail' && currentDetailImage ? currentDetailImage : current.image;
         if (studioState.previewMode === 'reference' && selectedDisplay === displayImage) drawScene();
       };
       image.onerror = () => {
         referenceImageErrors.add(displayImage);
         const current = products[studioState.selectedProduct] || products.signature;
-        const currentDisplay = studioState.referenceView === 'detail' && current.previewImage ? current.previewImage : current.image;
+        const currentDetailImage = current.cutoutImage || current.previewImage;
+        const currentDisplay = studioState.referenceView === 'detail' && currentDetailImage ? currentDetailImage : current.image;
         if (studioState.previewMode === 'reference' && currentDisplay === displayImage) {
           drawScene();
           setStudioStatus(`The selected image for “${current.name}” could not load. No other product image was substituted.`);
@@ -523,87 +557,43 @@
     ctx.strokeRect(1, 1, canvasW - 2, canvasH - 2);
   }
 
-  function drawTop(item) {
-    const { w, h } = itemSize(item);
-    ctx.save();
-    ctx.translate(item.x, item.y);
-    ctx.rotate(item.angle * Math.PI / 180);
-    ctx.fillStyle = studioState.color;
-    ctx.strokeStyle = 'rgba(255,246,247,.65)';
-    ctx.lineWidth = Math.max(1.6, w * .008);
-    // Simple stylised bralette silhouette — deliberately illustrative, not a real garment model.
-    ctx.beginPath();
-    ctx.moveTo(-w * .48, h * .02);
-    ctx.bezierCurveTo(-w * .52, -h * .22, -w * .42, -h * .53, -w * .22, -h * .48);
-    ctx.bezierCurveTo(-w * .09, -h * .46, -w * .035, -h * .12, 0, h * .03);
-    ctx.bezierCurveTo(w * .035, -h * .12, w * .09, -h * .46, w * .22, -h * .48);
-    ctx.bezierCurveTo(w * .42, -h * .53, w * .52, -h * .22, w * .48, h * .02);
-    ctx.lineTo(w * .40, h * .24);
-    ctx.quadraticCurveTo(0, h * .43, -w * .40, h * .24);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    // Cup seam
-    ctx.beginPath();
-    ctx.moveTo(0, h * .02); ctx.quadraticCurveTo(-w * .20, h * .03, -w * .29, -h * .11);
-    ctx.moveTo(0, h * .02); ctx.quadraticCurveTo(w * .20, h * .03, w * .29, -h * .11);
-    ctx.stroke();
-    // Band
-    ctx.beginPath();
-    ctx.moveTo(-w * .4, h * .22); ctx.quadraticCurveTo(0, h * .39, w * .4, h * .22);
-    ctx.lineWidth = Math.max(3, w * .032); ctx.stroke();
-    // Straps
-    ctx.beginPath();
-    ctx.moveTo(-w * .3, -h * .22); ctx.quadraticCurveTo(-w * .28, -h * .72, -w * .14, -h * .78);
-    ctx.moveTo(w * .3, -h * .22); ctx.quadraticCurveTo(w * .28, -h * .72, w * .14, -h * .78);
-    ctx.lineWidth = Math.max(3, w * .027); ctx.stroke();
-    // Small centre accent
-    ctx.fillStyle = '#f4c5d2';
-    ctx.beginPath(); ctx.arc(0, h * .07, Math.max(3, w * .018), 0, Math.PI * 2); ctx.fill();
-    drawLaceDetails(w, h);
-    ctx.restore();
-  }
-
-  function drawBottom(item) {
-    const { w, h } = itemSize(item);
-    ctx.save();
-    ctx.translate(item.x, item.y);
-    ctx.rotate(item.angle * Math.PI / 180);
-    ctx.fillStyle = studioState.color;
-    ctx.strokeStyle = 'rgba(255,246,247,.66)';
-    ctx.lineWidth = Math.max(1.6, w * .008);
-    ctx.beginPath();
-    ctx.moveTo(-w * .48, -h * .35);
-    ctx.quadraticCurveTo(-w * .24, -h * .22, 0, -h * .30);
-    ctx.quadraticCurveTo(w * .24, -h * .22, w * .48, -h * .35);
-    ctx.lineTo(w * .39, -h * .02);
-    ctx.lineTo(w * .23, h * .47);
-    ctx.quadraticCurveTo(0, h * .39, -w * .23, h * .47);
-    ctx.lineTo(-w * .39, -h * .02);
-    ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(-w * .48, -h * .35); ctx.quadraticCurveTo(0, -h * .2, w * .48, -h * .35);
-    ctx.lineWidth = Math.max(3, w * .035); ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(0, -h * .25); ctx.quadraticCurveTo(-w * .04, h * .05, 0, h * .28);
-    ctx.strokeStyle = 'rgba(255,246,247,.5)'; ctx.lineWidth = Math.max(1.5, w * .01); ctx.stroke();
-    drawLaceDetails(w, h);
-    ctx.restore();
-  }
-
-  function drawLaceDetails(w, h) {
-    // Subtle repeat dots make the illustration read as fabric without pretending to be photo-realistic.
-    ctx.save();
-    ctx.fillStyle = 'rgba(255,235,241,.28)';
-    const step = Math.max(10, w * .065);
-    for (let row = 0; row < 3; row += 1) {
-      for (let col = -3; col <= 3; col += 1) {
-        ctx.beginPath();
-        ctx.arc(col * step, -h * .1 + row * step, Math.max(1.2, w * .006), 0, Math.PI * 2);
-        ctx.fill();
-      }
+  const garmentOverlayImageCache = new Map();
+  function drawGarmentCutout(url, item) {
+    if (!url) return;
+    let img = garmentOverlayImageCache.get(url);
+    if (!img) {
+      img = new Image();
+      garmentOverlayImageCache.set(url, img);
+      img.onload = () => {
+        const current = products[studioState.selectedProduct];
+        if (studioState.previewMode === 'manual' && (current?.topOverlayImage === url || current?.bottomOverlayImage === url)) drawScene();
+      };
+      img.onerror = () => {
+        setStudioStatus('This garment cutout could not load. Try the selected product photo; no generic garment will be substituted.');
+      };
+      img.src = url;
+      return;
     }
+    if (!img.complete || !img.naturalWidth) return;
+    const { w, h } = itemSize(item);
+    const ratio = Math.min(w / img.naturalWidth, h / img.naturalHeight);
+    const drawW = img.naturalWidth * ratio;
+    const drawH = img.naturalHeight * ratio;
+    ctx.save();
+    ctx.translate(item.x, item.y);
+    ctx.rotate(item.angle * Math.PI / 180);
+    ctx.drawImage(img, -drawW / 2, -drawH / 2, drawW, drawH);
     ctx.restore();
+  }
+  function drawTop(item) {
+    const product = products[studioState.selectedProduct];
+    if (!product?.topOverlayImage) return;
+    drawGarmentCutout(product.topOverlayImage, item);
+  }
+  function drawBottom(item) {
+    const product = products[studioState.selectedProduct];
+    if (!product?.bottomOverlayImage) return;
+    drawGarmentCutout(product.bottomOverlayImage, item);
   }
 
   function drawSelection(item) {
@@ -643,23 +633,27 @@
 
   function updatePreviewModeUI() {
     const isReference = studioState.previewMode === 'reference';
+    const selectedProduct = products[studioState.selectedProduct];
+    const hasProductCutouts = Boolean(selectedProduct?.topOverlayImage && selectedProduct?.bottomOverlayImage);
+    const colourControl = $('.swatch-row')?.closest('.control-block');
+    if (colourControl) colourControl.hidden = true;
     const manualButton = $('[data-preview-mode="manual"]');
     if (manualButton) {
-      manualButton.disabled = !studioState.photo;
-      manualButton.title = studioState.photo ? 'Show your local photo with a generic manual illustration overlay' : 'Choose your own photo first; the selected product photo stays visible by default';
+      manualButton.disabled = !studioState.photo || !hasProductCutouts;
+      manualButton.title = !studioState.photo ? 'Choose your own photo first' : hasProductCutouts ? 'Show your local photo with this concept’s separate bra and bottom cutout layers' : 'This reference has no product-specific cutout assets yet; generic demo garments are disabled';
     }
     previewModeButtons.forEach(button => {
       const selected = button.dataset.previewMode === studioState.previewMode;
       button.classList.toggle('is-selected', selected);
       button.setAttribute('aria-pressed', String(selected));
     });
-    if (manualModeControls) manualModeControls.hidden = isReference;
-    if (canvasBadge) canvasBadge.textContent = isReference ? 'SELECTED PRODUCT / REFERENCE PHOTO' : (studioState.photo ? 'YOUR PHOTO · LOCAL' : 'ILLUSTRATION GUIDE');
+    if (manualModeControls) manualModeControls.hidden = isReference || !hasProductCutouts;
+    if (canvasBadge) canvasBadge.textContent = isReference ? 'SELECTED PRODUCT / REFERENCE PHOTO' : (studioState.photo ? 'YOUR PHOTO · LOCAL CUTOUT OVERLAY' : 'PRODUCT CUTOUT GUIDE');
     if (canvasHint) canvasHint.textContent = isReference
-      ? 'This canvas shows the selected item’s own image: a supplied product-detail concept view when available, otherwise its exact original reference image. It does not simulate body fit.'
+      ? 'This canvas shows the selected item’s own image: its product-only concept cutout when available, otherwise its exact reference image. It does not simulate body fit.'
       : (studioState.photo
-        ? 'Your photo is local to this browser. Drag the generic illustration to explore placement; the selected reference remains above for comparison.'
-        : 'This generic illustration is only a positioning guide. Select a product photo to return to the real selected image.');
+        ? 'Your photo stays in this browser. Drag the selected concept’s separate top and bottom cutout layers to explore placement; this is not a fit guarantee.'
+        : 'Upload a photo and choose a concept with matching cutout assets. Generic demo garments are not used.');
     const shell = $('#canvasShell');
     if (shell) shell.classList.toggle('is-reference-mode', isReference);
     drawScene();
@@ -667,14 +661,19 @@
 
   previewModeButtons.forEach(button => button.addEventListener('click', () => {
     if (button.dataset.previewMode === 'manual' && !studioState.photo) {
-      setStudioStatus('Choose your own photo first. The selected product photo stays in the main preview until you explicitly switch modes.');
+      setStudioStatus('Choose your own photo first. The selected product photo stays in the main preview.');
+      return;
+    }
+    const selectedProduct = products[studioState.selectedProduct];
+    if (button.dataset.previewMode === 'manual' && !(selectedProduct?.topOverlayImage && selectedProduct?.bottomOverlayImage)) {
+      setStudioStatus('This reference does not yet have product-specific garment cutouts. The exact selected product photo remains visible; no generic silhouette is substituted.');
       return;
     }
     studioState.previewMode = button.dataset.previewMode === 'manual' ? 'manual' : 'reference';
     updatePreviewModeUI();
     setStudioStatus(studioState.previewMode === 'reference'
       ? 'Selected product/reference photo is now shown in the canvas.'
-      : 'Illustration guide is active. It is a generic guide, not the selected garment; tap Selected Product Photo to return to the selected image.');
+      : 'Product-specific concept cutout mode is active. Drag the bra and matching bottom layers; this does not simulate exact fit.');
   }));
 
   function updateLayerControls() {
@@ -712,7 +711,7 @@
       item.setAttribute('aria-pressed', String(active));
     });
     drawScene();
-    setStudioStatus('Colour updated for the illustration. This is a manual visual mockup only.');
+    setStudioStatus('Colour swatches are illustrative controls only; transparent garment cutouts keep their original concept colour. Choose a matching colour concept from the catalogue instead.');
   }));
 
   layerScale?.addEventListener('input', () => {
@@ -760,7 +759,7 @@
       // The customer must tap the separate guide button to see a generic overlay.
       studioState.previewMode = 'reference';
       updatePreviewModeUI();
-      setStudioStatus('Your photo is ready in this browser. The selected product photo remains the main preview. Tap “My photo + guide” only if you want a generic illustration over your photo.');
+      setStudioStatus('Your photo is ready in this browser. The selected product photo remains the main preview. Upload your own personal photo (not a product poster/screenshot) and use “My photo + cutout” only for concepts with matching cutout files.');
       if (photoUpload) photoUpload.value = '';
     };
     image.onerror = () => {
@@ -891,10 +890,11 @@
     const product = products[productId];
     if (!product) return;
     if (studioSelectedImage) { studioSelectedImage.src = product.image; studioSelectedImage.alt = `${product.name} — supplied campaign or reference image`; }
+    const productDetailImage = product.cutoutImage || product.previewImage;
     if (studioSelectedDetailImage) {
-      if (product.previewImage && product.previewImage !== product.image) {
-        studioSelectedDetailImage.src = product.previewImage;
-        studioSelectedDetailImage.alt = `${product.name} — separate garment-detail concept view`;
+      if (productDetailImage && productDetailImage !== product.image) {
+        studioSelectedDetailImage.src = productDetailImage;
+        studioSelectedDetailImage.alt = `${product.name} — product-only concept cutout or separate garment-detail reference`;
         studioSelectedDetailImage.hidden = false;
       } else {
         studioSelectedDetailImage.removeAttribute('src');
@@ -908,14 +908,14 @@
     const detailViewButton = $('[data-studio-view="detail"]');
     if (referenceViewButton) {
       referenceViewButton.disabled = false;
-      referenceViewButton.setAttribute('aria-pressed', String(studioState.referenceView !== 'detail' || !product.previewImage));
-      referenceViewButton.classList.toggle('is-selected', studioState.referenceView !== 'detail' || !product.previewImage);
+      referenceViewButton.setAttribute('aria-pressed', String(studioState.referenceView !== 'detail' || !productDetailImage));
+      referenceViewButton.classList.toggle('is-selected', studioState.referenceView !== 'detail' || !productDetailImage);
     }
     if (detailViewButton) {
-      detailViewButton.disabled = !product.previewImage;
-      detailViewButton.setAttribute('aria-pressed', String(studioState.referenceView === 'detail' && Boolean(product.previewImage)));
-      detailViewButton.classList.toggle('is-selected', studioState.referenceView === 'detail' && Boolean(product.previewImage));
-      detailViewButton.title = product.previewImage ? 'Show the separate supplied garment-detail view' : 'This reference has no separate product-detail image';
+      detailViewButton.disabled = !productDetailImage;
+      detailViewButton.setAttribute('aria-pressed', String(studioState.referenceView === 'detail' && Boolean(productDetailImage)));
+      detailViewButton.classList.toggle('is-selected', studioState.referenceView === 'detail' && Boolean(productDetailImage));
+      detailViewButton.title = product.cutoutImage ? 'Show the generated product-only cutout concept' : product.previewImage ? 'Show the supplied garment-detail reference' : 'This reference has no separate product-detail image';
     }
     if (studioProductCount) studioProductCount.textContent = `${Object.keys(products).length} options`;
     const pickerHeading = $('.studio-picker-heading h4'); if (pickerHeading) pickerHeading.textContent = `${Object.keys(products).length} image options`;
@@ -937,7 +937,7 @@
       const group = isExternal ? 'USER-SUPPLIED EXTERNAL BRAND REFERENCES · INSPIRATION ONLY' : isConcept ? 'BLACKED DESIGN CONCEPTS · STOCK NOT CONFIRMED' : isCampaign ? 'CAMPAIGN REFERENCES · NOT STOCK SKUS' : 'YOUR ORIGINAL REFERENCES';
       const divider = group !== lastGroup ? `<div class="studio-picker-group-label">${group}</div>` : '';
       lastGroup = group;
-      const thumb = product.previewImage || product.image;
+      const thumb = product.cutoutImage || product.previewImage || product.image;
       return `${divider}<button type="button" class="studio-product-option" data-studio-product="${id}" aria-pressed="${id === (studioState.selectedProduct || 'signature') ? 'true' : 'false'}">
         <img src="${thumb}" alt="" loading="lazy"><span class="studio-product-number">${String(index + 1).padStart(2, '0')}</span><span class="studio-product-name">${product.name}</span><span class="studio-product-type">${(productMeta[id]?.source || 'Original reference')}</span>
       </button>`;
@@ -952,7 +952,7 @@
     studioState.selectedProduct = activeProduct;
     studioState.previewMode = 'reference';
     const product = products[activeProduct];
-    studioState.referenceView = product?.previewImage ? 'detail' : 'reference';
+    studioState.referenceView = (product?.cutoutImage || product?.previewImage) ? 'detail' : 'reference';
     const suggestedColors = {
       redlace: '#b84f70', blacklace: '#252123', velvet: '#6e4259', rose: '#b84f70', sculpt: '#252123', midnight: '#252123', scarlet: '#70253a', ivory: '#d8c5ad', 'syrn-demi': '#c7978d', 'syrn-balconette': '#242026', 'syrn-bodysuit': '#7d384f',
       butterfly: '#b84f70', move: '#252123', yoga: '#252123', stretch: '#252123',
@@ -974,14 +974,14 @@
   renderStudioProductPicker();
   $$('[data-studio-view]').forEach(button => button.addEventListener('click', () => {
     const product = products[studioState.selectedProduct || activeProduct || 'signature'];
-    if (button.dataset.studioView === 'detail' && !product?.previewImage) {
+    if (button.dataset.studioView === 'detail' && !(product?.cutoutImage || product?.previewImage)) {
       setStudioStatus('No separate product-detail image exists for this reference. The original reference image remains selected.');
       return;
     }
     studioState.referenceView = button.dataset.studioView === 'detail' ? 'detail' : 'reference';
     syncStudioProductPicker();
     drawScene();
-    setStudioStatus(studioState.referenceView === 'detail' ? 'Showing this item’s associated garment-detail concept image.' : 'Showing this item’s exact original campaign/reference image.');
+    setStudioStatus(studioState.referenceView === 'detail' ? (product.cutoutImage ? 'Showing this style’s generated product-only concept cutout.' : 'Showing this item’s associated garment-detail reference image.') : 'Showing this item’s exact original campaign/reference image.');
   }));
   $$('[data-preview-product]').forEach(button => button.addEventListener('click', () => goToStudio(button.dataset.previewProduct, 'set')));
   dialogPreview?.addEventListener('click', () => {
@@ -1258,6 +1258,49 @@
     fitDetectiveResult.hidden = false;
     fitDetectiveResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
+
+  // 360-degree concept demo. Eight generated local angle frames; not an actual SKU scan.
+  const spinFrames = [
+    { src: 'assets/360-demo-01-front.webp', label: 'Front' },
+    { src: 'assets/360-demo-02-front-three-quarter.webp', label: 'Front three-quarter' },
+    { src: 'assets/360-demo-03-side-quarter.webp', label: 'Side quarter' },
+    { src: 'assets/360-demo-04-rear-three-quarter.webp', label: 'Rear three-quarter' },
+    { src: 'assets/360-demo-05-rear.webp', label: 'Rear' },
+    { src: 'assets/360-demo-06-rear-opposite.webp', label: 'Opposite rear' },
+    { src: 'assets/360-demo-07-side-opposite.webp', label: 'Opposite side' },
+    { src: 'assets/360-demo-08-front-opposite.webp', label: 'Front opposite' }
+  ];
+  const spinImage = $('#spinFrameImage');
+  const spinSlider = $('#spinSlider');
+  const spinLabel = $('#spinViewLabel');
+  const spinStage = $('#spinDemoStage');
+  let spinIndex = 0;
+  function showSpinFrame(index) {
+    spinIndex = (index + spinFrames.length) % spinFrames.length;
+    const frame = spinFrames[spinIndex];
+    if (spinImage) { spinImage.src = frame.src; spinImage.alt = `Generated BLACKED black lace concept set — demo angle ${spinIndex + 1} of ${spinFrames.length}, ${frame.label.toLowerCase()} view`; }
+    if (spinSlider) spinSlider.value = String(spinIndex);
+    if (spinLabel) spinLabel.textContent = `${String(spinIndex + 1).padStart(2, '0')} / ${String(spinFrames.length).padStart(2, '0')} · ${frame.label}`;
+  }
+  $('#spinPrev')?.addEventListener('click', () => showSpinFrame(spinIndex - 1));
+  $('#spinNext')?.addEventListener('click', () => showSpinFrame(spinIndex + 1));
+  spinSlider?.addEventListener('input', () => showSpinFrame(Number(spinSlider.value)));
+  if (spinStage) {
+    let startX = null;
+    spinStage.addEventListener('pointerdown', event => { startX = event.clientX; if (spinStage.setPointerCapture) spinStage.setPointerCapture(event.pointerId); });
+    spinStage.addEventListener('pointerup', event => {
+      if (startX === null) return;
+      const delta = event.clientX - startX;
+      if (Math.abs(delta) >= 28) showSpinFrame(spinIndex + (delta < 0 ? 1 : -1));
+      startX = null;
+    });
+    spinStage.addEventListener('pointercancel', () => { startX = null; });
+    spinStage.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight') { event.preventDefault(); showSpinFrame(spinIndex + 1); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); showSpinFrame(spinIndex - 1); }
+    });
+  }
+  showSpinFrame(0);
 
   // Plus-One Club: transparent prototype-only planner; does not send or store any request.
   const companionForm = $('#companionRequestForm');
