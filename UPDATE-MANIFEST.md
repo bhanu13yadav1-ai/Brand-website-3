@@ -1,37 +1,44 @@
-# v1.3.0 update manifest — target repository
+# BLACKED v1.4.0 — Changed Files Only
 
-**Target:** https://github.com/bhanu13yadav1-ai/Brand-website-full-finally-  
-**Purpose:** replace the mixed one-page experience with exactly three working top-level tabs and improve the existing product studio/360° interaction.  
-**Media policy:** do not re-upload images already present in the target repo or `Brand-website-3`.
+**Target repository:** `bhanu13yadav1-ai/Brand-website-full-finally-` (branch `main`)
 
-## Files replaced
-- `index.html` — updated three-tab UI and separates Innerwear, Boyfriend 18+, Wellness 18+ panels
-- `README.md` — v1.3.0 docs and update instructions
-- `ASSET-MANIFEST.txt` — records which images are already in the repo vs shared
-- `VALIDATION.txt` — current validation summary
+This is a patch, not a full repository backup. It contains only the application files that need replacing and the five genuinely new, optimized campaign images. Existing root-level photos are not duplicated.
 
-## Files added
+## Replace
+- `index.html`
 - `app.js`
 - `styles.css`
+- `README.md`
+- `ASSET-MANIFEST.txt`
+- `VALIDATION.txt`
 - `VERSION.txt`
 - `UPDATE-MANIFEST.md`
 - `RELEASE-NOTES.md`
 - `TEST-NOTES.md`
 - `TEST-RESULTS.json`
 
-## No image files are included
-The existing target repository already contains the Sanskari campaign, Boyfriend outing scenes, and wellness product-reference imagery. Innerwear reference images, concept cutouts, and 360° frame files already exist in the user's public `Brand-website-3` repository and are loaded from its raw GitHub URLs. No duplicate image files should be uploaded with this patch.
+## Add new assets
+Upload the folder `assets/new-gallery/` with all five `.webp` files, preserving folder and file names exactly.
 
-## Apply from Android/GitHub UI
-1. Download the current repository ZIP as backup.
-2. Download and extract `BLACKED-INNERWEAR-FIT-STUDIO-v1.3.0-CHANGED-FILES.zip`.
-3. Upload the extracted files at the repository root. Replace same-named files and add the new ones. Keep every existing image and its filename; do not delete media.
-4. Commit the changes.
-5. Wait for GitHub Pages, then test: (a) switch all three tabs; (b) select different Innerwear items; (c) operate 360° with swipe, arrows and slider; (d) verify only four mapped concepts expose manual garment cutouts after a personal photo is selected; (e) open Wellness, confirm 18+, use category filters; (f) check on 390px/Android Chrome.
-6. If the old page persists, hard-refresh or clear Chrome site cache after Pages finishes publishing.
+## v1.4 changes
+- Added five separate BLACKED Sanskari Edit campaign cards using the latest user-supplied artwork. Each image opens at full resolution in a new tab; each one is labelled campaign art, not a confirmed product SKU.
+- Optimized the five new 1024×1536 images to WebP. Combined new imagery is around 1 MB rather than repeating 15+ MB source PNGs.
+- Updated Plus-One/Boyfriend copy to be bolder and more playful in Hinglish, with optional light-flirt/bold-banter style selections, a non-explicit boundary note, and a generated local preview that includes the selected vibe.
+- Kept the companion/outings concept platonic and non-sexual. The adult dating/fantasy questionnaire remains a separate, opt-in section inside the Boyfriend tab. No real profiles, matches, bookings, payments, or messages are active.
+- Preserved the three top-level tabs: Innerwear, Boyfriend 18+, and Wellness 18+.
+- Preserved the existing 360° demo controls and product-specific Try-On restrictions from v1.3.
 
-## Important
-- The image frames are generated visual concepts, not actual camera-captured 360° photos of a physical garment.
-- 18+ is a front-end self-attestation gate, not identity verification.
-- This build has been tested in an in-memory Chromium page with fixture images. A real GitHub Pages/Android screenshot regression still needs to be performed after upload.
-- The available GitHub connection has read-only permissions; this build has not been committed or deployed by the assistant.
+## Android upload steps
+1. Download the current repository ZIP as a backup before replacing files.
+2. Extract this patch ZIP on your phone.
+3. Upload/replace the 11 root-level files listed above.
+4. Upload `assets/new-gallery/` as a new folder at the repository root. Keep its relative path intact.
+5. Do not delete, rename, or re-upload the existing photos already in the repository.
+6. Commit the changes, wait for GitHub Pages to publish, then test the page on Android Chrome. If an old page remains, hard-refresh or clear the site cache.
+
+## Limitations
+- The connected GitHub permission is read-only. This patch has not been committed or deployed automatically.
+- The 360° images are generated concept frames, not a physical product's camera-captured 360° scan.
+- The age gates are self-attestation only, not formal age verification.
+- Plus-One and adult preferences are static local prototypes; no provider, dating match, booking, payment, or message is real.
+- Public commercial launch still requires rights/claims verification, privacy review, age/identity verification, moderation, safety procedures, and secure backend services.

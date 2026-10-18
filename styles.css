@@ -1353,3 +1353,35 @@ tbody tr:nth-child(even) { background: #fdf6f2; }
   .wellness-featured-card h4 { font-size:17px; }
   .wellness-featured-card p { font-size:9px; }
 }
+
+/* v1.4.0 — five supplied Sanskari campaign assets, kept separate from product SKUs. */
+.sanskari-edit-section { background:linear-gradient(135deg,#211714 0%,#17100f 52%,#2d1b19 100%); color:#fff8ef; border-block:1px solid #52362a; }
+.sanskari-edit-heading { display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(20px,4vw,56px); align-items:end; margin-bottom:32px; }
+.sanskari-edit-heading .eyebrow { color:#e8c38b; }
+.sanskari-edit-heading h2 { margin:0; font-size:clamp(38px,5vw,64px); line-height:.98; }
+.sanskari-edit-heading h2 em { color:#f0c987; }
+.sanskari-edit-heading > p { color:#dbc9bd; max-width:510px; font-size:13px; line-height:1.8; margin:0; }
+.sanskari-campaign-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; align-items:start; }
+.sanskari-campaign-card { min-width:0; overflow:hidden; border:1px solid #604437; border-radius:14px; background:linear-gradient(180deg,#2a1d19,#171110); box-shadow:0 10px 30px #0003; }
+.sanskari-campaign-image { position:relative; display:block; overflow:hidden; aspect-ratio:2/3; background:#1c1310; }
+.sanskari-campaign-image img { width:100%; height:100%; object-fit:cover; transition:transform .28s ease; }
+.sanskari-campaign-image:hover img { transform:scale(1.035); }
+.sanskari-campaign-image > span { position:absolute; right:8px; bottom:8px; padding:6px 8px; border:1px solid #f2d2a2; border-radius:999px; color:#fff3dc; background:#231710df; font-size:8px; letter-spacing:.08em; font-weight:850; }
+.sanskari-campaign-copy { padding:12px 11px 14px; }
+.sanskari-campaign-copy small { color:#d3a966; font-size:8px; font-weight:850; letter-spacing:.11em; }
+.sanskari-campaign-copy h3 { margin:7px 0 5px; color:#fff8ef; font:400 clamp(15px,1.35vw,19px)/1.08 var(--font-serif); letter-spacing:-.015em; }
+.sanskari-campaign-copy p { margin:0; color:#c4afa4; font-size:10px; line-height:1.5; }
+.sanskari-gallery-note { margin:16px 0 0; color:#bca79c; font-size:10px; line-height:1.65; }
+.companion-field-note { display:block; color:#8e757c; font-size:10px; line-height:1.5; margin-top:4px; }
+@media (max-width:900px) {
+  .sanskari-campaign-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .sanskari-edit-heading { grid-template-columns:1fr; gap:12px; align-items:start; }
+}
+@media (max-width:560px) {
+  .sanskari-edit-section.section-space { padding-top:54px; padding-bottom:54px; }
+  .sanskari-campaign-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+  .sanskari-campaign-copy { padding:10px 9px 12px; }
+  .sanskari-campaign-copy h3 { font-size:17px; }
+  .sanskari-campaign-copy p { font-size:9px; }
+  .sanskari-campaign-image > span { right:6px; bottom:6px; font-size:7px; }
+}

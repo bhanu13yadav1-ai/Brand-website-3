@@ -1,25 +1,25 @@
-# v1.3.0 test notes
+# v1.4.0 Automated Test Notes
 
-## Passed local validation
-- `node --check app.js`: passed.
-- HTML parsed successfully; no duplicate IDs.
-- Exactly 3 `role=tab` controls and 3 top-level `data-section-panel` containers; Innerwear visible by default, other panels initially hidden.
-- Playwright Chromium in-memory page checks: **26/26 passed** (results in `TEST-RESULTS.json`).
-- Tested tab switching, distinct panel visibility, Boyfriend images, Wellness gate/content images, 43 catalog cards, 360 viewer button/slider/drag interactions, manual guide disabled until personal photo selected, manual guide enabled for mapped style, unmapped reference manual mode disabled, and horizontal overflow at 390px mobile and 1280px desktop.
-- No uncaught JavaScript page errors in the in-memory test.
-- HTML local/root image names were checked against the target repository file listing; shared image references were checked against the `Brand-website-3` repository tree.
+**Status:** PASS
 
-## Test limitation
-The Chromium environment blocks direct navigation to localhost (`ERR_BLOCKED_BY_ADMINISTRATOR`), so the interaction run used an in-memory document with CSS/JS inlined and image requests intercepted by small fixtures. It verifies DOM interactions and state changes, but not the real photo rendering, raw GitHub image downloads, or a deployed GitHub Pages screenshot. Please do one visual regression on Android after uploading the patch.
+## Checks
+- PASS: HTML parse and required assets — 171 IDs; CSS and JS files present
+- PASS: Exactly three top-level tabs/panels — Innerwear, Boyfriend, Wellness
+- PASS: No duplicate DOM IDs — 
+- PASS: Five new campaign images exist — sanskari-khamosh-raat.webp, sanskari-nazuk-lamhe.webp, sanskari-raat-lambi-kahani.webp, sanskari-raat-shareef.webp, sanskari-shareef-dangerous.webp
+- PASS: Flirty-vibe selector wired — Optional dropdown and preview mapping found
+- PASS: Default tab state — Innerwear visible, other panels hidden
+- PASS: Boyfriend tab switch — Only Boyfriend panel visible
+- PASS: Boyfriend vibe preview — Bold non-explicit banter reflected in local preview; no data sent
+- PASS: Wellness 18+ gate — Confirm then enter; panel remains separate
+- PASS: 360° frame controls — Next arrow and slider advance frame label/state
+- PASS: Sanskari campaign gallery — Five new supplied images appear as separate cards
+- PASS: Mobile horizontal overflow — {'doc': 390, 'win': 390, 'body': 390}
+- PASS: Desktop horizontal overflow — {'doc': 1280, 'win': 1280, 'body': 1280}
+- PASS: No uncaught browser errors — 
 
-## Phone acceptance checklist after deploy
-1. Open the live GitHub Pages link and verify exactly three tabs show in the header.
-2. Tap Innerwear → Boyfriend → Wellness. Only the chosen section should be visible each time.
-3. On Innerwear, select a few cards and confirm the selected photo/details update.
-4. Drag the 360° viewer left/right; also test arrows and slider. Labels and images should change through 8 frames.
-5. In Try-On, upload a personal photo; only a product with mapped cutouts should enable “My photo + guide.” Unmapped references must not show a generic illustration.
-6. In Wellness, confirm age notice, category tiles, reference photos, search/filter and reset.
-7. Confirm the target repository's old image files were retained and raw GitHub image URLs load.
-
-## Still not a production service
-- No real checkout, order placement, inventory, authentication, verified reviews, supplier details, formal age verification, live dating profiles, booking, or payment gateway.
+## Limitations
+- Chromium testing ran in an in-memory document with remote media requests replaced by lightweight placeholders. The five newly added Sanskari images were embedded at their real quality for the campaign preview.
+- Live GitHub Pages and actual Android-device visual regression remain pending because this patch has not been deployed.
+- The 360° viewer uses generated concept frames; they are not camera-captured stock images.
+- Age gate is self-attestation only; Boyfriend/Plus-One and adult preferences remain static prototype flows.

@@ -1411,7 +1411,9 @@
     easygoing: 'Easygoing conversation',
     outgoing: 'Friendly and outgoing',
     formal: 'Polished event plus-one',
-    quiet: 'Quiet, low-pressure company'
+    quiet: 'Quiet, low-pressure company',
+    playful: 'Playful teasing and light flirting (optional)',
+    'bold-banter': 'Bold, confident banter (non-explicit)'
   };
   if (companionDate) {
     const tomorrow = new Date();
@@ -1437,6 +1439,14 @@
     const outing = companionActivityLabels[companionExperience?.value] || 'Public outing';
     const preferredDate = companionDate?.value ? new Date(`${companionDate.value}T12:00:00`).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'No date chosen';
     const style = companionStyleLabels[$('#companionStyle')?.value] || 'No preference';
+    const flirtVibeLabels = {
+      friendly: 'keep it friendly',
+      playful: 'playful teasing / light flirting, only if welcome',
+      bold: 'bold, confident non-explicit banter, only if welcome',
+      quiet: 'quiet chemistry; take it slow',
+      ask: 'ask first; no assumptions'
+    };
+    const flirtVibe = flirtVibeLabels[$('#companionFlirtVibe')?.value] || 'keep it friendly';
     const durationLabels = { '60': 'around 1 hour', '90': 'around 90 minutes', '120': 'around 2 hours' };
     const touchLabels = { none: 'no physical contact', greeting: 'greeting/handshake only', ask: 'ask every time; no assumption' };
     const meetupLabels = { venue: 'meet at the public venue', separate: 'travel separately and meet there', trusted: 'share plan with a trusted person' };
@@ -1444,7 +1454,7 @@
     const touch = touchLabels[$('#companionTouch')?.value] || 'no physical contact';
     const meetup = meetupLabels[$('#companionMeetup')?.value] || 'meet at public venue';
     const trusted = $('#companionTrustedCheck')?.checked ? 'Trusted-person check-in: planned.' : 'Trusted-person check-in: not selected.';
-    if (companionMessage) companionMessage.textContent = `${outing} · ${preferredDate} · ${style} · ${duration} · boundary: ${touch} · meetup: ${meetup}. ${trusted} Local preview only: no real provider is available and nothing has been sent or saved.`;
+    if (companionMessage) companionMessage.textContent = `${outing} · ${preferredDate} · ${style} · vibe: ${flirtVibe} · ${duration} · boundary: ${touch} · meetup: ${meetup}. ${trusted} Local preview only: no real provider is available and nothing has been sent or saved.`;
     if (companionResult) {
       companionResult.hidden = false;
       companionResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

@@ -1,4 +1,4 @@
-BLACKED FINAL FUSION v1.3.0
-Build target: bhanu13yadav1-ai/Brand-website-full-finally-
-Build mode: changed-files patch; no media duplicated
-Status: package built locally; GitHub commit and live deployment remain pending
+BLACKED FINAL FUSION — v1.4.0
+Build date: 18 October 2026
+Type: Changed-files-only GitHub Pages patch
+Target: bhanu13yadav1-ai/Brand-website-full-finally-

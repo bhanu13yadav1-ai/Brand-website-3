@@ -1,148 +1,76 @@
 {
-  "passed": 26,
-  "total": 26,
+  "version": "1.4.0",
+  "status": "PASS",
   "tests": [
     {
-      "name": "exactly_three_top_level_tabs",
-      "pass": true,
-      "detail": 3
+      "test": "HTML parse and required assets",
+      "status": "PASS",
+      "detail": "171 IDs; CSS and JS files present"
     },
     {
-      "name": "three_separate_panels",
-      "pass": true,
-      "detail": null
+      "test": "Exactly three top-level tabs/panels",
+      "status": "PASS",
+      "detail": "Innerwear, Boyfriend, Wellness"
     },
     {
-      "name": "innerwear_visible_by_default",
-      "pass": true,
-      "detail": null
+      "test": "No duplicate DOM IDs",
+      "status": "PASS",
+      "detail": ""
     },
     {
-      "name": "boyfriend_hidden_by_default",
-      "pass": true,
-      "detail": null
+      "test": "Five new campaign images exist",
+      "status": "PASS",
+      "detail": "sanskari-khamosh-raat.webp, sanskari-nazuk-lamhe.webp, sanskari-raat-lambi-kahani.webp, sanskari-raat-shareef.webp, sanskari-shareef-dangerous.webp"
     },
     {
-      "name": "wellness_hidden_by_default",
-      "pass": true,
-      "detail": null
+      "test": "Flirty-vibe selector wired",
+      "status": "PASS",
+      "detail": "Optional dropdown and preview mapping found"
     },
     {
-      "name": "boyfriend_tab_works",
-      "pass": true,
-      "detail": null
+      "test": "Default tab state",
+      "status": "PASS",
+      "detail": "Innerwear visible, other panels hidden"
     },
     {
-      "name": "boyfriend_images_present",
-      "pass": true,
-      "detail": 4
+      "test": "Boyfriend tab switch",
+      "status": "PASS",
+      "detail": "Only Boyfriend panel visible"
     },
     {
-      "name": "wellness_tab_works",
-      "pass": true,
-      "detail": null
+      "test": "Boyfriend vibe preview",
+      "status": "PASS",
+      "detail": "Bold non-explicit banter reflected in local preview; no data sent"
     },
     {
-      "name": "wellness_gate_present",
-      "pass": true,
-      "detail": null
+      "test": "Wellness 18+ gate",
+      "status": "PASS",
+      "detail": "Confirm then enter; panel remains separate"
     },
     {
-      "name": "wellness_featured_images",
-      "pass": true,
-      "detail": 4
+      "test": "360\u00b0 frame controls",
+      "status": "PASS",
+      "detail": "Next arrow and slider advance frame label/state"
     },
     {
-      "name": "innerwear_returns",
-      "pass": true,
-      "detail": null
+      "test": "Sanskari campaign gallery",
+      "status": "PASS",
+      "detail": "Five new supplied images appear as separate cards"
     },
     {
-      "name": "spin_viewer_present",
-      "pass": true,
-      "detail": null
+      "test": "Mobile horizontal overflow",
+      "status": "PASS",
+      "detail": "{'doc': 390, 'win': 390, 'body': 390}"
     },
     {
-      "name": "spin_controls_present",
-      "pass": true,
-      "detail": null
+      "test": "Desktop horizontal overflow",
+      "status": "PASS",
+      "detail": "{'doc': 1280, 'win': 1280, 'body': 1280}"
     },
     {
-      "name": "spin_next_changes_frame",
-      "pass": true,
-      "detail": {
-        "initial": "01 / 08 \u00b7 Front",
-        "next": "02 / 08 \u00b7 Front three-quarter"
-      }
-    },
-    {
-      "name": "spin_slider_changes_frame",
-      "pass": true,
-      "detail": "05 / 08 \u00b7 Rear"
-    },
-    {
-      "name": "spin_drag_changes_frame",
-      "pass": true,
-      "detail": {
-        "before": "05 / 08 \u00b7 Rear",
-        "after": "02 / 08 \u00b7 Front three-quarter"
-      }
-    },
-    {
-      "name": "manual_guide_disabled_without_photo",
-      "pass": true,
-      "detail": null
-    },
-    {
-      "name": "manual_guide_enabled_for_mapped_product_after_photo",
-      "pass": true,
-      "detail": null
-    },
-    {
-      "name": "manual_guide_label_indicates_local_overlay",
-      "pass": true,
-      "detail": null
-    },
-    {
-      "name": "unmapped_reference_cannot_enable_generic_overlay",
-      "pass": true,
-      "detail": null
-    },
-    {
-      "name": "innerwear_catalog_cards_rendered",
-      "pass": true,
-      "detail": 43
-    },
-    {
-      "name": "cutout_rail_four_mapped_concepts",
-      "pass": true,
-      "detail": null
-    },
-    {
-      "name": "all_main_sections_have_unique_ids",
-      "pass": true,
-      "detail": null
-    },
-    {
-      "name": "no_horizontal_overflow_390",
-      "pass": true,
-      "detail": {
-        "scrollWidth": 390,
-        "innerWidth": 390
-      }
-    },
-    {
-      "name": "no_horizontal_overflow_1280",
-      "pass": true,
-      "detail": {
-        "scrollWidth": 1280,
-        "innerWidth": 1280
-      }
-    },
-    {
-      "name": "no_uncaught_page_errors",
-      "pass": true,
-      "detail": []
+      "test": "No uncaught browser errors",
+      "status": "PASS",
+      "detail": ""
     }
   ]
 }

@@ -1,26 +1,18 @@
-BLACKED FINAL FUSION v1.3.0 — VALIDATION SUMMARY
+BLACKED v1.4.0 static + browser validation
 
-Static checks:
-- Node JavaScript syntax check: PASS
-- HTML parse: PASS
-- Duplicate DOM IDs: 0
-- Main section tabs: 3 (Innerwear / Boyfriend 18+ / Wellness 18+)
-- Main section panels: 3 (Innerwear visible by default; other two hidden)
-- Innerwear catalog/reference entries rendered from script: 43
-- 360° demo frames: 8; controls: swipe/drag, previous, next, slider, keyboard
-- Product cutout styles: 4; manual overlays only enabled for mapped products after a user photo is selected
-- Target repository root image names: checked against public repo listing
-- Shared image source names: checked against public Brand-website-3 tree
+PASS: HTML parse and required assets — 171 IDs; CSS and JS files present
+PASS: Exactly three top-level tabs/panels — Innerwear, Boyfriend, Wellness
+PASS: No duplicate DOM IDs — 
+PASS: Five new campaign images exist — sanskari-khamosh-raat.webp, sanskari-nazuk-lamhe.webp, sanskari-raat-lambi-kahani.webp, sanskari-raat-shareef.webp, sanskari-shareef-dangerous.webp
+PASS: Flirty-vibe selector wired — Optional dropdown and preview mapping found
+PASS: Default tab state — Innerwear visible, other panels hidden
+PASS: Boyfriend tab switch — Only Boyfriend panel visible
+PASS: Boyfriend vibe preview — Bold non-explicit banter reflected in local preview; no data sent
+PASS: Wellness 18+ gate — Confirm then enter; panel remains separate
+PASS: 360° frame controls — Next arrow and slider advance frame label/state
+PASS: Sanskari campaign gallery — Five new supplied images appear as separate cards
+PASS: Mobile horizontal overflow — {'doc': 390, 'win': 390, 'body': 390}
+PASS: Desktop horizontal overflow — {'doc': 1280, 'win': 1280, 'body': 1280}
+PASS: No uncaught browser errors — 
 
-Browser interaction checks:
-- Playwright Chromium in-memory DOM test: 26/26 PASS
-- Viewports: 390px mobile and 1280px desktop
-- Covered tab switching/panel visibility, image references in sections, 360 arrow/slider/drag behavior, personal photo/manual overlay gating, 43 cards, overflow, and uncaught JS errors.
-- Images were replaced by tiny fixture responses during the in-memory check; actual raw-image rendering was not tested.
-
-Deployment status:
-- GitHub commit: NOT performed (available GitHub connection is read-only)
-- GitHub Pages live test: PENDING
-- Android Chrome visual regression: PENDING
-
-No product prices, inventory, reviews, certification claims, or real booking/provider status are fabricated.
+Live GitHub Pages/physical Android testing not run; patch not deployed.
