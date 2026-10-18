@@ -1,76 +1,18 @@
 {
-  "version": "1.4.0",
-  "status": "PASS",
-  "tests": [
-    {
-      "test": "HTML parse and required assets",
-      "status": "PASS",
-      "detail": "171 IDs; CSS and JS files present"
-    },
-    {
-      "test": "Exactly three top-level tabs/panels",
-      "status": "PASS",
-      "detail": "Innerwear, Boyfriend, Wellness"
-    },
-    {
-      "test": "No duplicate DOM IDs",
-      "status": "PASS",
-      "detail": ""
-    },
-    {
-      "test": "Five new campaign images exist",
-      "status": "PASS",
-      "detail": "sanskari-khamosh-raat.webp, sanskari-nazuk-lamhe.webp, sanskari-raat-lambi-kahani.webp, sanskari-raat-shareef.webp, sanskari-shareef-dangerous.webp"
-    },
-    {
-      "test": "Flirty-vibe selector wired",
-      "status": "PASS",
-      "detail": "Optional dropdown and preview mapping found"
-    },
-    {
-      "test": "Default tab state",
-      "status": "PASS",
-      "detail": "Innerwear visible, other panels hidden"
-    },
-    {
-      "test": "Boyfriend tab switch",
-      "status": "PASS",
-      "detail": "Only Boyfriend panel visible"
-    },
-    {
-      "test": "Boyfriend vibe preview",
-      "status": "PASS",
-      "detail": "Bold non-explicit banter reflected in local preview; no data sent"
-    },
-    {
-      "test": "Wellness 18+ gate",
-      "status": "PASS",
-      "detail": "Confirm then enter; panel remains separate"
-    },
-    {
-      "test": "360\u00b0 frame controls",
-      "status": "PASS",
-      "detail": "Next arrow and slider advance frame label/state"
-    },
-    {
-      "test": "Sanskari campaign gallery",
-      "status": "PASS",
-      "detail": "Five new supplied images appear as separate cards"
-    },
-    {
-      "test": "Mobile horizontal overflow",
-      "status": "PASS",
-      "detail": "{'doc': 390, 'win': 390, 'body': 390}"
-    },
-    {
-      "test": "Desktop horizontal overflow",
-      "status": "PASS",
-      "detail": "{'doc': 1280, 'win': 1280, 'body': 1280}"
-    },
-    {
-      "test": "No uncaught browser errors",
-      "status": "PASS",
-      "detail": ""
-    }
-  ]
+  "version": "1.5.0",
+  "base_intent": "Brand-website-4f selected as the deployment target; preserve the three primary areas and combine compatible feature set",
+  "sanskari_gallery_expected": 10,
+  "sanskari_gallery_assets": [
+    "assets/sanskari-gallery/01-pallu-shareef.webp",
+    "assets/sanskari-gallery/02-sanskari-raat.webp",
+    "assets/sanskari-gallery/03-mirror-knows.webp",
+    "assets/sanskari-gallery/04-taiyaari-masoom.webp",
+    "assets/sanskari-gallery/05-entry-shareef.webp",
+    "assets/sanskari-gallery/06-sweet-face-dark-mood.webp",
+    "assets/sanskari-gallery/07-shareef-nazar.webp",
+    "assets/sanskari-gallery/08-raat-shareef.webp",
+    "assets/sanskari-gallery/09-sanskari-outside-banner.webp",
+    "assets/sanskari-gallery/10-sanskari-outside-dangerous.webp"
+  ],
+  "notes": "Static checks only; test the deployed site on Android after upload."
 }

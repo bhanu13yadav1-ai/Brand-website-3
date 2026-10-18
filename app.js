@@ -88,16 +88,13 @@
   let catalogSortMode = 'featured';
 
 
-  // Shared visual library already exists in the user's public Brand-website-3 repo.
-  // Use it as the image source rather than asking the user to upload duplicates again.
-  const SHARED_ASSET_BASE = 'https://raw.githubusercontent.com/bhanu13yadav1-ai/Brand-website-3/main/';
+  // Resolve the prepared visual library locally so GitHub Pages does not depend on another repository at runtime.
   function resolveSharedAsset(path) {
     if (typeof path !== 'string' || !path) return path;
     const name = path.split('/').pop();
-    if (/^(?:ref-\d+-.+|design-\d+-.+|owner-ref-.+|external-ref-syrn-.+|360-demo-.+|cutout-.+|companion-.+|wellness-hero(?:-art)?\.(?:webp|svg))$/.test(name)) {
-      return SHARED_ASSET_BASE + name;
-    }
-    return path;
+    if (!/^(?:ref-\d+-.+|design-\d+-.+|owner-ref-.+|external-ref-syrn-.+|360-demo-.+|cutout-.+|companion-.+|wellness-hero(?:-art)?\.(?:webp|svg))$/.test(name)) return path;
+    if (/^(?:360-demo-.+|cutout-.+|companion-.+|wellness-hero(?:-art)?\.(?:webp|svg))$/.test(name)) return 'assets/' + name;
+    return './' + name;
   }
   // Normalize once so cards, modal, canvas, quiz and moodboard all share the same URL.
   function resolveProductAssets(product) {
