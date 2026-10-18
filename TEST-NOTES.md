@@ -1,30 +1,25 @@
-# BLACKED Fit Studio v1.2.0 — Test notes
+# v1.3.0 test notes
 
-## Automated validation
-- `node --check app.js` — expected/pass.
-- Playwright Chromium in-memory DOM tests: **30/30 passed**; results are in `TEST-RESULTS.json`.
-- The test replaces local media with in-memory fixtures; it tests page interactions/state, not the pixel appearance of the actual images.
-- Sections tested: 3 experience hub cards, unique navigation anchors, 43 catalog/reference cards, search/empty state/reset, 360 next/previous/slider, selected product mapping, mapped detail cutout, manual cutout gating, no generic overlay fallback, Wellness self-attestation/finder/reset, Plus-One preview disclaimer, illustrative-card labels, adult conversation prompts, no localStorage persistence for intimate answers, clear/reset, no horizontal overflow at 390px and 1280px, and no uncaught browser errors.
+## Passed local validation
+- `node --check app.js`: passed.
+- HTML parsed successfully; no duplicate IDs.
+- Exactly 3 `role=tab` controls and 3 top-level `data-section-panel` containers; Innerwear visible by default, other panels initially hidden.
+- Playwright Chromium in-memory page checks: **26/26 passed** (results in `TEST-RESULTS.json`).
+- Tested tab switching, distinct panel visibility, Boyfriend images, Wellness gate/content images, 43 catalog cards, 360 viewer button/slider/drag interactions, manual guide disabled until personal photo selected, manual guide enabled for mapped style, unmapped reference manual mode disabled, and horizontal overflow at 390px mobile and 1280px desktop.
+- No uncaught JavaScript page errors in the in-memory test.
+- HTML local/root image names were checked against the target repository file listing; shared image references were checked against the `Brand-website-3` repository tree.
 
-## Package-time static tests
-- `node --check app.js` passed.
-- HTML parser and duplicate IDs checked.
-- Relative image/script/style references checked against the build root.
-- ZIP integrity checks run for both full and changed-files ZIPs.
+## Test limitation
+The Chromium environment blocks direct navigation to localhost (`ERR_BLOCKED_BY_ADMINISTRATOR`), so the interaction run used an in-memory document with CSS/JS inlined and image requests intercepted by small fixtures. It verifies DOM interactions and state changes, but not the real photo rendering, raw GitHub image downloads, or a deployed GitHub Pages screenshot. Please do one visual regression on Android after uploading the patch.
 
-## Manual acceptance after GitHub Pages upload
-1. On Android, open each of the three experience hub cards and verify they navigate to the correct section.
-2. In the collection, search, sort and reset the 43 references.
-3. Select Midnight Lace, Bow Lace, Scarlet Satin and Ivory Bloom in Try-On. Verify product detail switches to that concept's product-only cutout.
-4. Select a reference without matching cutouts (for example Move Together). The manual cutout mode must remain disabled and the selected reference photo must remain visible.
-5. Upload a personal image and verify manual cutout mode is available only for the four mapped concepts. Clear the photo afterwards.
-6. Operate the 360° demo by swiping/dragging, the arrows and the slider. Remember the frames are illustrative concepts, not actual physical-product 360° scans.
-7. Check the Plus-One images and planner preview; nothing should be sent or booked.
-8. Open Wellness after checking 18+ self-attestation; search/filter/finder/reset should work. It is a category prototype, not a live store.
-9. Clear adult preference answers and verify intimate answers are not persisted. Test mobile menu, popups, scroll width and stale browser cache.
+## Phone acceptance checklist after deploy
+1. Open the live GitHub Pages link and verify exactly three tabs show in the header.
+2. Tap Innerwear → Boyfriend → Wellness. Only the chosen section should be visible each time.
+3. On Innerwear, select a few cards and confirm the selected photo/details update.
+4. Drag the 360° viewer left/right; also test arrows and slider. Labels and images should change through 8 frames.
+5. In Try-On, upload a personal photo; only a product with mapped cutouts should enable “My photo + guide.” Unmapped references must not show a generic illustration.
+6. In Wellness, confirm age notice, category tiles, reference photos, search/filter and reset.
+7. Confirm the target repository's old image files were retained and raw GitHub image URLs load.
 
-## Remaining before public commercial launch
-Actual product photos and confirmed SKUs/sizes/prices, rights for all public-use images, real inventory/checkout, formal adult verification, security/moderation, privacy/legal review, and a live device/browser regression are still needed.
-
-## Environment limitation
-A direct browser navigation to localhost/file URLs was blocked by the execution environment (`ERR_BLOCKED_BY_ADMINISTRATOR`), so a visual screenshot-based live-page check could not be completed here. The 30/30 automated checks above used an in-memory DOM with fixture images; the real image rendering and interactions should be checked after uploading to GitHub Pages/on an Android phone.
+## Still not a production service
+- No real checkout, order placement, inventory, authentication, verified reviews, supplier details, formal age verification, live dating profiles, booking, or payment gateway.

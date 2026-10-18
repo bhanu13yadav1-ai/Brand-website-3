@@ -1,161 +1,148 @@
 {
-  "version": "1.2.0",
-  "browser_test": "Playwright Chromium in-memory DOM; local image files replaced with tiny fixtures; repo assets untouched",
-  "checks": [
+  "passed": 26,
+  "total": 26,
+  "tests": [
     {
-      "name": "Page title is v1.2.0",
+      "name": "exactly_three_top_level_tabs",
       "pass": true,
-      "detail": "BLACKED INNERWEAR \u2014 Fit Studio v1.2.0"
+      "detail": 3
     },
     {
-      "name": "Three experience pillars visible",
+      "name": "three_separate_panels",
       "pass": true,
-      "detail": "cards=3"
+      "detail": null
     },
     {
-      "name": "Separate main sections have navigation targets",
+      "name": "innerwear_visible_by_default",
       "pass": true,
-      "detail": "collection / wellness / plus-one anchors exist"
+      "detail": null
     },
     {
-      "name": "Collection catalog is populated",
+      "name": "boyfriend_hidden_by_default",
       "pass": true,
-      "detail": "cards=43"
+      "detail": null
     },
     {
-      "name": "Catalog search filters reference list",
+      "name": "wellness_hidden_by_default",
       "pass": true,
-      "detail": "visible=16 total=43"
+      "detail": null
     },
     {
-      "name": "Catalog empty state appears",
+      "name": "boyfriend_tab_works",
       "pass": true,
-      "detail": "visible=0"
+      "detail": null
     },
     {
-      "name": "Catalog reset restores all items",
+      "name": "boyfriend_images_present",
       "pass": true,
-      "detail": "expected=43 actual=43"
+      "detail": 4
     },
     {
-      "name": "360 next button advances angle",
+      "name": "wellness_tab_works",
       "pass": true,
-      "detail": "02 / 08 \u00b7 Front three-quarter"
+      "detail": null
     },
     {
-      "name": "360 slider selects a specific angle",
+      "name": "wellness_gate_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "wellness_featured_images",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "innerwear_returns",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "spin_viewer_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "spin_controls_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "spin_next_changes_frame",
+      "pass": true,
+      "detail": {
+        "initial": "01 / 08 \u00b7 Front",
+        "next": "02 / 08 \u00b7 Front three-quarter"
+      }
+    },
+    {
+      "name": "spin_slider_changes_frame",
       "pass": true,
       "detail": "05 / 08 \u00b7 Rear"
     },
     {
-      "name": "360 previous button returns one angle",
+      "name": "spin_drag_changes_frame",
       "pass": true,
-      "detail": "04 / 08 \u00b7 Rear three-quarter"
+      "detail": {
+        "before": "05 / 08 \u00b7 Rear",
+        "after": "02 / 08 \u00b7 Front three-quarter"
+      }
     },
     {
-      "name": "Selecting Midnight Lace maps the matching product",
+      "name": "manual_guide_disabled_without_photo",
       "pass": true,
-      "detail": "Midnight Lace"
+      "detail": null
     },
     {
-      "name": "Cutout detail view enabled only on mapped concept",
+      "name": "manual_guide_enabled_for_mapped_product_after_photo",
       "pass": true,
-      "detail": "Midnight Lace has a matching cutout"
+      "detail": null
     },
     {
-      "name": "Detail view state selects product-only concept cutout",
+      "name": "manual_guide_label_indicates_local_overlay",
       "pass": true,
-      "detail": "Showing this style\u2019s generated product-only concept cutout."
+      "detail": null
     },
     {
-      "name": "Cutout preview resolves to a loaded image source",
+      "name": "unmapped_reference_cannot_enable_generic_overlay",
       "pass": true,
-      "detail": "Midnight Lace \u2014 product-only concept cutout or separate garment-detail reference"
+      "detail": null
     },
     {
-      "name": "Product-specific cutout mode enabled for mapped concept",
+      "name": "innerwear_catalog_cards_rendered",
       "pass": true,
-      "detail": "Show your local photo with this concept\u2019s separate bra and bottom cutout layers"
+      "detail": 43
     },
     {
-      "name": "Manual mode clearly labels local cutout overlay",
+      "name": "cutout_rail_four_mapped_concepts",
       "pass": true,
-      "detail": "YOUR PHOTO \u00b7 LOCAL CUTOUT OVERLAY"
+      "detail": null
     },
     {
-      "name": "Non-cutout reference returns to photo-only mode",
+      "name": "all_main_sections_have_unique_ids",
       "pass": true,
-      "detail": "SELECTED PRODUCT / REFERENCE PHOTO"
+      "detail": null
     },
     {
-      "name": "Generic overlay disabled for references without cutouts",
+      "name": "no_horizontal_overflow_390",
       "pass": true,
-      "detail": "This reference has no product-specific cutout assets yet; generic demo garments are disabled"
+      "detail": {
+        "scrollWidth": 390,
+        "innerWidth": 390
+      }
     },
     {
-      "name": "Detail view disabled when no detail/cutout exists",
+      "name": "no_horizontal_overflow_1280",
       "pass": true,
-      "detail": "Move Together"
+      "detail": {
+        "scrollWidth": 1280,
+        "innerWidth": 1280
+      }
     },
     {
-      "name": "Wellness access gate requires self-attestation",
+      "name": "no_uncaught_page_errors",
       "pass": true,
-      "detail": "gate opened after confirmation"
-    },
-    {
-      "name": "Wellness finder returns relevant ideas",
-      "pass": true,
-      "detail": "visible=3"
-    },
-    {
-      "name": "Wellness reset restores all cards",
-      "pass": true,
-      "detail": "reset restores list"
-    },
-    {
-      "name": "Plus-One preview has boundaries and no-booking disclaimer",
-      "pass": true,
-      "detail": "Coffee & conversation \u00b7 No date chosen \u00b7 Easygoing conversation \u00b7 around 1 hour \u00b7 boundary: no physical contact \u00b7 meetup: meet at the public venue. Trusted-person check-in: planned. Local preview only: no real provider is available and nothing has been sent or saved."
-    },
-    {
-      "name": "Generated companion cards clearly avoid real-profile claims",
-      "pass": true,
-      "detail": "images=3"
-    },
-    {
-      "name": "Adult questionnaire shows local conversation starters",
-      "pass": true,
-      "detail": "Helpful conversation starters\n\nThese are private prompts for a future conversation\u2014not compatibility scores or a real match.\n\nWhat helps each of us feel safe, heard and comfortable?\nHow should we check in with each other if someone wants to pause or stop?\nWhat are we each hoping to get from dating right now?\nWhat boundaries and expectations would need to be discussed before any group setting?\nWhat are the hard limits, soft limits and stop signal each person wants respected?"
-    },
-    {
-      "name": "Intimate answers are not saved into localStorage",
-      "pass": true,
-      "detail": "before=['length', 'key', 'getItem', 'setItem', 'removeItem', 'clear'], after=['length', 'key', 'getItem', 'setItem', 'removeItem', 'clear']"
-    },
-    {
-      "name": "Adult answers clear button clears generated prompt",
-      "pass": true,
-      "detail": "cleared"
-    },
-    {
-      "name": "No horizontal overflow at mobile width",
-      "pass": true,
-      "detail": "{'scroll': 390, 'client': 390}"
-    },
-    {
-      "name": "No horizontal overflow at desktop width",
-      "pass": true,
-      "detail": "{'scroll': 1280, 'client': 1280}"
-    },
-    {
-      "name": "No uncaught browser errors",
-      "pass": true,
-      "detail": "[]"
+      "detail": []
     }
-  ],
-  "page_errors": [],
-  "console_errors": [],
-  "failed_requests": [],
-  "passed": 30,
-  "total": 30
+  ]
 }

@@ -14,33 +14,99 @@
     toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3000);
   }
 
-  // Mobile navigation
-  const menuToggle = $('#menuToggle');
-  const primaryNav = $('#primaryNav');
-  if (menuToggle && primaryNav) {
-    menuToggle.addEventListener('click', () => {
-      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!isOpen));
-      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
-      primaryNav.classList.toggle('is-open', !isOpen);
-    });
-    $$('a', primaryNav).forEach(link => link.addEventListener('click', () => {
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', 'Open navigation');
-      primaryNav.classList.remove('is-open');
-    }));
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Open navigation');
-        primaryNav.classList.remove('is-open');
-      }
-    });
+  // Three dedicated main tabs. Hidden panels do not render into one giant mixed page.
+  const siteTabButtons = $$('[data-site-tab]');
+  const sitePanels = $$('[data-section-panel]');
+  const targetPanelMap = new Map();
+  function activePanelForTarget(target) {
+    const panel = target?.closest?.('[data-section-panel]');
+    return panel?.dataset.sectionPanel || null;
   }
+  function activateSiteTab(name, options = {}) {
+    const panel = document.querySelector(`[data-section-panel="${name}"]`);
+    if (!panel) return;
+    sitePanels.forEach(item => { item.hidden = item !== panel; item.setAttribute('aria-hidden', String(item !== panel)); });
+    siteTabButtons.forEach(button => {
+      const active = button.dataset.siteTab === name;
+      button.setAttribute('aria-selected', String(active));
+      button.tabIndex = active ? 0 : -1;
+    });
+    document.body.dataset.activeSiteTab = name;
+    if (options.top !== false) window.scrollTo({ top: 0, behavior: options.behavior || 'auto' });
+  }
+  siteTabButtons.forEach((button,index) => {
+    button.addEventListener('click', () => activateSiteTab(button.dataset.siteTab, { top:true, behavior:'smooth' }));
+    button.addEventListener('keydown', event => {
+      if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+      event.preventDefault();
+      let next=index;
+      if (event.key==='ArrowLeft') next=(index-1+siteTabButtons.length)%siteTabButtons.length;
+      else if (event.key==='ArrowRight') next=(index+1)%siteTabButtons.length;
+      else if (event.key==='Home') next=0;
+      else next=siteTabButtons.length-1;
+      siteTabButtons[next].focus();
+      activateSiteTab(siteTabButtons[next].dataset.siteTab,{top:true,behavior:'auto'});
+    });
+  });
+  function routeHashToPanel() {
+    const id = decodeURIComponent((location.hash || '').slice(1));
+    if (!id) return;
+    const target = document.getElementById(id);
+    const panelName = activePanelForTarget(target);
+    if (!panelName) return;
+    if (document.querySelector(`[data-section-panel="${panelName}"]`)?.hidden) activateSiteTab(panelName,{top:false});
+    // The wellness guide is behind its age gate; land at the gate until unlocked.
+    if (target && target.closest('#wellnessHubContent[hidden]')) {
+      document.getElementById('intimate-wellness')?.scrollIntoView({behavior:'smooth',block:'start'});
+      return;
+    }
+    requestAnimationFrame(() => target?.scrollIntoView({behavior:'smooth',block:'start'}));
+  }
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const hash = link.getAttribute('href');
+    if (!hash || hash==='#') return;
+    const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (!target) return;
+    const panelName = activePanelForTarget(target);
+    if (!panelName) return;
+    if (document.querySelector(`[data-section-panel="${panelName}"]`)?.hidden) {
+      event.preventDefault();
+      history.pushState(null,'',hash);
+      activateSiteTab(panelName,{top:false});
+      routeHashToPanel();
+    }
+  });
+  window.addEventListener('hashchange',routeHashToPanel);
+  // Respect deep links while defaulting to Innerwear for a clean first visit.
+  activateSiteTab('innerwear',{top:false});
+  if (location.hash) routeHashToPanel();
 
   // Catalog controls are wired after the dynamic reference cards have been rendered.
   let activeCatalogFilter = 'all';
   let catalogSortMode = 'featured';
+
+
+  // Shared visual library already exists in the user's public Brand-website-3 repo.
+  // Use it as the image source rather than asking the user to upload duplicates again.
+  const SHARED_ASSET_BASE = 'https://raw.githubusercontent.com/bhanu13yadav1-ai/Brand-website-3/main/';
+  function resolveSharedAsset(path) {
+    if (typeof path !== 'string' || !path) return path;
+    const name = path.split('/').pop();
+    if (/^(?:ref-\d+-.+|design-\d+-.+|owner-ref-.+|external-ref-syrn-.+|360-demo-.+|cutout-.+|companion-.+|wellness-hero(?:-art)?\.(?:webp|svg))$/.test(name)) {
+      return SHARED_ASSET_BASE + name;
+    }
+    return path;
+  }
+  // Normalize once so cards, modal, canvas, quiz and moodboard all share the same URL.
+  function resolveProductAssets(product) {
+    if (!product) return;
+    ['image','previewImage','cutoutImage','topOverlayImage','bottomOverlayImage'].forEach(key => {
+      if (product[key]) product[key] = resolveSharedAsset(product[key]);
+    });
+    if (Array.isArray(product.gallery)) product.gallery = product.gallery.map(resolveSharedAsset);
+  }
 
   const products = {
     move: { name: 'Move Together', category: '01 · BLACKED CAMPAIGN', image: 'ref-01-blacked-move-together.png', description: 'Black-and-grey movement-inspired styling from your original campaign artwork.', note: 'Campaign visual only. Confirm the exact garment SKU, materials, sizes and stock before selling.' },
@@ -122,6 +188,8 @@
     previewNote: 'GENERATED PRODUCT-ONLY CONCEPT CUTOUT · NOT CONFIRMED STOCK',
     note: `${products['bow-lace'].note} Generated cutout only; actual inventory and fit are not confirmed.`
   });
+
+  Object.values(products).forEach(resolveProductAssets);
 
   const productMeta = {
     move: { source: 'BLACKED campaign visual', look: 'Charcoal / sporty set', styles: ['movement', 'everyday'], colors: ['black'], coverage: 'Balanced, active-inspired', sku: 'Not confirmed' },
@@ -481,6 +549,8 @@
     let image = referenceImageCache.get(displayImage);
     if (!image) {
       image = new Image();
+      // Remote source-repo images must opt into CORS before drawing to the canvas, so local preview downloads are not tainted.
+      if (/^https?:\/\//i.test(displayImage)) image.crossOrigin = 'anonymous';
       referenceImageCache.set(displayImage, image);
       image.onload = () => {
         const current = products[studioState.selectedProduct] || products.signature;
@@ -563,6 +633,8 @@
     let img = garmentOverlayImageCache.get(url);
     if (!img) {
       img = new Image();
+      // Product cutouts are shared from the public image library; enable CORS before src for canvas export.
+      if (/^https?:\/\//i.test(url)) img.crossOrigin = 'anonymous';
       garmentOverlayImageCache.set(url, img);
       img.onload = () => {
         const current = products[studioState.selectedProduct];
@@ -1261,14 +1333,14 @@
 
   // 360-degree concept demo. Eight generated local angle frames; not an actual SKU scan.
   const spinFrames = [
-    { src: 'assets/360-demo-01-front.webp', label: 'Front' },
-    { src: 'assets/360-demo-02-front-three-quarter.webp', label: 'Front three-quarter' },
-    { src: 'assets/360-demo-03-side-quarter.webp', label: 'Side quarter' },
-    { src: 'assets/360-demo-04-rear-three-quarter.webp', label: 'Rear three-quarter' },
-    { src: 'assets/360-demo-05-rear.webp', label: 'Rear' },
-    { src: 'assets/360-demo-06-rear-opposite.webp', label: 'Opposite rear' },
-    { src: 'assets/360-demo-07-side-opposite.webp', label: 'Opposite side' },
-    { src: 'assets/360-demo-08-front-opposite.webp', label: 'Front opposite' }
+    { src: resolveSharedAsset('360-demo-01-front.webp'), label: 'Front' },
+    { src: resolveSharedAsset('360-demo-02-front-three-quarter.webp'), label: 'Front three-quarter' },
+    { src: resolveSharedAsset('360-demo-03-side-quarter.webp'), label: 'Side quarter' },
+    { src: resolveSharedAsset('360-demo-04-rear-three-quarter.webp'), label: 'Rear three-quarter' },
+    { src: resolveSharedAsset('360-demo-05-rear.webp'), label: 'Rear' },
+    { src: resolveSharedAsset('360-demo-06-rear-opposite.webp'), label: 'Opposite rear' },
+    { src: resolveSharedAsset('360-demo-07-side-opposite.webp'), label: 'Opposite side' },
+    { src: resolveSharedAsset('360-demo-08-front-opposite.webp'), label: 'Front opposite' }
   ];
   const spinImage = $('#spinFrameImage');
   const spinSlider = $('#spinSlider');
@@ -1286,20 +1358,41 @@
   $('#spinNext')?.addEventListener('click', () => showSpinFrame(spinIndex + 1));
   spinSlider?.addEventListener('input', () => showSpinFrame(Number(spinSlider.value)));
   if (spinStage) {
-    let startX = null;
-    spinStage.addEventListener('pointerdown', event => { startX = event.clientX; if (spinStage.setPointerCapture) spinStage.setPointerCapture(event.pointerId); });
-    spinStage.addEventListener('pointerup', event => {
-      if (startX === null) return;
-      const delta = event.clientX - startX;
-      if (Math.abs(delta) >= 28) showSpinFrame(spinIndex + (delta < 0 ? 1 : -1));
-      startX = null;
+    let activePointer = null, lastX = 0, accumulated = 0;
+    const stepWidth = () => Math.max(12, (spinStage.clientWidth || 320) / 16);
+    spinStage.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      activePointer = event.pointerId; lastX = event.clientX; accumulated = 0;
+      try { spinStage.setPointerCapture(event.pointerId); } catch (_) {}
+      spinStage.classList.add('is-dragging');
     });
-    spinStage.addEventListener('pointercancel', () => { startX = null; });
+    spinStage.addEventListener('pointermove', event => {
+      if (activePointer === null || event.pointerId !== activePointer) return;
+      const delta = lastX - event.clientX; lastX = event.clientX; accumulated += delta;
+      const threshold = stepWidth();
+      while (Math.abs(accumulated) >= threshold) {
+        const direction = accumulated > 0 ? 1 : -1;
+        showSpinFrame(spinIndex + direction);
+        accumulated -= direction * threshold;
+      }
+    });
+    const endSpinDrag = event => {
+      if (activePointer !== null && (!event || event.pointerId === activePointer)) {
+        activePointer = null; accumulated = 0; spinStage.classList.remove('is-dragging');
+      }
+    };
+    spinStage.addEventListener('pointerup', endSpinDrag);
+    spinStage.addEventListener('pointercancel', endSpinDrag);
+    spinStage.addEventListener('lostpointercapture', endSpinDrag);
     spinStage.addEventListener('keydown', event => {
       if (event.key === 'ArrowRight') { event.preventDefault(); showSpinFrame(spinIndex + 1); }
       if (event.key === 'ArrowLeft') { event.preventDefault(); showSpinFrame(spinIndex - 1); }
+      if (event.key === 'Home') { event.preventDefault(); showSpinFrame(0); }
+      if (event.key === 'End') { event.preventDefault(); showSpinFrame(spinFrames.length - 1); }
     });
   }
+  // Preload the eight demo frames so rotation feels responsive on mobile.
+  spinFrames.forEach(frame => { const image = new Image(); image.src = frame.src; });
   showSpinFrame(0);
 
   // Plus-One Club: transparent prototype-only planner; does not send or store any request.
@@ -1512,7 +1605,7 @@
     if (wellnessAgeGate) wellnessAgeGate.hidden = true;
     if (wellnessHubContent) wellnessHubContent.hidden = false;
     wellnessHubContent?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    toast('Intimate Wellness section opened. This is a category demo, not a live shop.');
+    toast('Wellness opened. Product photos are references; stock and checkout are not configured.');
   });
   wellnessAgeConfirm?.addEventListener('change', () => { if (wellnessAgeError) wellnessAgeError.hidden = true; });
 

@@ -1,0 +1,64 @@
+BLACKED FINAL FUSION v1.3.0 — ASSET MANIFEST
+
+IMPORTANT: This is a code/docs patch for the existing repository. It intentionally contains no duplicate campaign/product image files.
+
+EXISTING TARGET-REPOSITORY IMAGES REUSED (keep these files in the target repo):
+- sanskari-edit-campaign.png
+- boyfriend-cafe-scene-01.png
+- boyfriend-cafe-scene-04.png
+- boyfriend-cafe-scene-07.png
+- adult-product-colour-range-watermarked.jpg (reference only)
+- wellness-accessories-flatlay-pink.jpg
+- wellness-accessories-pastel-flatlay-new.jpg
+- wellness-adult-product-warning-reference.jpg
+- wellness-campaign-model-white-plush-detail.jpg
+- wellness-campaign-model-white-plush.jpg
+- wellness-campaign-model-yellow-plush-detail.jpg
+- wellness-campaign-model-yellow-plush.jpg
+- wellness-comfort-plush-campaign.jpg
+- wellness-comfort-plush-detail.jpg
+- wellness-dual-massager-boxed.jpg
+- wellness-explicit-packaging-reference-18plus.jpg
+- wellness-pink-cuffs-editorial.jpg
+- wellness-pink-device-animated.gif
+- wellness-pink-device-supplier-claims-unverified.jpg
+- wellness-plug-gem-pink-detail.jpg
+- wellness-plug-gem-pink.jpg
+- wellness-plug-gems-detail.jpg
+- wellness-plug-gems-set.jpg
+- wellness-plug-heart-red-detail-duplicate.jpg
+- wellness-plug-heart-red-detail.jpg
+- wellness-plug-heart-red.jpg
+- wellness-plug-heart-ruby.jpg
+- wellness-product-colorful-range.jpg
+- wellness-product-purple-pink-detail-duplicate.jpg
+- wellness-product-purple-pink-detail.jpg
+- wellness-product-purple-pink.jpg
+- wellness-product-range-dark-campaign.jpg
+- wellness-products-dark-flatlay.jpg
+- wellness-purple-pink-product-poster.png
+
+SHARED EXISTING VISUAL LIBRARY (loaded from the public `Brand-website-3` repo; not copied again):
+- ref-01 through ref-10 user-supplied BLACKED campaign/reference images
+- design-11 through design-14 product/concept images
+- owner-ref-* BLACKED campaign/style references
+- external-ref-syrn-* supplied third-party style references (reference-only, not BLACKED stock)
+- cutout-black-lace-*, cutout-bow-lace-*, cutout-scarlet-satin-*, cutout-ivory-bloom-* (four concept sets and their separate bra/bottom overlays)
+- 360-demo-01-front.webp through 360-demo-08-front-opposite.webp (8-frame concept viewer)
+- companion-cafe.webp, companion-event.webp, companion-gallery.webp (illustrative scene images)
+- wellness-hero.webp and wellness-hero-art.svg (shared optional visuals)
+
+FILES INCLUDED IN THIS PATCH (images omitted by design):
+- index.html
+- app.js
+- styles.css
+- README.md
+- ASSET-MANIFEST.txt
+- VALIDATION.txt
+- VERSION.txt
+- UPDATE-MANIFEST.md
+- RELEASE-NOTES.md
+- TEST-NOTES.md
+- TEST-RESULTS.json
+
+Do not delete old image files from the target repository. The patch expects the existing root image files and public `Brand-website-3` source files to remain available.

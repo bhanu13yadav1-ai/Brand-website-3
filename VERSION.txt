@@ -1,4 +1,4 @@
-BLACKED INNERWEAR — Fit Studio
-Version: 1.2.0
-Build date: 2026-10-17
-Type: static HTML/CSS/JavaScript, phone-first, no AI or paid APIs.
+BLACKED FINAL FUSION v1.3.0
+Build target: bhanu13yadav1-ai/Brand-website-full-finally-
+Build mode: changed-files patch; no media duplicated
+Status: package built locally; GitHub commit and live deployment remain pending

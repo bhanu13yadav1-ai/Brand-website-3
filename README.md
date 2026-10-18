@@ -1,43 +1,46 @@
-# BLACKED INNERWEAR — Fit Studio v1.2.0
+# BLACKED FINAL FUSION — v1.3.0
 
-**Build date:** 17 October 2026  
-**Stack:** Static HTML + CSS + JavaScript, phone-first.  
-**Cost target:** ₹0; no AI API, paid API, package manager or build step.  
-**Deployment status:** Package prepared locally; not pushed to GitHub and not deployed live.
+**Target repository:** `bhanu13yadav1-ai/Brand-website-full-finally-`  
+**Build:** static HTML + CSS + JavaScript; mobile-first  
+**Cost target:** ₹0; no paid API, AI service, npm install, or backend required for this prototype  
+**Deployment:** update package is prepared locally. It has **not** been committed or deployed to GitHub Pages.
 
-## What changed in v1.2.0
+## What changed
 
-- Added a three-card experience hub linking to the three distinct areas: BLACKED Innerwear Collection, Intimate Wellness 18+, and Plus-One Club 18+.
-- Added a swipe/drag, slider and arrow-controlled 8-frame 360° **concept demo**. It is clearly labelled generated visual demo, not a verified 360° capture of physical stock.
-- Added four separate product-only concept cutout sets (Midnight Lace, Bow Lace, Scarlet Satin and Ivory Bloom), with bra/bottom layers for those concepts only.
-- Try-On defaults to the exact selected product/reference photo. The manual cutout overlay is available only after selecting a personal photo and a concept with its own matching overlay assets; references without cutouts remain photo-only.
-- Added original illustrative images to the three Plus-One outing cards and improved the Intimate Wellness hero image and nav paths.
-- Preserved existing P0–P4 tools: catalog search/sort/filter, product detail dialog, Fit Detective, Fit Passport, Style Finder, product comparison, local wishlist, style board, After Dark collection, wellness finder, and private adult preference prototype.
-- Added a root-level cutout contact sheet and explicit image/patch manifest to speed future repository updates.
+- Replaced the mixed long-page entry with exactly three persistent top-level tabs: **Innerwear**, **Boyfriend 18+**, and **Wellness 18+**. Only one main experience panel is visible at a time.
+- Kept the core Innerwear experience: 43 selectable image/reference entries, catalog search/sort/filter, product details, wishlist, comparison, Style Finder, Fit Detective, Fit Passport, After Dark edit, build-a-set concept, and local Try-On guide.
+- Fixed the 360° concept viewer interaction: eight frame images, touch/mouse drag with multiple frames per drag, next/previous buttons, keyboard arrows/Home/End, and slider. This is an eight-image generated concept demo—not a camera-captured 360° of a physical SKU.
+- Kept manual garment overlays limited to four mapped concepts: Midnight Lace, Bow Lace, Scarlet Satin, and Ivory Bloom. The personal-photo guide is disabled until a photo is selected; unmapped references never get a generic fallback garment.
+- Separated **Boyfriend / Plus-One** into its own tab, with the existing date planner, conversational prompts, and 18+ private-preference prototype. No real profiles, matching, bookings, or payments are connected.
+- Separated **Intimate Wellness 18+** into its own tab, with the Sanskari campaign hero, For Her / For Him / For Couples / New Ideas categories, existing wellness reference images, search/filter, and an age self-attestation gate.
+- Uses the target repository's already-uploaded images and the existing public image library in `bhanu13yadav1-ai/Brand-website-3`. Images are not copied into this patch again.
 
-## Three sections
+## Three experiences
 
-1. **BLACKED INNERWEAR:** original 10 references, campaign images and design concepts. These are not automatically confirmed SKUs.
-2. **Intimate Wellness 18+:** `Sanskari outside. Savage inside.` category finder and educational category placeholders. This is not a live product catalogue or checkout.
-3. **Plus-One Club / adult preferences 18+:** platonic public-outing preview and consent-aware, private preference questionnaire. Images are illustrative AI-generated concepts, not real people/providers. No actual profiles, matching, messaging, booking or payment service is connected.
+1. **Innerwear:** product/campaign references, detail gallery where available, 360° concept viewer, four matching cutout concepts, and fit/style tools.
+2. **Boyfriend 18+:** a separate, non-sexual public-outing planner plus a separate privacy-first adult preference prototype. Outing images are illustrative—not real providers.
+3. **Wellness 18+:** adult-wellness category discovery and visual references. The catalog is a prototype, not verified inventory or checkout.
 
-## Important limitations
+## Images and asset reuse
 
-- The eight-frame spin is a generated **concept demo**, not real photographed views of a physical product. A true commercial 360° viewer needs consistent images of the actual physical sample.
-- The four garment cutouts are generated concept visuals and are not confirmed inventory, exact product photography, fit simulation, or a guarantee of garment construction.
-- Try-On can show the selected reference or manually position the matching concept cutouts on a locally selected personal photo. It does not automatically detect body shape or perform photorealistic virtual fitting.
-- Wellness cards are category ideas, not live product SKUs. Real stock, supplier details, prices, shipping terms and care instructions must be supplied before shop claims or checkout are added.
-- Plus-One and adult preference features are local prototypes. The 18+ checkbox is self-attestation, not formal verification. A real launch needs verified adult access, screened profiles/providers, secure accounts, moderation, reporting/blocking, deletion controls, and Indian legal/privacy review.
-- No real prices, inventory, reviews, ratings, discount badges or product-fit claims are invented.
+- Images already in the target repository remain in place, including `sanskari-edit-campaign.png`, `boyfriend-cafe-scene-01.png`, `boyfriend-cafe-scene-04.png`, `boyfriend-cafe-scene-07.png`, and existing `wellness-*` product/reference images.
+- Innerwear and product concept images—`ref-01` through `ref-10`, `design-11` through `design-14`, `owner-ref-*`, `external-ref-syrn-*`, `cutout-*`, and `360-demo-*`—are served from the user's existing public `Brand-website-3` repository. This keeps this update ZIP small and avoids uploading duplicate photos.
+- SYRN-screenshot-derived imagery is only a supplied design reference; no SYRN page is embedded, scraped, or linked. It must not be represented as BLACKED stock or an authorized collaboration.
+- Generated cutouts, campaign images, and 360° frames are concept artwork until you confirm physical products, source/photo rights, construction, and inventory.
 
-## Test status
+## Prototype limitations
 
-`TEST-RESULTS.json` records **30/30 Playwright checks passed** in an in-memory DOM with local assets replaced by fixtures. Checks cover the hub, gallery/catalog filters, 360 controls, product-specific cutout gating, no generic overlay fallback, wellness finder/reset, Plus-One preview, adult preference privacy, and mobile/desktop horizontal overflow. This is not a live GitHub Pages test or a real-phone visual regression; verify after deployment on Android.
+- No payment gateway, account login, server-side wishlist, order placement, inventory feed, delivery promises, or real booking/provider service.
+- Wellness age gate and adult age confirmation are self-attestation only, not formal identity/age verification.
+- Try-On does not perform automatic body detection or AI fitting. It displays the selected reference, or permits manual positioning of a matching concept cutout on a locally selected personal photo.
+- No product prices, ratings, supplier claims, safety certificates, or stock counts are invented.
 
-## Updating an existing GitHub repo
+## How to apply this update to the existing GitHub repository
 
-- If your current repository matches the previous v1.1.0 package, use `BLACKED-INNERWEAR-FIT-STUDIO-v1.2.0-CHANGED-FILES.zip`. It includes only changed code/docs plus newly added image assets. Extract it and upload files to the same relative paths, replacing same-named files. Keep all other existing images.
-- For a clean install/backup, use the full `BLACKED-INNERWEAR-FIT-STUDIO-v1.2.0.zip`.
-- Review `UPDATE-MANIFEST.md` first. Back up/download the repository before replacing files. Commit changes and wait for GitHub Pages to deploy. If cached assets show the old version, refresh or clear site cache.
+1. Open the current repository and download a ZIP backup first.
+2. Download `BLACKED-INNERWEAR-FIT-STUDIO-v1.3.0-CHANGED-FILES.zip` and extract it.
+3. Upload the extracted files into the repository root, preserving the filenames. Replace `index.html`, `README.md`, `ASSET-MANIFEST.txt`, and `VALIDATION.txt`; add `app.js`, `styles.css`, `VERSION.txt`, `UPDATE-MANIFEST.md`, `RELEASE-NOTES.md`, `TEST-NOTES.md`, and `TEST-RESULTS.json`.
+4. **Do not delete existing image files. Do not upload the image library a second time.** The new page uses the existing root images and raw image URLs from `Brand-website-3`.
+5. Commit changes, wait for GitHub Pages to publish, then open the site in Chrome. If the previous page remains, refresh the deployment/browser cache.
 
-The GitHub repository has not been modified or deployed by this build step.
+The GitHub integration available during this build is read-only, so the patch has not been committed or deployed automatically.
